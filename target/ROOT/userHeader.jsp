@@ -1,10 +1,4 @@
-<%@ page import="domain.User" %><%--
-  Created by IntelliJ IDEA.
-  User: zhuhaipeng
-  Date: 2019/11/15
-  Time: 14:55
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="domain.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     User user = (User) request.getSession().getAttribute("user");
