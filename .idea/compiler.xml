@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SCU_Movie_DB" />
+        <module name="SCUMDB" />
       </profile>
     </annotationProcessing>
   </component>
