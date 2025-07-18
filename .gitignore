@@ -17,9 +17,11 @@
 .idea/**/dataSources.ids
 .idea/**/dataSources.local.xml
 .idea/**/sqlDataSources.xml
+.idea/**/sqldialects.xml
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+.idea/**/webContexts.xml
 
 # Gradle
 .idea/**/gradle.xml
