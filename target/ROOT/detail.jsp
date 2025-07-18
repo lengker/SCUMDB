@@ -69,7 +69,7 @@
         <!--电影详情 开始 -->
         <div class="row detail-info" style="height: 500px;">
             <div class="col-md-6 detail">
-                <p id="movieName" class="d-none">${detail.name}</p>
+                <input type="hidden" id="movieNameInput" value="${detail.name}" />
                 <img src="${detail.image }" alt="" style="border: 5px solid gray;">
                 <table class="info">
                     <tr class="info-tr">
@@ -203,7 +203,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="hid des">
-                                                    ${comment.description}
+                                                <c:out value="${comment.description}"/>
                                             </div>
                                         </div>
                                     </div>
@@ -248,31 +248,20 @@
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
-                                <%
-                                    for (int i = 0; i < (int) request.getAttribute("commentsSize"); i++) {
-
-
-                                %>
-                                <%
-                                    if (i == 0) {
-                                %>
-                                <li class="page-item active" onclick="changeCommentPage(<%=i+1%>)">
-                                    <a class="page-link" href="#"><%=i + 1%>
-                                    </a>
-                                </li>
-                                <%
-                                } else {
-                                %>
-                                <li class="page-item" onclick="changeCommentPage(<%=i+1%>)">
-                                    <a class="page-link" href="#"><%=i + 1%>
-                                    </a>
-                                </li>
-                                <%
-                                    }
-                                %>
-                                <%
-                                    }
-                                %>
+                                <c:forEach var="i" begin="1" end="${commentsSize}" varStatus="status">
+                                    <c:choose>
+                                        <c:when test="${status.index == 0}">
+                                            <li class="page-item active" onclick="changeCommentPage(${i})">
+                                                <a class="page-link" href="#">${i}</a>
+                                            </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li class="page-item" onclick="changeCommentPage(${i})">
+                                                <a class="page-link" href="#">${i}</a>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
                                 <li class="page-item">
                                     <a class="page-link" href="#" onclick="nextPageComment();return false;"
                                        aria-label="Next">
@@ -361,7 +350,7 @@
             */
             function addComment() {
                 var description = $("#description").val();
-                var movieName = $("#movieName").text();
+                var movieName = $("#movieNameInput").val();
                 console.log(description + " " + movieName);
                 $.ajax({
                     url: "comment.do",
@@ -382,28 +371,36 @@
             function transform() {
                 $(".des").each(function () {
                     var info = $(this).text().trim();
-                    var newInfo = AnalyticEmotion(info);
-                    console.log("newInfo: " + newInfo);
+                    var newInfo = info;
+                    try {
+                        newInfo = AnalyticEmotion(info);
+                    } catch (e) {
+                        console.error("表情解析出错：", e);
+                        newInfo = info; // 解析失败时直接显示原内容
+                    }
                     $(this).text("");
                     var newEle = '<p>';
                     newEle += newInfo;
                     newEle += '</p>';
-                    $(this).append(newEle)
+                    $(this).append(newEle);
                 });
                 return true;
-
             }
 
+            // $(window).on('load', function () {
+            //     var flag = false;
+            //     try {
+            //         flag = transform();
+            //     } catch (e) {
+            //         console.error("transform执行出错：", e);
+            //     }
+            //     // 无论如何都显示主内容
+            //     $("#atome").addClass("d-none");
+            //     $("#main").removeClass("d-none");
+            // });
             $(window).on('load', function () {
-                var flag = transform();
-                console.log("flag:"+flag);
-                // 如果表情图片已经获取到了，则显示
-                if(flag){
-                    $("#atome").addClass("d-none");
-                    $("#main").removeClass("d-none")
-                }
-
-
+                $("#atome").addClass("d-none");
+                $("#main").removeClass("d-none");
             });
         </script>
         <script>
