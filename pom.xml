@@ -7,7 +7,7 @@
   <groupId>com.scumdb</groupId>
   <artifactId>SCU_Movie_DB</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging> <!-- 打包为 war 包以部署到 Tomcat -->
+  <packaging>war</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,7 +16,7 @@
   </properties>
 
   <dependencies>
-    <!-- Servlet API, 由 Tomcat 提供，所以 scope 为 provided -->
+    <!-- Servlet API, 由 Tomcat 提供 -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -24,7 +24,7 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- JSP API, 同样由 Tomcat 提供 -->
+    <!-- JSP API, 由 Tomcat 提供 -->
     <dependency>
       <groupId>javax.servlet.jsp</groupId>
       <artifactId>javax.servlet.jsp-api</artifactId>
@@ -113,7 +113,6 @@
       <artifactId>javax.mail</artifactId>
       <version>1.6.2</version>
     </dependency>
-    <!-- activation.jar 的 Maven 依赖 -->
     <dependency>
       <groupId>javax.activation</groupId>
       <artifactId>activation</artifactId>
@@ -130,9 +129,10 @@
   </dependencies>
 
   <build>
+    <!-- finalName 设置为 ROOT 可以在部署到 Tomcat 时作为根应用访问 -->
     <finalName>ROOT</finalName>
     <plugins>
-      <!-- 编译插件，确保使用 Java 1.8 -->
+      <!-- 编译插件 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -147,6 +147,49 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.3.2</version>
+      </plugin>
+
+      <!-- 资源插件，用于从 node_modules 复制前端依赖 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+          <execution>
+            <id>copy-npm-libs</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <!-- 将所有库文件复制到 war 包的 /management/assets/libs 目录下 -->
+              <outputDirectory>${project.build.directory}/${project.build.finalName}/management/assets/libs</outputDirectory>
+              <resources>
+                <!-- 复制 jQuery -->
+                <resource>
+                  <directory>${project.basedir}/node_modules/jquery/dist</directory>
+                  <targetPath>jquery</targetPath>
+                  <includes>
+                    <include>jquery.min.js</include>
+                  </includes>
+                </resource>
+                <!-- 复制 Bootstrap (JS 和 CSS) -->
+                <resource>
+                  <directory>${project.basedir}/node_modules/bootstrap/dist</directory>
+                  <targetPath>bootstrap</targetPath>
+                </resource>
+                <!-- 复制 GSAP (GreenSock Animation Platform) -->
+                <resource>
+                  <directory>${project.basedir}/node_modules/gsap/dist</directory>
+                  <targetPath>gsap</targetPath>
+                  <includes>
+                    <include>gsap.min.js</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
