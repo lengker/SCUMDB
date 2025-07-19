@@ -32,4 +32,26 @@ public class CommentService {
     public List<Comment> findCommentsByMovieName(String movieName) throws SQLException {
         return dao.findCommentsByMovieName(movieName);
     }
+
+    /**
+     * 分页查找对应电影名的评论
+     *
+     * @param movieName 电影名
+     * @param page      页码（从1开始）
+     * @param pageSize  每页数量
+     * @return 评论列表
+     */
+    public List<Comment> findCommentsByMovieNameWithPaging(String movieName, int page, int pageSize) throws SQLException {
+        return dao.findCommentsByMovieNameWithPaging(movieName, page, pageSize);
+    }
+
+    /**
+     * 获取指定电影的评论总数
+     *
+     * @param movieName 电影名
+     * @return 评论总数
+     */
+    public int getCommentsCountByMovieName(String movieName) throws SQLException {
+        return dao.getCommentsCountByMovieName(movieName);
+    }
 }

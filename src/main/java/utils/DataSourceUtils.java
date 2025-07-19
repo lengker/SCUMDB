@@ -30,7 +30,7 @@ public class DataSourceUtils {
 
         config.setPoolName("HikariCP");
 
-        config.setAutoCommit(false);
+        config.setAutoCommit(true);
 
         datasource = new HikariDataSource(config);
     }

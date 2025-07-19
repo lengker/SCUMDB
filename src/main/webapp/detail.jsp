@@ -22,6 +22,8 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/info.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 </head>
 <style>
@@ -50,6 +52,8 @@
 <script type="text/javascript" src="js/comment.js"></script>
 <script type="text/javascript" src="js/sinaFaceAndEffec.js"></script>
 <div id="atome" class="atome">
+    <div class="circle"><span class="dot"></span><span class="dot"></span></div>
+    <div class="circle"><span class="dot"></span><span class="dot"></span></div>
     <div class="circle"><span class="dot"></span><span class="dot"></span></div>
     <div class="circle"><span class="dot"></span><span class="dot"></span></div>
     <div class="circle"><span class="dot"></span><span class="dot"></span></div>
@@ -157,6 +161,7 @@
             </div>
         </div>
         <!-- 评论部分 开始 -->
+        <!-- 原有的评论功能 - 已注释
         <div class="row" style="width: 100%;">
             <div class="col-md-12">
                 <%
@@ -236,6 +241,174 @@
                     </nav>
                 </div>
             </c:if>
+        -->
+        <!-- 全新的评论区域 -->
+        <div class="comment-section" style="width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 20px; border-radius: 20px; margin: 20px 0; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
+            <div class="comment-header" style="text-align: center; margin-bottom: 30px;">
+                <h3 style="color: white; font-weight: 700; font-size: 2.2em; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                    <i class="fas fa-comments" style="margin-right: 10px;"></i>观众评论
+                </h3>
+                <div style="width: 80px; height: 4px; background: linear-gradient(90deg, #ff6b6b, #feca57); margin: 10px auto; border-radius: 2px;"></div>
+            </div>
+
+            <!-- 写评论组件 -->
+            <%
+                if (user != null) {
+            %>
+            <div class="write-comment-section" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; margin-bottom: 30px; backdrop-filter: blur(10px);">
+                <div class="d-flex align-items-start">
+                    <div class="user-avatar" style="
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50%;
+                        background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-weight: bold;
+                        font-size: 1.1em;
+                        margin-right: 15px;
+                        flex-shrink: 0;
+                    ">
+                        <%= user.getUsername().charAt(0) %>
+                    </div>
+                    <div class="write-comment-content" style="flex: 1;">
+                        <div class="comment-input-wrapper" style="position: relative;">
+                            <textarea
+                                id="inlineDescription"
+                                class="form-control"
+                                placeholder="写下您的观影感受..."
+                                rows="3"
+                                style="
+                                    border: 2px solid rgba(255,255,255,0.3);
+                                    border-radius: 15px;
+                                    background: rgba(255,255,255,0.9);
+                                    padding: 15px 20px;
+                                    font-size: 1em;
+                                    resize: none;
+                                    transition: all 0.3s ease;
+                                    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                                "
+                                onfocus="this.style.borderColor='rgba(255,255,255,0.6)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.15)'"
+                                onblur="this.style.borderColor='rgba(255,255,255,0.3)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)'"
+                            ></textarea>
+                            <div class="comment-tools" style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                                <div class="emoji-selector" style="flex: 1;">
+                                    <span class="inline-face-icon" style="
+                                        background: rgba(255,255,255,0.2);
+                                        padding: 8px 15px;
+                                        border-radius: 20px;
+                                        color: white;
+                                        cursor: pointer;
+                                        font-size: 1.1em;
+                                        transition: all 0.3s ease;
+                                    "
+                                    onmouseover="this.style.background='rgba(255,255,255,0.3)'"
+                                    onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+                                        ☺ 表情
+                                    </span>
+                                </div>
+                                <button
+                                    onclick="addInlineComment()"
+                                    class="btn"
+                                    style="
+                                        background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+                                        border: none;
+                                        color: white;
+                                        padding: 10px 25px;
+                                        border-radius: 25px;
+                                        font-weight: 600;
+                                        font-size: 1em;
+                                        transition: all 0.3s ease;
+                                        box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+                                    "
+                                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255,107,107,0.4)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,107,107,0.3)'"
+                                >
+                                    <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>发表评论
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%
+                } else {
+            %>
+            <div class="login-prompt-section" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; margin-bottom: 30px; backdrop-filter: blur(10px); text-align: center;">
+                <div style="color: white; margin-bottom: 15px;">
+                    <i class="fas fa-user-circle" style="font-size: 2em; margin-bottom: 10px; opacity: 0.7;"></i>
+                    <p style="font-size: 1.1em; margin: 0;">登录后即可发表评论，分享您的观影感受</p>
+                </div>
+                <a href="${pageContext.request.contextPath}/loginOrRegister.do"
+                   class="btn"
+                   style="
+                       background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+                       border: none;
+                       color: white;
+                       padding: 12px 30px;
+                       border-radius: 25px;
+                       font-weight: 600;
+                       font-size: 1em;
+                       text-decoration: none;
+                       transition: all 0.3s ease;
+                       box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+                       display: inline-block;
+                   "
+                   onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255,107,107,0.4)'"
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,107,107,0.3)'"
+                >
+                    <i class="fas fa-sign-in-alt" style="margin-right: 8px;"></i>立即登录
+                </a>
+            </div>
+            <%
+                }
+            %>
+
+            <!-- 评论统计信息 -->
+            <div class="comment-stats" style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 15px; margin-bottom: 25px; backdrop-filter: blur(10px);">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <div style="color: white;">
+                            <h4 id="totalCommentsCount" style="margin: 0; font-weight: 600;">-</h4>
+                            <small style="opacity: 0.8;">总评论数</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div style="color: white;">
+                            <h4 id="currentPageInfo" style="margin: 0; font-weight: 600;">-</h4>
+                            <small style="opacity: 0.8;">当前页</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div style="color: white;">
+                            <h4 id="totalPagesCount" style="margin: 0; font-weight: 600;">-</h4>
+                            <small style="opacity: 0.8;">总页数</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 评论列表容器 -->
+            <div id="commentsList" style="min-height: 400px;">
+                <!-- 评论内容将通过Ajax加载 -->
+                <div class="text-center" style="padding: 60px 0; color: white;">
+                    <div class="spinner-border" role="status" style="width: 3rem; height: 3rem;">
+                        <span class="sr-only">加载中...</span>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 1.1em;">正在加载评论...</p>
+                </div>
+            </div>
+
+            <!-- 分页导航 -->
+            <div class="comment-pagination" style="margin-top: 30px;">
+                <nav aria-label="评论分页">
+                    <ul class="pagination justify-content-center" id="commentPagination" style="margin: 0;">
+                        <!-- 分页按钮将通过JavaScript动态生成 -->
+                    </ul>
+                </nav>
+            </div>
         </div>
 
         <!-- 热门电影 开始 -->
@@ -279,38 +452,21 @@
             // 绑定表情
             $('.face-icon').SinaEmotion($('.text'));
 
-            /*
-            // 测试本地解析
-            function out() {
-                var inputText = $('.text').val();
-                console.log(inputText);
-                $('#info-show ul').append(reply(AnalyticEmotion(inputText)));
+            // 全局变量
+            var currentPage = 1;
+            var pageSize = 5;
+            var movieName = $("#movieName").text();
 
-            }
-
-            var html;
-
-            function reply(content) {
-                console.log("content: " + content);
-                // html = '<li>';
-                //  html += '<div class="head-face">';
-                //  html += '<img src="images/bg2.png" / >';
-                //  html += '</div>';
-                //  html += '<div class="reply-cont">';
-                //  html += '<p class="username">小小红色飞机</p>';
-                //  html += '<p class="comment-body">' + content + '</p>';
-                //  html += '<p class="comment-footer">2016年10月5日　回复　点赞54　转发12</p>';
-                //  html += '</div>';
-                //  html += '</li>';
-                var newEle = '<p>';
-                newEle += content;
-                newEle += '</p>';
-                return newEle;
-            }
-            */
+            // 提交评论函数
             function addComment() {
                 var description = $("#description").val();
                 var movieName = $("#movieName").text();
+
+                if (!description.trim()) {
+                    alert("请输入评论内容！");
+                    return;
+                }
+
                 console.log(description + " " + movieName);
                 $.ajax({
                     url: "comment.do",
@@ -318,16 +474,366 @@
                     type: "POST",
                     success: function (data) {
                         if (data === "ok") {
-                            //刷新当前页面.
-                            window.location.reload();
+                            $("#description").val("");
+                            $(".modal").modal('hide');
+                            // 重新加载第一页评论
+                            loadComments(1);
                         }
                     },
                     error: function (e) {
-                        console.log(e)
+                        console.log(e);
+                        alert("评论提交失败，请重试！");
                     }
-                })
+                });
             }
 
+            // 加载评论数据
+            function loadComments(page) {
+                currentPage = page;
+
+                // 显示加载状态
+                var loadingHtml = '<div class="text-center" style="padding: 60px 0; color: white;">' +
+                                  '<div class="spinner-border" role="status" style="width: 3rem; height: 3rem;">' +
+                                  '<span class="sr-only">加载中...</span>' +
+                                  '</div>' +
+                                  '<p style="margin-top: 20px; font-size: 1.1em;">正在加载评论...</p>' +
+                                  '</div>';
+                $("#commentsList").html(loadingHtml);
+
+                $.ajax({
+                    url: "commentPage.do",
+                    data: {
+                        movieName: movieName,
+                        page: page,
+                        pageSize: pageSize
+                    },
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.success) {
+                            renderComments(data);
+                            renderPagination(data);
+                            updateStats(data);
+                        } else {
+                            var errorHtml = '<div class="text-center" style="padding: 60px 0; color: white;">' +
+                                           '<i class="fas fa-exclamation-triangle" style="font-size: 3em; margin-bottom: 20px; opacity: 0.6;"></i>' +
+                                           '<p style="font-size: 1.1em;">加载评论失败</p>' +
+                                           '</div>';
+                            $("#commentsList").html(errorHtml);
+                        }
+                    },
+                    error: function (e) {
+                        console.log(e);
+                        var networkErrorHtml = '<div class="text-center" style="padding: 60px 0; color: white;">' +
+                                              '<i class="fas fa-wifi" style="font-size: 3em; margin-bottom: 20px; opacity: 0.6;"></i>' +
+                                              '<p style="font-size: 1.1em;">网络连接失败</p>' +
+                                              '</div>';
+                        $("#commentsList").html(networkErrorHtml);
+                    }
+                });
+            }
+
+            // 内联评论提交函数
+            function addInlineComment() {
+                var description = $("#inlineDescription").val();
+                var movieName = $("#movieName").text();
+
+                if (!description.trim()) {
+                    alert("请输入评论内容！");
+                    return;
+                }
+
+                // 禁用按钮，防止重复提交
+                var submitBtn = event.target;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i>发表中...';
+
+                console.log(description + " " + movieName);
+                $.ajax({
+                    url: "comment.do",
+                    data: "description=" + description + "&movieName=" + movieName,
+                    type: "POST",
+                    success: function (data) {
+                        if (data === "ok") {
+                            $("#inlineDescription").val("");
+                            // 重新加载第一页评论
+                            loadComments(1);
+                            // 显示成功提示
+                            showSuccessMessage("评论发表成功！");
+                        } else {
+                            alert("评论提交失败，请重试！");
+                        }
+                    },
+                    error: function (e) {
+                        console.log(e);
+                        alert("评论提交失败，请重试！");
+                    },
+                    complete: function() {
+                        // 恢复按钮状态
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right: 8px;"></i>发表评论';
+                    }
+                });
+            }
+
+            // 显示成功消息
+            function showSuccessMessage(message) {
+                var successAlert = '<div class="alert alert-success" style="' +
+                                  'position: fixed; top: 20px; right: 20px; z-index: 9999; ' +
+                                  'background: linear-gradient(135deg, #28a745, #20c997); ' +
+                                  'color: white; border: none; border-radius: 10px; ' +
+                                  'box-shadow: 0 4px 15px rgba(40,167,69,0.3);' +
+                                  '" id="successMessage">' +
+                                  '<i class="fas fa-check-circle" style="margin-right: 8px;"></i>' +
+                                  message +
+                                  '</div>';
+                $("body").append(successAlert);
+
+                // 3秒后自动消失
+                setTimeout(function() {
+                    $("#successMessage").fadeOut(500, function() {
+                        $(this).remove();
+                    });
+                }, 3000);
+            }
+
+            // 渲染评论列表
+            function renderComments(data) {
+                var html = '';
+
+                if (data.comments.length === 0) {
+                    html = '<div class="text-center" style="padding: 60px 0; color: white;">' +
+                           '<i class="fas fa-comment-slash" style="font-size: 3em; margin-bottom: 20px; opacity: 0.6;"></i>' +
+                           '<p style="font-size: 1.1em;">暂无评论，来写第一条评论吧！</p>' +
+                           '</div>';
+                } else {
+                    for (var i = 0; i < data.comments.length; i++) {
+                        var comment = data.comments[i];
+                        var animationDelay = i * 0.1;
+                        var firstLetter = comment.userName ? comment.userName.charAt(0).toUpperCase() : 'U';
+
+                        // 改进的日期处理逻辑
+                        var dateDisplay = '今天';
+                        if (comment.addTime) {
+                            try {
+                                var date;
+                                // 如果addTime是数字（时间戳）
+                                if (typeof comment.addTime === 'number') {
+                                    date = new Date(comment.addTime);
+                                }
+                                // 如果addTime是字符串
+                                else if (typeof comment.addTime === 'string') {
+                                    date = new Date(comment.addTime);
+                                }
+                                // 如果addTime是对象（可能包含时间戳）
+                                else if (typeof comment.addTime === 'object' && comment.addTime.time) {
+                                    date = new Date(comment.addTime.time);
+                                }
+                                // 其他情况，尝试直接转换
+                                else {
+                                    date = new Date(comment.addTime);
+                                }
+
+                                // 检查日期是否有效
+                                if (date && !isNaN(date.getTime())) {
+                                    var year = date.getFullYear();
+                                    var month = ('0' + (date.getMonth() + 1)).slice(-2);
+                                    var day = ('0' + date.getDate()).slice(-2);
+                                    dateDisplay = year + '-' + month + '-' + day;
+                                } else {
+                                    // 如果日期解析失败，尝试字符串处理
+                                    var dateStr = comment.addTime.toString();
+                                    if (dateStr.includes('-') && dateStr.length >= 10) {
+                                        var parts = dateStr.substring(0, 10).split('-');
+                                        if (parts.length === 3) {
+                                            dateDisplay = parts[0] + '-' + parts[1] + '-' + parts[2];
+                                        }
+                                    } else {
+                                        // 显示当前日期
+                                        var today = new Date();
+                                        var todayYear = today.getFullYear();
+                                        var todayMonth = ('0' + (today.getMonth() + 1)).slice(-2);
+                                        var todayDay = ('0' + today.getDate()).slice(-2);
+                                        dateDisplay = todayYear + '-' + todayMonth + '-' + todayDay;
+                                    }
+                                }
+                            } catch (e) {
+                                console.log('日期解析错误:', e, comment.addTime);
+                                // 发生错误时显示当前日期
+                                var today = new Date();
+                                var todayYear = today.getFullYear();
+                                var todayMonth = ('0' + (today.getMonth() + 1)).slice(-2);
+                                var todayDay = ('0' + today.getDate()).slice(-2);
+                                dateDisplay = todayYear + '-' + todayMonth + '-' + todayDay;
+                            }
+                        }
+
+                        html += '<div class="comment-item" style="' +
+                                'background: rgba(255,255,255,0.95);' +
+                                'border-radius: 20px;' +
+                                'padding: 25px;' +
+                                'margin-bottom: 20px;' +
+                                'box-shadow: 0 8px 32px rgba(0,0,0,0.1);' +
+                                'border: 1px solid rgba(255,255,255,0.2);' +
+                                'backdrop-filter: blur(10px);' +
+                                'animation: slideInUp 0.6s ease ' + animationDelay + 's both;' +
+                                'position: relative;' +
+                                'overflow: hidden;' +
+                                '">' +
+                                '<div class="d-flex align-items-start">' +
+                                '<div class="comment-avatar" style="' +
+                                'width: 50px;' +
+                                'height: 50px;' +
+                                'border-radius: 50%;' +
+                                'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);' +
+                                'display: flex;' +
+                                'align-items: center;' +
+                                'justify-content: center;' +
+                                'color: white;' +
+                                'font-weight: bold;' +
+                                'font-size: 1.2em;' +
+                                'margin-right: 15px;' +
+                                'flex-shrink: 0;' +
+                                '">' + firstLetter + '</div>' +
+                                '<div class="comment-content" style="flex: 1;">' +
+                                '<div class="comment-header d-flex justify-content-between align-items-center mb-2">' +
+                                '<h6 class="mb-0" style="' +
+                                'font-weight: 600;' +
+                                'color: #2c3e50;' +
+                                'font-size: 1.1em;' +
+                                '">' + comment.userName + '</h6>' +
+                                '</div>' +
+                                '<div class="comment-text" style="' +
+                                'color: #34495e;' +
+                                'line-height: 1.6;' +
+                                'font-size: 1em;' +
+                                'word-break: break-word;' +
+                                '">' + comment.description + '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="comment-date-decoration" style="' +
+                                'position: absolute;' +
+                                'top: 15px;' +
+                                'right: 15px;' +
+                                'background: linear-gradient(135deg, rgba(108, 117, 125, 0.9), rgba(73, 80, 87, 0.9));' +
+                                'color: white;' +
+                                'padding: 6px 12px;' +
+                                'border-radius: 12px;' +
+                                'font-size: 0.8em;' +
+                                'font-weight: 600;' +
+                                'text-align: center;' +
+                                'box-shadow: 0 2px 8px rgba(0,0,0,0.2);' +
+                                'backdrop-filter: blur(5px);' +
+                                'border: 1px solid rgba(255,255,255,0.3);' +
+                                'min-width: 50px;' +
+                                'z-index: 10;' +
+                                '">' + dateDisplay + '</div>' +
+                                '</div>';
+
+                        // 添加调试信息到控制台
+                        console.log('评论日期信息:', {
+                            userName: comment.userName,
+                            addTime: comment.addTime,
+                            dateDisplay: dateDisplay
+                        });
+                    }
+                }
+
+                $("#commentsList").html(html);
+
+                // 应用表情解析 - 改为安全的异步处理
+                setTimeout(function() {
+                    $(".comment-text").each(function () {
+                        var info = $(this).text().trim();
+                        // 只有在表情数据已加载且AnalyticEmotion函数可用时才处理
+                        if (typeof AnalyticEmotion === 'function' && window.flag) {
+                            var newInfo = AnalyticEmotion(info);
+                            $(this).html(newInfo);
+                        }
+                        // 如果表情数据未加载，什么都不做，保持原文本
+                    });
+                }, 100);
+            }
+
+            // 渲染分页导航
+            function renderPagination(data) {
+                var html = '';
+                var totalPages = data.totalPages;
+                var currentPage = data.currentPage;
+
+                if (totalPages <= 1) {
+                    $("#commentPagination").html('');
+                    return;
+                }
+
+                // 上一页按钮
+                var prevDisabled = currentPage === 1 ? 'disabled' : '';
+                html += '<li class="page-item ' + prevDisabled + '">' +
+                        '<a class="page-link" href="javascript:void(0)" onclick="loadComments(' + (currentPage - 1) + ')" ' +
+                        'style="border-radius: 10px 0 0 10px; border: none; background: rgba(255,255,255,0.2); color: white; margin-right: 5px;">' +
+                        '<i class="fas fa-chevron-left"></i>' +
+                        '</a>' +
+                        '</li>';
+
+                // 页码按钮
+                var startPage = Math.max(1, currentPage - 2);
+                var endPage = Math.min(totalPages, currentPage + 2);
+
+                if (startPage > 1) {
+                    html += '<li class="page-item">' +
+                            '<a class="page-link" href="javascript:void(0)" onclick="loadComments(1)" ' +
+                            'style="border-radius: 10px; border: none; background: rgba(255,255,255,0.2); color: white; margin-right: 5px;">1</a>' +
+                            '</li>';
+                    if (startPage > 2) {
+                        html += '<li class="page-item disabled">' +
+                                '<span class="page-link" style="border: none; background: transparent; color: white;">...</span>' +
+                                '</li>';
+                    }
+                }
+
+                for (var i = startPage; i <= endPage; i++) {
+                    var activeClass = i === currentPage ? ' active' : '';
+                    var bgColor = i === currentPage ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.2)';
+                    var fontWeight = i === currentPage ? 'bold' : 'normal';
+
+                    html += '<li class="page-item' + activeClass + '">' +
+                            '<a class="page-link" href="javascript:void(0)" onclick="loadComments(' + i + ')" ' +
+                            'style="border-radius: 10px; border: none; background: ' + bgColor + '; color: white; margin-right: 5px; font-weight: ' + fontWeight + ';">' + i + '</a>' +
+                            '</li>';
+                }
+
+                if (endPage < totalPages) {
+                    if (endPage < totalPages - 1) {
+                        html += '<li class="page-item disabled">' +
+                                '<span class="page-link" style="border: none; background: transparent; color: white;">...</span>' +
+                                '</li>';
+                    }
+                    html += '<li class="page-item">' +
+                            '<a class="page-link" href="javascript:void(0)" onclick="loadComments(' + totalPages + ')" ' +
+                            'style="border-radius: 10px; border: none; background: rgba(255,255,255,0.2); color: white; margin-right: 5px;">' + totalPages + '</a>' +
+                            '</li>';
+                }
+
+                // 下一页按钮
+                var nextDisabled = currentPage === totalPages ? 'disabled' : '';
+                html += '<li class="page-item ' + nextDisabled + '">' +
+                        '<a class="page-link" href="javascript:void(0)" onclick="loadComments(' + (currentPage + 1) + ')" ' +
+                        'style="border-radius: 0 10px 10px 0; border: none; background: rgba(255,255,255,0.2); color: white;">' +
+                        '<i class="fas fa-chevron-right"></i>' +
+                        '</a>' +
+                        '</li>';
+
+                $("#commentPagination").html(html);
+            }
+
+            // 更新统计信息
+            function updateStats(data) {
+                $("#totalCommentsCount").text(data.totalComments);
+                $("#currentPageInfo").text(data.currentPage + "/" + data.totalPages);
+                $("#totalPagesCount").text(data.totalPages);
+            }
+
+            // 表情解析函数 - 安全版本
             function transform() {
                 $(".des").each(function () {
                     var info = $(this).text().trim();
@@ -343,108 +849,49 @@
 
             }
 
+            // 页面加载完成后的初始化
             $(window).on('load', function () {
-                var flag = transform();
-                console.log("flag:"+flag);
-                // 如果表情图片已经获取到了，则显示
-                if(flag){
-                    $("#atome").addClass("d-none");
-                    $("#main").removeClass("d-none")
+                console.log("页面开始初始化");
+
+                // 直接显示页面
+                $("#atome").addClass("d-none");
+                $("#main").removeClass("d-none");
+
+                // 立即加载评论
+                loadComments(1);
+
+                // 恢复表情功能绑定，现在是安全的
+                if ($('.inline-face-icon').length > 0) {
+                    $('.inline-face-icon').SinaEmotion($('#inlineDescription'));
                 }
-
-
             });
         </script>
-        <script>
-            var $c_info = $(".c-info");
-            var pos = 1;
 
-            // 显示上一页评论
-            function lastCommentPage() {
-                var length = $("#controllPage li").length;
-                console.log("length: " + length);
-                console.log("pos: " + pos);
-                if (pos - 1 === 0) {
-                    return false;
+        <!-- 添加评论动画样式 -->
+        <style>
+            @keyframes slideInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
                 }
-                $("#controllPage li").each(function (index) {
-                    // 如果有 active属性，则表示是当前页面
-                    if ($(this).hasClass("active")) {
-                        pos = index - 1;
-                        $c_info.each(function (index) {
-                            // 如果有 d-none属性，则表示是隐藏的评论，将前4个隐藏的评论显示出来
-                            // 原本显示的4个评论隐藏起来
-                            if ($(this).hasClass("d-none")) {
-                                if ((index < pos * 4) && (index >= (pos - 1) * 4)) {
-                                    $(this).removeClass("d-none")
-                                }
-                            } else {
-                                $(this).addClass("d-none");
-                            }
-                        });
-                        $(this).removeClass("active");
-                    }
-                });
-                console.log("pos later: " + pos);
-                $("#controllPage").find("li").eq(pos).addClass("active");
-
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
 
-            // 显示下一页评论
-            function nextPageComment() {
-                var length = $("#controllPage li").length;
-                console.log("length: " + length);
-                console.log("pos: " + pos);
-                if (pos + 2 >= length) {
-                    return false;
-                }
-                $("#controllPage li").each(function (index) {
-                    // 如果有 active属性，则表示是当前页面
-                    if ($(this).hasClass("active")) {
-                        pos = index + 1;
-                        $c_info.each(function (index) {
-                            console.log(index)
-                            // 如果有 d-none属性，则表示是隐藏的评论，将前4个隐藏的评论显示出来
-                            // 原本显示的4个评论隐藏起来
-                            if ($(this).hasClass("d-none")) {
-                                if ((index < pos * 4) && (index >= (pos - 1) * 4)) {
-                                    $(this).removeClass("d-none")
-                                }
-                            } else {
-                                $(this).addClass("d-none");
-                            }
-                        });
-                        $(this).removeClass("active");
-                    }
-                });
-                console.log("pos later:" + pos);
-                $("#controllPage").find("li").eq(pos).addClass("active");
+            .comment-item:hover {
+                transform: translateY(-2px);
+                transition: all 0.3s ease;
+                box-shadow: 0 12px 40px rgba(0,0,0,0.15);
             }
 
-            // 显示点击页数对应的评论
-            function changeCommentPage(pos) {
-                var $lis = $("#controllPage li");
-                var activeIndex = $lis.filter(".active").index();
-                console.log(activeIndex);
-                if (pos !== activeIndex) {
-                    $lis.removeClass("active");
-                    $lis.eq(pos).addClass("active");
-                    $c_info.each(function (index) {
-                        // 如果有 d-none属性，则表示是隐藏的评论，将前4个隐藏的评论显示出来
-                        // 原本显示的4个评论隐藏起来
-                        if ($(this).hasClass("d-none")) {
-                            if ((index < pos * 4) && (index >= (pos - 1) * 4)) {
-                                $(this).removeClass("d-none");
-                            }
-                        } else {
-                            $(this).addClass("d-none");
-                        }
-                    });
-                }
-
-
+            .page-link:hover {
+                background: rgba(255,255,255,0.4) !important;
+                transform: translateY(-2px);
+                transition: all 0.2s ease;
             }
-        </script>
+        </style>
         <jsp:include page="foot.jsp"/>
     </div>
 </body>

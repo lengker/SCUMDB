@@ -26,9 +26,9 @@ public class UpdateDataServlet extends HttpServlet {
     static Logger logger = Logger.getLogger(UpdateDataServlet.class);
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /*request.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf-8");*/
+        response.setContentType("text/html;charset=utf-8");
 
         String nextPage = request.getParameter("page");
         String category = request.getParameter("type");

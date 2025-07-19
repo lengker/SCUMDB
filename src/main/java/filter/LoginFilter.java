@@ -32,22 +32,28 @@ public class LoginFilter implements Filter {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        UserService service = new UserService();
 
         logger.warn(flag + username + " " + password);
+
+        // 如果没有用户名和密码参数，说明是直接访问登录页面，直接放行给LoginServlet处理
+        if (username == null || "".equals(username) || username.trim().isEmpty()) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        // 有用户名密码参数时，进行登录验证和重复登录检查
+        UserService service = new UserService();
         try {
-            if (username != null && !"".equals(username)) {
-                User user = service.login(username, password);
-                if(user != null){
-                    logger.warn(flag + " " + user.getId());
-                    // 获得用户id对象的session对象
-                    HttpSession session = MySessionContext.getSession(String.valueOf(user.getId()));
-                    // 如果session对象不为空，则代表已经存在session对象，即已经有人登录过了
-                    if (session != null) {
-                        logger.warn(flag + "删除seesion");
-                        // 将这个session对象删除
-                        MySessionContext.delSession(session);
-                    }
+            User user = service.login(username, password);
+            if(user != null){
+                logger.warn(flag + " " + user.getId());
+                // 获得用户id对象的session对象
+                HttpSession session = MySessionContext.getSession(String.valueOf(user.getId()));
+                // 如果session对象不为空，则代表已经存在session对象，即已经有人登录过了
+                if (session != null) {
+                    logger.warn(flag + "删除seesion");
+                    // 将这个session对象删除
+                    MySessionContext.delSession(session);
                 }
             }
         } catch (LoginException e) {
