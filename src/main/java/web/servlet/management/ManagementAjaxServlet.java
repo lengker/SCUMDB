@@ -9,6 +9,7 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import service.MovieService;
+import service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,7 +55,8 @@ public class ManagementAjaxServlet extends HttpServlet {
         String originName = request.getParameter("originName");
 
         PrintWriter writer = response.getWriter();
-        MovieService service = new MovieService();
+        MovieService movieService = new MovieService();
+        UserService userService = new UserService();
         System.out.println("choose--->" + choose);
         switch (choose) {
             case "online":
@@ -67,23 +69,51 @@ public class ManagementAjaxServlet extends HttpServlet {
                 break;
             case "delete":
                 System.out.println("删除操作。。。。");
+                System.out.println("要删除的电影名称: " + movieName);
                 try {
-                    service.deleteMovieByName(movieName);
-                    writer.write("OK");
+                    if (movieName != null && !movieName.trim().isEmpty()) {
+                        movieService.deleteMovieByName(movieName);
+                        writer.write("OK");
+                        System.out.println("删除成功: " + movieName);
+                    } else {
+                        writer.write("ERROR: 电影名称为空");
+                        System.out.println("删除失败: 电影名称为空");
+                    }
                 } catch (SQLException e) {
                     e.printStackTrace();
+                    writer.write("ERROR: " + e.getMessage());
+                    System.out.println("删除失败: " + e.getMessage());
+                }
+                break;
+            case "deleteUser":
+                System.out.println("删除用户操作。。。。");
+                String username = request.getParameter("username");
+                System.out.println("要删除的用户名: " + username);
+                try {
+                    if (username != null && !username.trim().isEmpty()) {
+                        userService.deleteUserByUsername(username);
+                        writer.write("OK");
+                        System.out.println("删除用户成功: " + username);
+                    } else {
+                        writer.write("ERROR: 用户名为空");
+                        System.out.println("删除用户失败: 用户名为空");
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    writer.write("ERROR: " + e.getMessage());
+                    System.out.println("删除用户失败: " + e.getMessage());
                 }
                 break;
             case "modify":
                 try {
-                    Movie movie = service.findMovieByName(originName);
+                    Movie movie = movieService.findMovieByName(originName);
                     movie.setName(movieName);
                     movie.setYears(year);
                     movie.setScore(Integer.parseInt(score));
                     movie.setCountry(country);
                     movie.setType(type);
 
-                    service.updateMovie(movie, originName);
+                    movieService.updateMovie(movie, originName);
                     writer.write("OK");
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -161,8 +191,8 @@ public class ManagementAjaxServlet extends HttpServlet {
                             }
                         }
                     }
-                    m.setId(service.getMaxMovieId() + 1);
-                    service.addMovie(m);
+                    m.setId(movieService.getMaxMovieId() + 1);
+                    movieService.addMovie(m);
                     response.sendRedirect("movieManagement");
                 } catch (FileUploadException | IllegalAccessException | InvocationTargetException | SQLException e) {
                     e.printStackTrace();

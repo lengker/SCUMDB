@@ -109,7 +109,7 @@
                 </div>
                 <span style="
                     width: auto;
-                    text-overflow:ellipsis;  
+                    text-overflow:ellipsis;
                     display: -webkit-box;
                     -webkit-box-orient: vertical;
                      -webkit-line-clamp:9;
@@ -157,134 +157,85 @@
             </div>
         </div>
         <!-- 评论部分 开始 -->
-        <div class="row" style="background: white;">
-            <div class="row" style="width: 100%;">
-                <div class="col-md-12">
-                    <%
-                        User user = (User) request.getSession().getAttribute("user");
-                        if (user == null) {
+        <div class="row" style="width: 100%;">
+            <div class="col-md-12">
+                <%
+                    User user = (User) request.getSession().getAttribute("user");
+                    if (user == null) {
 
-                    %>
-                    <a href="${pageContext.request.contextPath}/login.do" class="float-right text-muted">
-                        <span style="font-size: 1.2em;" data-toggle="modal" data-target=".bd-example-modal-lg">评论</span>
-                    </a>
-                    <%
-                    } else {
+                %>
+                <a href="${pageContext.request.contextPath}/login.do" class="float-right text-muted">
+                    <span style="font-size: 1.2em;" data-toggle="modal" data-target=".bd-example-modal-lg">评论</span>
+                </a>
+                <%
+                } else {
 
 
-                    %>
-                    <a href="#" class="float-right text-muted">
-                        <span style="font-size: 1.2em;" data-toggle="modal" data-target=".bd-example-modal-lg">评论</span>
-                    </a>
-                    <%
-                        }
-                    %>
-                </div>
+                %>
+                <a href="#" class="float-right text-muted">
+                    <span style="font-size: 1.2em;" data-toggle="modal" data-target=".bd-example-modal-lg">评论</span>
+                </a>
+                <%
+                    }
+                %>
             </div>
-            <div class="row">
-                <div class="row comment" style="width: 100%;">
-                    <c:forEach var="comment" items="${comments}" varStatus="status">
-                        <c:choose>
-                            <c:when test="${status.count <= 4}">
-                                <div class="c-info ml-5 mr-5 mt-5">
-                                    <div class="row">
-                                        <!-- 头像图片 -->
-                                        <div class="col-md-3">
-                                            <img src="img/bg2.png"
-                                                 alt="140*140"
-                                                 class="rounded-circle mt-2" width="80px" height="80px">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h4>${comment.userName}</h4>
-                                            <span style="color: gray;">${comment.addTime}</span>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="hid des">
-                                                    ${comment.description}
-                                            </div>
-                                        </div>
-                                    </div>
+        </div>
+        <div class="comment" style="width: 100%; display: flex; flex-direction: column; align-items: center; background: white;">
+            <c:forEach var="comment" items="${comments}" varStatus="status">
+                <c:choose>
+                    <c:when test="${status.count <= 5}">
+                        <div class="c-info d-flex align-items-center justify-content-start mb-4" style="width: 95%; min-height: 100px; box-shadow: 0 4px 18px rgba(0,0,0,0.10); border-radius: 18px; background: #fff; padding: 28px 36px; margin: 20px 0; border: 1.5px solid #ececec; transition: box-shadow 0.2s;">
+                            <img src="img/bg2.png" alt="头像" class="rounded-circle mr-4" width="60px" height="60px" style="border: 2px solid #f6c624;">
+                            <div style="flex:1;">
+                                <div class="d-flex align-items-center mb-2">
+                                    <h5 class="mb-0 mr-3" style="font-weight: bold; color: #333;">${comment.userName}</h5>
+                                    <span style="color: #aaa; font-size: 0.95em;">${comment.addTime}</span>
                                 </div>
-                            </c:when>
-                            <c:otherwise>
-                                <div class="c-info ml-5 mr-5 d-none mt-5">
-                                    <div class="row">
-                                        <!-- 头像图片 -->
-                                        <div class="col-md-3">
-                                            <img src="https://www.runoob.com/try/bootstrap/layoutit/v3/default3.jpg"
-                                                 alt="140*140"
-                                                 class="rounded-circle mt-2" width="80px" height="80px">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h4>${comment.userName}</h4>
-                                            <span style="color: gray;">${comment.addTime}</span>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="hid des">
-                                                    ${comment.description}
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="hid des" style="font-size: 1.15em; color: #444;">${comment.description}</div>
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="c-info d-none d-flex align-items-center justify-content-start mb-4" style="width: 95%; min-height: 100px; box-shadow: 0 4px 18px rgba(0,0,0,0.10); border-radius: 18px; background: #fff; padding: 28px 36px; margin: 20px 0; border: 1.5px solid #ececec; transition: box-shadow 0.2s;">
+                            <img src="img/bg2.png" alt="头像" class="rounded-circle mr-4" width="60px" height="60px" style="border: 2px solid #f6c624;">
+                            <div style="flex:1;">
+                                <div class="d-flex align-items-center mb-2">
+                                    <h5 class="mb-0 mr-3" style="font-weight: bold; color: #333;">${comment.userName}</h5>
+                                    <span style="color: #aaa; font-size: 0.95em;">${comment.addTime}</span>
                                 </div>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
+                                <div class="hid des" style="font-size: 1.15em; color: #444;">${comment.description}</div>
+                            </div>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </div>
+        <div class="row" style=" width: 100%; margin-top: 10px;">
+            <c:if test="${commentsSize > 0}">
+                <div class="col-md-12" style="text-align: center;">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center" id="controllPage">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous"
+                                   onclick="lastCommentPage();return false;">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <c:forEach var="i" begin="1" end="${commentsSize}" varStatus="status">
+                                <li class="page-item${status.index == 0 ? ' active' : ''}" onclick="changeCommentPage(${i})">
+                                    <a class="page-link" href="#">${i}</a>
+                                </li>
+                            </c:forEach>
+                            <li class="page-item">
+                                <a class="page-link" href="#" onclick="nextPageComment();return false;"
+                                   aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-            </div>
-            <div class="row" style=" width: 100%; margin-top: 10px;">
-                <c:if test="${commentsSize > 0}">
-                    <div class="col-md-12" style="text-align: center;">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center" id="controllPage">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous"
-                                       onclick="lastCommentPage();return false;">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <%
-                                    for (int i = 0; i < (int) request.getAttribute("commentsSize"); i++) {
-
-
-                                %>
-                                <%
-                                    if (i == 0) {
-                                %>
-                                <li class="page-item active" onclick="changeCommentPage(<%=i+1%>)">
-                                    <a class="page-link" href="#"><%=i + 1%>
-                                    </a>
-                                </li>
-                                <%
-                                } else {
-                                %>
-                                <li class="page-item" onclick="changeCommentPage(<%=i+1%>)">
-                                    <a class="page-link" href="#"><%=i + 1%>
-                                    </a>
-                                </li>
-                                <%
-                                    }
-                                %>
-                                <%
-                                    }
-                                %>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" onclick="nextPageComment();return false;"
-                                       aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </c:if>
-            </div>
-            <!-- 评论部分 结束 -->
+            </c:if>
         </div>
 
         <!-- 热门电影 开始 -->
@@ -297,19 +248,17 @@
                     </h3>
                 </div>
                 <div class="col-md-12">
-                    <ul class="list-unstyled hot-movie">
+                    <ul class="list-unstyled hot-movie" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
                         <c:forEach var="movie" items="<%=request.getAttribute(\"hotMovies\") %>" varStatus="status">
-                            <li>
-                                <div style="text-align: center;">
+                            <c:if test="${status.count <= 4}">
+                                <li style="width: 23%; margin-bottom: 24px; background: #fff; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.10); border: 1.5px solid #ececec; overflow: hidden; display: flex; flex-direction: column; align-items: center;">
                                     <a href="${pageContext.request.contextPath}/detail.do?movieName=${movie.name}"
-                                       style="height: 354.667px;">
-                                        <img src="${movie.image}" alt="">
-                                        <span style="display: block; position: relative; background: black;
-											margin-top: -40px; height: 40px; line-height: 40px; opacity: 0.7;
-											color: white;">${movie.name}</span>
+                                       style="display: block; width: 100%; height: 260px; border-radius: 18px 18px 0 0; overflow: hidden;">
+                                        <img src="${movie.image}" alt="" style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px 18px 0 0;">
                                     </a>
-                                </div>
-                            </li>
+                                    <span style="display: block; width: 100%; text-align: center; background: #222; margin-top: -40px; height: 40px; line-height: 40px; opacity: 0.85; color: #fff; font-weight: bold; border-radius: 0 0 18px 18px;">${movie.name}</span>
+                                </li>
+                            </c:if>
                         </c:forEach>
                     </ul>
                 </div>

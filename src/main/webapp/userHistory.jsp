@@ -1,13 +1,7 @@
 <%@ page import="domain.Movie" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: zhuhaipeng
-  Date: 2019/11/15
-  Time: 15:18
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>YCU 小站</title>

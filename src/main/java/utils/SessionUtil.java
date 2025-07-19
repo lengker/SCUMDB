@@ -7,8 +7,6 @@ import java.util.ArrayList;
 /**
  * @ClassName: SessionUtil
  * @Description: Session相关的工具类
- * @author: GGBOY
- * @date 2019/11/21 16:34
  * @Version: 1.0
  **/
 public class SessionUtil {
@@ -18,8 +16,6 @@ public class SessionUtil {
      * @param visitors  在线的观察者集合
      * @param sessionId session的id
      * @return domain.User
-     * @author GGBOY
-     * @date 2019/11/21
      */
     public static Visitor getUserBySessionId(ArrayList<Visitor> visitors, String sessionId) {
         for (Visitor visitor : visitors) {

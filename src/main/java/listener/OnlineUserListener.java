@@ -12,7 +12,6 @@ import java.util.ArrayList;
 /**
  * 监听在线用户数量
  *
- * @author zhuhaipeng
  * @version 1.0
  */
 @WebListener()

@@ -36,8 +36,6 @@ public class CommentDao {
      * 添加一条评论
      *
      * @param comment 评论对象
-     * @author GGBOY
-     * @date 2019/12/3
      */
     public void addComment(Comment comment) throws SQLException {
         String sql = "insert into comments(userName,movieName,description) values(?,?,?)";

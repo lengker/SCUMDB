@@ -9,9 +9,7 @@ import java.util.List;
 /**
  * @ClassName: SearchService.java
  * @Description: TODO(处理电影的搜索)
- * @author: zhuhaipeng
  * @version: V1.0
- * @Date: 2019年10月30日 下午3:44:54
  */
 public class SearchService {
     private MovieDao movieDao = new MovieDao();

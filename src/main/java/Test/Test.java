@@ -6,8 +6,6 @@ import utils.BlackBox;
 /**
  * @ClassName: Test
  * @Description: TODO
- * @author: GGBOY
- * @date 2019/11/3 20:56
  * @Version: 1.0
  **/
 public class Test {
