@@ -19,8 +19,8 @@ public class CommentServlet extends HttpServlet {
     static Logger logger = Logger.getLogger(CommentServlet.class);
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /*request.setCharacterEncoding("utf-8");
-        response.setCharacterEncoding("utf-8");*/
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
 
 
         String description = request.getParameter("description");
