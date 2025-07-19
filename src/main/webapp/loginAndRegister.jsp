@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/sign-up-login.css">
+    <link rel="stylesheet" href="css/custom-login.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/inputEffect.css"/>
     <link rel="stylesheet" href="css/tooltips.css"/>

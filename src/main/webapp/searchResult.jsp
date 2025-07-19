@@ -20,35 +20,35 @@
 </head>
 
 <style>
-    body {
-        /*  字体  */
-        font-family: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+  body {
+    /*  字体  */
+    font-family: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
 
-        /*  字号 */
-        font-size: 16px;
+    /*  字号 */
+    font-size: 16px;
 
-        /*  字体颜色  */
-        color: #333;
+    /*  字体颜色  */
+    color: #333;
 
-        /* 行距 */
-        line-height: 1.75;
+    /* 行距 */
+    line-height: 1.75;
 
-    }
+  }
 
-    a {
-        text-decoration: none;
-        color: grey;
-    }
+  a {
+    text-decoration: none;
+    color: grey;
+  }
 </style>
 <link rel="stylesheet" href="css/mofang.css">
 <body class="bg-dark">
 <script>
-    $(document).ready(function () {
-        if ($(window).load) {
-            $("#atome").addClass("d-none");
-            $("#main").removeClass("d-none")
-        }
-    });
+  $(document).ready(function () {
+    if ($(window).load) {
+      $("#atome").addClass("d-none");
+      $("#main").removeClass("d-none")
+    }
+  });
 
 </script>
 <%--页面加载动画的div--%>
@@ -89,7 +89,7 @@
                         <c:forEach var="m" items="${movies}" varStatus="status">
                             <c:if test="${status.index < 6}">
                                 <div class="card bg-dark" style="max-width: 200px; max-height: 450px">
-                                    <a href="${pageContext.request.contextPath}//detail.do?movieName=${m.name}">
+                                    <a href="${pageContext.request.contextPath}/detail.do?movieName=${m.name}">
                                         <img src="${m.image }" class="card-img-top" alt="">
                                     </a>
                                     <div class="card-body">
@@ -125,7 +125,7 @@
                         <c:forEach var="m" items="${movies}" varStatus="status">
                             <c:if test="${status.index >= 6}">
                                 <div class="card bg-dark" style="max-width: 200px; max-height: 450px">
-                                    <a href="${pageContext.request.contextPath}//detail.do?movieName=${m.name}">
+                                    <a href="${pageContext.request.contextPath}/detail.do?movieName=${m.name}">
                                         <img src="${m.image }" class="card-img-top" alt="">
                                     </a>
                                     <div class="card-body">
