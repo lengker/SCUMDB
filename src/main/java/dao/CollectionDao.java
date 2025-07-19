@@ -11,9 +11,7 @@ import java.util.List;
 /**
  * @ClassName: CollectionDao.java
  * @Description: TODO(处理与collection表相关的操作)
- * @author: zhuhaipeng
  * @version: V1.0
- * @Date: 2019年10月27日 下午4:11:06
  */
 public class CollectionDao {
 
@@ -32,8 +30,6 @@ public class CollectionDao {
      *
      * @param userName  用户名
      * @param movieName 电影名
-     * @author GGBOY
-     * @date 2019/11/16
      */
     public void addUserCollectionMovie(String userName, String movieName) throws SQLException {
         String sql = "insert into collection(userName, movieName) values(?,?)";
@@ -48,8 +44,6 @@ public class CollectionDao {
      * @param userName  用户名
      * @param movieName 电影名
      * @return void
-     * @author GGBOY
-     * @date 2019/11/16
      */
     public void cancelUserCollectionMovie(String userName, String movieName) throws SQLException {
         String sql = "DELETE FROM collection WHERE userName=? and movieName=?";

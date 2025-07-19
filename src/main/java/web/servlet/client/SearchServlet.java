@@ -15,9 +15,7 @@ import java.util.List;
 /**
  * @ClassName: SearchServlet.java
  * @Description: 处理电影搜索逻辑
- * @author: zhuhaipeng
  * @version: V1.0
- * @Date: 2019年10月30日 下午3:15:08
  */
 @WebServlet(urlPatterns = "/search.do")
 public class SearchServlet extends HttpServlet {

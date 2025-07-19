@@ -160,8 +160,6 @@ public class UpdateDataServlet extends HttpServlet {
      * @param response  响应对象
      * @param list      输出的集合
      * @param pageTotal 符合查询结果的数量
-     * @author GGBOY
-     * @date 2019/11/9
      */
     private void outputToFront(HttpServletResponse response, List<Movie> list, int pageTotal) throws IOException {
         System.out.println("PageTotal: " + pageTotal);

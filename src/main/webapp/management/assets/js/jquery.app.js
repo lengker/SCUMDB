@@ -14,31 +14,31 @@ File: Main App js
     };
 
 
-    /** 
+    /**
      * Initlizes the menu - top and sidebar
     */
     App.prototype.initMenu = function() {
         var $this = this;
 
-        // Left menu collapse
-        $('.button-menu-mobile').on('click', function (event) {
+        // Sidebar toggle for mobile
+        $('#sidebar-toggle').on('click', function (event) {
             event.preventDefault();
-            $this.$body.toggleClass("enlarged");
-           
-            // sidebar - scroll container
-            $('.slimscroll-menu').slimscroll({
-                height: 'auto',
-                position: 'right',
-                size: "8px",
-                color: '#9ea5ab',
-                wheelStep: 5
-            });
+            $('#left-sidebar').toggleClass('show');
+            $('#sidebar-overlay').toggleClass('show');
         });
-        
-        // Topbar - main menu
-        $('.navbar-toggle').on('click', function (event) {
-            $(this).toggleClass('open');
-            $('#navigation').slideToggle(400);
+
+        // Close sidebar when clicking overlay
+        $('#sidebar-overlay').on('click', function (event) {
+            $('#left-sidebar').removeClass('show');
+            $('#sidebar-overlay').removeClass('show');
+        });
+
+        // Close sidebar on window resize if mobile
+        $(window).on('resize', function() {
+            if ($(window).width() > 991) {
+                $('#left-sidebar').removeClass('show');
+                $('#sidebar-overlay').removeClass('show');
+            }
         });
 
         $('.navigation-menu>li').slice(-2).addClass('last-elements');

@@ -34,6 +34,8 @@
     <!-- App css -->
     <!-- build:css -->
     <link href="assets/css/app.css" rel="stylesheet" type="text/css"/>
+    <!-- Custom sidebar css -->
+    <link href="assets/css/sidebar.css" rel="stylesheet" type="text/css"/>
     <!-- endbuild -->
 
 </head>
@@ -45,19 +47,12 @@
     <nav class="navbar-custom">
 
         <div class="container-fluid">
-            <ul class="list-unstyled topbar-right-menu float-right mb-0">
+            <!-- Sidebar toggle button for mobile -->
+            <div class="sidebar-toggle" id="sidebar-toggle">
+                <i class="mdi mdi-menu"></i>
+            </div>
 
-                <li class="dropdown notification-list">
-                    <!-- Mobile menu toggle-->
-                    <a class="navbar-toggle nav-link">
-                        <div class="lines">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </a>
-                    <!-- End mobile menu toggle-->
-                </li>
+            <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button"
@@ -190,41 +185,45 @@
                          </span>--%>
                     </a>
                 </li>
-                <li class="app-search">
-                    <form>
-                        <input type="text" placeholder="Search..." class="form-control">
-                        <button type="submit" class="sr-only"></button>
-                    </form>
-                </li>
+
             </ul>
         </div>
 
     </nav>
     <!-- end topbar-main -->
-
-    <div class="topbar-menu">
-        <div class="container-fluid">
-            <div id="navigation">
-                <!-- Navigation Menu-->
-                <ul class="navigation-menu">
-
-                    <li class="has-submenu">
-                        <a href="index.jsp"><i class="mdi mdi-view-dashboard"></i>主页</a>
-                    </li>
-
-                    <li class="">
-                        <a href="${pageContext.request.contextPath}/movieManagement"><i class="mdi mdi-file-multiple"></i>电影管理</a>
-                    </li>
-
-                </ul>
-                <!-- End navigation menu -->
-
-                <div class="clearfix"></div>
-            </div> <!-- end #navigation -->
-        </div> <!-- end container -->
-    </div> <!-- end navbar-custom -->
 </header>
 <!-- End Navigation Bar-->
+
+<!-- Left Sidebar -->
+<div id="left-sidebar">
+    <div class="sidebar-header">
+        <h5 style="color: #fff; padding: 20px; margin: 0; border-bottom: 1px solid rgba(255,255,255,0.1);">菜单</h5>
+    </div>
+    <ul class="sidebar-menu">
+        <li class="active">
+            <a href="index.jsp">
+                <i class="mdi mdi-view-dashboard"></i>
+                主页
+            </a>
+        </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/movieManagement">
+                <i class="mdi mdi-file-multiple"></i>
+                电影管理
+            </a>
+        </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/userManagement">
+                <i class="mdi mdi-account-multiple"></i>
+                用户管理
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- End Left Sidebar -->
+
+<!-- Sidebar overlay for mobile -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
 
 
 <div class="wrapper">

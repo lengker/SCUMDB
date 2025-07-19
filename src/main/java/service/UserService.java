@@ -8,13 +8,12 @@ import exception.UpdateUserException;
 import utils.BlackBox;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @ClassName: UserService.java
  * @Description: 与用户相关的业务逻辑层
- * @author: zhuhaipeng
  * @version: V1.0
- * @Date: 2019年10月25日 下午9:46:47
  */
 public class UserService {
 
@@ -71,5 +70,63 @@ public class UserService {
 
     public User findUserByUserName(String userName) throws SQLException {
         return dao.findUserByUserName(userName);
+    }
+
+    /**
+     * 根据用户名查找用户
+     *
+     * @param username 用户名
+     * @return domain.User
+     */
+    public User findUserByUsername(String username) throws SQLException {
+        return dao.findUserByUsername(username);
+    }
+
+    /**
+     * 获取所有用户
+     *
+     * @return 用户列表
+     */
+    public List<User> findAllUsers() throws SQLException {
+        return dao.findAllUsers();
+    }
+
+    /**
+     * 根据筛选条件查找用户
+     *
+     * @param filterType  筛选类型
+     * @param filterValue 筛选值
+     * @return 用户列表
+     */
+    public List<User> findUsersWithFilter(String filterType, String filterValue) throws SQLException {
+        return dao.findUsersWithFilter(filterType, filterValue);
+    }
+
+    /**
+     * 添加用户
+     *
+     * @param user 用户对象
+     */
+    public void addUser(User user) throws SQLException {
+        dao.addUser(user);
+    }
+
+    /**
+     * 更新用户信息
+     *
+     * @param user             更新后的用户信息
+     * @param originalUsername 原始用户名
+     */
+    public void updateUser(User user, String originalUsername) throws SQLException {
+        dao.updateUser(user, originalUsername);
+    }
+
+    /**
+     * 根据用户名删除用户
+     *
+     * @param username 用户名
+     */
+    public void deleteUserByUsername(String username) throws SQLException {
+        dao.deleteUserByUsername(username);
     }
 }

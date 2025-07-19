@@ -5,9 +5,7 @@ import java.util.Date;
 /**
  * @ClassName: Collection.java
  * @Description: 对应数据库的collection表，记录用户喜欢的电影
- * @author: zhuhaipeng
  * @version: V1.0
- * @Date: 2019年10月25日 下午9:05:50
  */
 public class Collection {
     /**

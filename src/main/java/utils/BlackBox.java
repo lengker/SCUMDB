@@ -6,8 +6,6 @@ import java.lang.reflect.Method;
 /**
  * @ClassName: UtilTest
  * @Description: 一个中间层，用在servlet和service，service和dao层之间
- * @author: GGBOY
- * @date 2019/11/17 22:00
  * @Version: 1.0
  **/
 public class BlackBox {

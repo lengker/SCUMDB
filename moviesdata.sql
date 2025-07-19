@@ -11,7 +11,6 @@
  Target Server Version : 50727
  File Encoding         : 65001
 
- Date: 16/12/2019 12:32:25
 */
 
 SET NAMES utf8mb4;
@@ -22,21 +21,21 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `allmovies`;
 CREATE TABLE `allmovies`  (
-  `id` int(255) NOT NULL AUTO_INCREMENT COMMENT '电影id',
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电影名字',
-  `score` int(255) NULL DEFAULT NULL COMMENT '电影评分',
-  `director` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '导演',
-  `scriptwriter` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '编剧',
-  `actor` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '演员',
-  `years` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '上映日期',
-  `country` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '国家',
-  `languages` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '语言',
-  `length` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '片长',
-  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电影图片地址',
-  `des` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '电影简介',
-  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电影播放地址',
-  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电影类型',
-  PRIMARY KEY (`id`) USING BTREE
+                              `id` int(255) NOT NULL AUTO_INCREMENT COMMENT '电影id',
+                              `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电影名字',
+                              `score` int(255) NULL DEFAULT NULL COMMENT '电影评分',
+                              `director` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '导演',
+                              `scriptwriter` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '编剧',
+                              `actor` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '演员',
+                              `years` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '上映日期',
+                              `country` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '国家',
+                              `languages` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '语言',
+                              `length` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '片长',
+                              `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电影图片地址',
+                              `des` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '电影简介',
+                              `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电影播放地址',
+                              `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电影类型',
+                              PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 945 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -987,9 +986,9 @@ INSERT INTO `allmovies` VALUES (943, '盲探', 7, '杜琪峰、', '韦家辉、�
 -- ----------------------------
 DROP TABLE IF EXISTS `clicknumber`;
 CREATE TABLE `clicknumber`  (
-  `movieName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电影名',
-  `number` int(11) NULL DEFAULT 1 COMMENT '电影被点击的次数',
-  PRIMARY KEY (`movieName`) USING BTREE
+                                `movieName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电影名',
+                                `number` int(11) NULL DEFAULT 1 COMMENT '电影被点击的次数',
+                                PRIMARY KEY (`movieName`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -1555,10 +1554,10 @@ INSERT INTO `clicknumber` VALUES ('龙虾刑警', 1);
 -- ----------------------------
 DROP TABLE IF EXISTS `collection`;
 CREATE TABLE `collection`  (
-  `userName` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户ID',
-  `movieName` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电影ID',
-  `addTime` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
-  PRIMARY KEY (`userName`, `movieName`) USING BTREE
+                               `userName` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户ID',
+                               `movieName` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电影ID',
+                               `addTime` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+                               PRIMARY KEY (`userName`, `movieName`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -1573,10 +1572,10 @@ INSERT INTO `collection` VALUES ('gg', '罗小黑战记', '2019-12-12 15:17:03')
 -- ----------------------------
 DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments`  (
-  `userName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户ID',
-  `movieName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电影ID',
-  `description` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户对电影的评论',
-  `addTime` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '添加评论的时间\r\n'
+                             `userName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户ID',
+                             `movieName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电影ID',
+                             `description` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户对电影的评论',
+                             `addTime` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '添加评论的时间\r\n'
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -1603,10 +1602,10 @@ INSERT INTO `comments` VALUES ('123', '玩具总动员4 Toy Story 4', 'nice', '2
 -- ----------------------------
 DROP TABLE IF EXISTS `history`;
 CREATE TABLE `history`  (
-  `movieName` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电影名',
-  `userid` int(50) NOT NULL,
-  `addTime` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
-  PRIMARY KEY (`movieName`, `userid`) USING BTREE
+                            `movieName` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电影名',
+                            `userid` int(50) NOT NULL,
+                            `addTime` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+                            PRIMARY KEY (`movieName`, `userid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -1643,10 +1642,10 @@ INSERT INTO `history` VALUES ('驯龙高手3 How To Train Your Dragon: The Hidde
 -- ----------------------------
 DROP TABLE IF EXISTS `score`;
 CREATE TABLE `score`  (
-  `movieid` int(50) NOT NULL COMMENT '电影id，关联movies表中的主键',
-  `userid` int(50) NOT NULL COMMENT '用户id，关联users表中的主键',
-  `score` int(10) NULL DEFAULT NULL COMMENT '用户对电影的评分',
-  PRIMARY KEY (`movieid`, `userid`) USING BTREE
+                          `movieid` int(50) NOT NULL COMMENT '电影id，关联movies表中的主键',
+                          `userid` int(50) NOT NULL COMMENT '用户id，关联users表中的主键',
+                          `score` int(10) NULL DEFAULT NULL COMMENT '用户对电影的评分',
+                          PRIMARY KEY (`movieid`, `userid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -1654,18 +1653,18 @@ CREATE TABLE `score`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '系统自动编号，自增',
-  `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'null' COMMENT '用户名称',
-  `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户密码',
-  `gender` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户性别',
-  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户邮箱',
-  `telephone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户电话',
-  `introduce` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '这家伙很懒，还没有添加任何描述' COMMENT '自我介绍',
-  `activeCode` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '注册激活码',
-  `state` int(11) NULL DEFAULT 1 COMMENT '用户状态：1:激活 0：未激活',
-  `role` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'commonUser' COMMENT '用户角色：普通用户，超级用户，VIP用户',
-  `registTime` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '注册时间',
-  PRIMARY KEY (`id`, `username`) USING BTREE
+                          `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '系统自动编号，自增',
+                          `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'null' COMMENT '用户名称',
+                          `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户密码',
+                          `gender` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户性别',
+                          `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户邮箱',
+                          `telephone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户电话',
+                          `introduce` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '这家伙很懒，还没有添加任何描述' COMMENT '自我介绍',
+                          `activeCode` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '注册激活码',
+                          `state` int(11) NULL DEFAULT 1 COMMENT '用户状态：1:激活 0：未激活',
+                          `role` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'commonUser' COMMENT '用户角色：普通用户，超级用户，VIP用户',
+                          `registTime` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '注册时间',
+                          PRIMARY KEY (`id`, `username`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------

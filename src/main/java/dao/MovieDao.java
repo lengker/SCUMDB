@@ -8,14 +8,13 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import utils.DataSourceUtils;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @ClassName: MovieDao.java
  * @Description: TODO(处理与 allmovies表相关的操作)
- * @author: zhuhaipeng
  * @version: V1.0
- * @Date: 2019年10月27日 下午3:51:05
  */
 public class MovieDao {
 
@@ -24,7 +23,7 @@ public class MovieDao {
      * @Description: TODO(查找所有电影)
      */
     public List<Movie> findAllMovies() throws SQLException {
-        String sql = "select * from allmovies GROUP BY name";
+        String sql = "SELECT * FROM allmovies WHERE id IN (SELECT MIN(id) FROM allmovies GROUP BY name) ORDER BY name";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         return runner.query(sql, new BeanListHandler<>(Movie.class));
     }
@@ -46,12 +45,30 @@ public class MovieDao {
      * @param movie 被修改的电影
      * @Description: TODO(修改电影信息)
      */
-    public void updateMovie(Movie movie, String originName) throws SQLException {
-        String sql = "update allmovies set name=?, score=?, years=?, country=?, type=? where name = ?";
+    public boolean updateMovie(Movie movie, String originName) throws SQLException {
+        String sql = "UPDATE allmovies SET name=?, score=?, director=?, scriptwriter=?, actor=?, " +
+                    "years=?, country=?, languages=?, length=?, image=?, des=?, url=?, type=? " +
+                    "WHERE name=?";
+
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-        int row = runner.update(sql, movie.getName(), movie.getScore(), movie.getYears(), movie.getCountry(),
-                movie.getType(), originName);
-        System.out.println("影响行数：" + row);
+        int result = runner.update(sql,
+            movie.getName(),
+            movie.getScore(),
+            movie.getDirector(),
+            movie.getScriptwriter(),
+            movie.getActor(),
+            movie.getYears(),
+            movie.getCountry(),
+            movie.getLanguages(),
+            movie.getLength(),
+            movie.getImage(),
+            movie.getDes(),
+            movie.getUrl(),
+            movie.getType(),
+            originName
+        );
+
+        return result > 0;
     }
 
     /**
@@ -61,8 +78,6 @@ public class MovieDao {
      * @param type 电影种类
      * @param page 当前显示页
      * @return java.util.List<domain.Movie>
-     * @author GGBOY
-     * @date 2019/11/7
      */
     public List<Movie> findMovieByYearAndCatrgory(String type, String year, int page) throws SQLException {
         String sql = "select * from allmovies where type = ? and years = ? limit ?, ?";
@@ -162,8 +177,6 @@ public class MovieDao {
      * @param type 电影种类
      * @param year 电影年份
      * @return int 电影数量
-     * @author GGBOY
-     * @date 2019/11/7
      */
     public int findMoviesCountByTypeAndYear(String type, String year) throws SQLException {
         String sql = "select count(*) from allmovies where type = ? and years = ?";
@@ -179,8 +192,6 @@ public class MovieDao {
      * @param country  电影国家
      * @param category 电影种类
      * @return int
-     * @author GGBOY
-     * @date 2019/11/8
      */
     public int getMoviesCountByCountryAndCategory(String country, String category) throws SQLException {
         country = "%" + country + "%";
@@ -196,8 +207,6 @@ public class MovieDao {
      * @param country  电影国家
      * @param category 电影种类
      * @return java.util.List<domain.Movie>
-     * @author GGBOY
-     * @date 2019/11/8
      */
     public List<Movie> findMoviesByCountryAndCategory(String country, String category, int page) throws SQLException {
         country = "%" + country + "%";
@@ -213,8 +222,6 @@ public class MovieDao {
      * @param category 电影种类
      * @param year     电影上映年份
      * @return java.util.List<domain.Movie>
-     * @author GGBOY
-     * @date 2019/11/8
      */
     public List<Movie> findMoviesByCountryAndYearAndCategory(String country, String category, String year, int page) throws SQLException {
         country = "%" + country + "%";
@@ -230,8 +237,6 @@ public class MovieDao {
      * @param category 电影种类
      * @param year     电影上映年份
      * @return 符合条件的电影数量
-     * @author GGBOY
-     * @date 2019/11/8
      */
     public int getMoviesCountByCountryAndYearAndCategory(String country, String category, String year) throws SQLException {
         country = "%" + country + "%";
@@ -249,8 +254,6 @@ public class MovieDao {
      * @param category 电影种类
      * @param page     当前显示页数
      * @return java.util.List<domain.Movie>
-     * @author GGBOY
-     * @date 2019/11/9
      */
     public List<Movie> findMoviesByYearAndScoreAndCategory(String year, String score, String category, int page) throws SQLException {
         String sql = "select * from allmovies where years = ? and score > ? and type = ? limit ?, ?";
@@ -265,8 +268,6 @@ public class MovieDao {
      * @param score    电影评分
      * @param category 电影种类
      * @return java.util.List<domain.Movie>
-     * @author GGBOY
-     * @date 2019/11/9
      */
     public List<Movie> findMoviesByCountryAndScoreAndCategory(String country, String score, String category, int page) throws SQLException {
         String sql = "select * from allmovies where country = ? and score > ? and type = ? limit ?, ?";
@@ -282,8 +283,6 @@ public class MovieDao {
      * @param score    电影评分
      * @param category 电影种类
      * @return java.util.List<domain.Movie>
-     * @author GGBOY
-     * @date 2019/11/9
      */
     public List<Movie> findMoviesByYearAndCountryAndScoreAndCategory(String year, String country, String score,
                                                                      String category, int page) throws SQLException {
@@ -295,13 +294,71 @@ public class MovieDao {
     }
 
     /**
+     * 根据多个筛选条件查找电影
+     *
+     * @param type      电影类型
+     * @param years     上映年份
+     * @param country   上映国家
+     * @param minScore  最低评分
+     * @param sortBy    排序字段
+     * @param sortOrder 排序方向 (ASC, DESC)
+     * @return 电影集合
+     */
+    public List<Movie> findMoviesWithMultipleFilters(String type, String years, String country, String minScore,
+                                                     String sortBy, String sortOrder) throws SQLException {
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT * FROM allmovies WHERE id IN (SELECT MIN(id) FROM allmovies WHERE 1=1");
+
+        List<Object> params = new ArrayList<>();
+
+        // 添加筛选条件
+        if (type != null && !type.trim().isEmpty()) {
+            sql.append(" AND type = ?");
+            params.add(type.trim());
+        }
+
+        if (years != null && !years.trim().isEmpty()) {
+            sql.append(" AND years = ?");
+            params.add(years.trim());
+        }
+
+        if (country != null && !country.trim().isEmpty()) {
+            sql.append(" AND country LIKE ?");
+            params.add("%" + country.trim() + "%");
+        }
+
+        if (minScore != null && !minScore.trim().isEmpty()) {
+            try {
+                Double.parseDouble(minScore.trim()); // 验证是否为有效数字
+                sql.append(" AND score >= ?");
+                params.add(minScore.trim());
+            } catch (NumberFormatException e) {
+                // 忽略无效的评分值
+            }
+        }
+
+        sql.append(" GROUP BY name)");
+
+        // 添加排序
+        if (sortBy != null && !sortBy.isEmpty()) {
+            sql.append(" ORDER BY ").append(sortBy);
+            if (sortOrder != null && !sortOrder.isEmpty()) {
+                sql.append(" ").append(sortOrder);
+            }
+        } else {
+            sql.append(" ORDER BY name");
+        }
+
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        return runner.query(sql.toString(), new BeanListHandler<Movie>(Movie.class), params.toArray());
+    }
+
+    /**
      * 查找符合评分和种类条件的电影
      *
      * @param score    电影评分
      * @param category 电影类型
      * @return java.util.List<domain.Movie>
-     * @author GGBOY
-     * @date 2019/11/10
      */
     public List<Movie> findMoviesByScoreAndCategory(String score, String category, int page) throws SQLException {
         String sql = "select * from allmovies where score > ? and type = ? limit ?, ?";
@@ -317,8 +374,6 @@ public class MovieDao {
      * @param score    电影评分
      * @param category 电影种类
      * @return int
-     * @author GGBOY
-     * @date 2019/11/10
      */
     public int getMoviesCountByYearAndScoreAndCategory(String year, String score, String category) throws SQLException {
         String sql = "select count(*) from allmovies where years = ? and score > ? and type = ?";
@@ -334,8 +389,6 @@ public class MovieDao {
      * @param score    电影评分
      * @param category 电影种类
      * @return int
-     * @author GGBOY
-     * @date 2019/11/10
      */
     public int getMoviesCountByCountryAndScoreAndCategory(String country, String score, String category) throws SQLException {
         String sql = "select count(*) from allmovies where country = ? and score > ? and type = ?";
@@ -352,8 +405,6 @@ public class MovieDao {
      * @param score    电影评分
      * @param category 电影种类
      * @return int
-     * @author GGBOY
-     * @date 2019/11/10
      */
     public int getMoviesCountByYearAndCountryAndScoreAndCategory(String year, String country, String score, String category) throws SQLException {
         String sql = "select count(*) from allmovies where years = ? and country = ? and score > ? and type = ?";
@@ -368,8 +419,6 @@ public class MovieDao {
      * @param score    电影评分
      * @param category 电影种类
      * @return int
-     * @author GGBOY
-     * @date 2019/11/10
      */
     public int getMoviesCountByScoreAndCategory(String score, String category) throws SQLException {
         String sql = "select count(*) from allmovies where score > ? and type = ?";
@@ -382,8 +431,6 @@ public class MovieDao {
      * 得到最大的电影 id
      *
      * @return int
-     * @author GGBOY
-     * @date 2019/11/25
      */
     public int getMaxMovieId() throws SQLException {
         String sql = "select id from allmovies ORDER BY id desc LIMIT 0,1";
@@ -392,4 +439,8 @@ public class MovieDao {
         System.out.println(count + "xxxxxxxxxxxxxxx");
         return count;
     }
+
+
+
+
 }

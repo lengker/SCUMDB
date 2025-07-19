@@ -3,13 +3,11 @@ package domain;
 import java.util.Date;
 
 /**
- * Copyright (c) 2019 by [个人或者公司信息]
+ * Copyright (c) 2025 by SCU
  *
  * @ClassName: User.java
  * @Description: 用户实体类
- * @author: zhuhaipeng
  * @version: V1.0
- * @Date: 2019年10月25日 下午9:08:12
  */
 public class User {
     /**
@@ -56,6 +54,10 @@ public class User {
      * 用户注册时间
      */
     private Date registTime;
+    /**
+     * 用户年龄
+     */
+    private int age;
 
     public int getId() {
         return id;
@@ -143,6 +145,23 @@ public class User {
 
     public void setRegistTime(Date registTime) {
         this.registTime = registTime;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    // 为了兼容性，添加phone的getter和setter方法
+    public String getPhone() {
+        return telephone;
+    }
+
+    public void setPhone(String phone) {
+        this.telephone = phone;
     }
 
     @Override
