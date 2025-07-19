@@ -10,8 +10,6 @@ import java.sql.SQLException;
 /**
  * @ClassName: AccountDao
  * @Description: TODO
- * @author: GGBOY
- * @date 2019/11/3 20:40
  * @Version: 1.0
  **/
 public class AccountDao {

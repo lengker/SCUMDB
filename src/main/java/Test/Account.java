@@ -3,8 +3,6 @@ package Test;
 /**
  * @ClassName: Account
  * @Description: TODO
- * @author: GGBOY
- * @date 2019/11/3 20:42
  * @Version: 1.0
  **/
 public class Account {

@@ -5,9 +5,7 @@ import java.util.List;
 /**
  * @ClassName: ScoreDao.java
  * @Description: TODO(处理与score表相关的操作)
- * @author: zhuhaipeng
  * @version: V1.0
- * @Date: 2019年10月27日 下午3:51:23
  */
 public class ScoreDao {
 

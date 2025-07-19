@@ -10,8 +10,8 @@
     <div class="row bg-dark" style=" height: 50px;">
         <div class="col-md-12 center-block">
             <div class=" text-white ">
-					<span style=" line-height: 50px;"> Copyright © 2019 版权所有
-						GGBoy电影网 如有侵权，请联系YCU | 京ICP证888888</span>
+					<span style=" line-height: 50px;"> Copyright © 2025 版权所有
+						SCU Movie DB</span>
             </div>
         </div>
         <!-- 最底部栏 结束 -->
