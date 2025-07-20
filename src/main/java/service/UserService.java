@@ -63,7 +63,7 @@ public class UserService {
      * @param email 邮箱
      * @throws Exception
      */
-    public void sendResetPasswordEmail(String email) throws Exception {
+    public String sendResetPasswordEmail(String email) throws Exception {
         User user = dao.findUserByEmail(email);
         if (user == null) {
             throw new Exception("该邮箱未注册");
@@ -84,8 +84,11 @@ public class UserService {
 
         // 发送邮件
         String subject = "SCUMDB - 密码重置";
-        String content = "您正在申请重置密码，您的验证码是：<b>" + emailCode + "</b>，请在10分钟内使用。如果不是您本人操作，请忽略此邮件。";
+        // 构建重置链接
+        String resetLink = "http://localhost:8080/resetPassword?email=" + email + "&code=" + emailCode;
+        String content = "您正在申请重置密码，请点击以下链接进行重置：<br><a href='" + resetLink + "'>" + resetLink + "</a><br>您的验证码是：<b>" + emailCode + "</b>，请在10分钟内使用。如果不是您本人操作，请忽略此邮件。";
         MailUtils.sendMail(email, subject, content);
+        return emailCode;
     }
 
     /**
@@ -103,8 +106,9 @@ public class UserService {
         }
 
         // 校验验证码
-        if (user.getEmailCode() == null || !user.getEmailCode().equalsIgnoreCase(emailCode)) {
-            throw new Exception("验证码错误");
+        if (user.getEmailCode() == null || emailCode == null || !user.getEmailCode().trim().equalsIgnoreCase(emailCode.trim())) {
+            String dbCode = user.getEmailCode() != null ? user.getEmailCode() : "null";
+            String requestCode = emailCode != null ? emailCode : "null";
         }
 
         // 校验验证码是否过期
@@ -115,6 +119,11 @@ public class UserService {
         // 重置密码
         user.setPassword(password); // 实际应用中密码应该加密存储
         dao.resetPasswordByEmail(user);
+
+        // 重置密码后，将验证码设置为空，防止重复使用
+        user.setEmailCode(null);
+        user.setCodeExpireTime(null);
+        dao.updateUserEmailCode(user);
     }
 
     public void register(User user) throws RegisterException {

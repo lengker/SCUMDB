@@ -1653,20 +1653,23 @@ CREATE TABLE `score`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
-                          `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '系统自动编号，自增',
-                          `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'null' COMMENT '用户名称',
-                          `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户密码',
-                          `gender` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户性别',
-                          `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户邮箱',
-                          `telephone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户电话',
-                          `introduce` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '这家伙很懒，还没有添加任何描述' COMMENT '自我介绍',
-                          `activeCode` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '注册激活码',
-                          `state` int(11) NULL DEFAULT 1 COMMENT '用户状态：1:激活 0：未激活',
-                          `role` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'commonUser' COMMENT '用户角色：普通用户，超级用户，VIP用户',
-                          `registTime` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '注册时间',
-                          `email_code` VARCHAR(255) NULL,
-                          `code_expire_time` DATETIME NULL,
-                          PRIMARY KEY (`id`, `username`) USING BTREE
+    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '系统自动编号，自增',
+    `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名称',
+    `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户密码',
+    `gender` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户性别',
+    `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户邮箱',
+    `telephone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户电话',
+    `introduce` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '这家伙很懒，还没有添加任何描述' COMMENT '自我介绍',
+    `activeCode` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '注册激活码',
+    `state` int(11) NULL DEFAULT 1 COMMENT '用户状态：1:激活 0：未激活',
+    `role` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'commonUser' COMMENT '用户角色：普通用户，超级用户，VIP用户',
+    `registTime` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '注册时间',
+    `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'img/bg.png' COMMENT '用户头像路径',
+    `email_code` VARCHAR(255) NULL,
+    `code_expire_time` DATETIME NULL,
+    PRIMARY KEY (`id`) USING BTREE,
+    UNIQUE INDEX `uk_username`(`username`) USING BTREE,
+    UNIQUE INDEX `uk_email`(`email`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------

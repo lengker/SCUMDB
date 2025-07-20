@@ -21,9 +21,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 
         try {
             userService.sendResetPasswordEmail(email);
-            request.setAttribute("email", email); // 将邮箱地址传递到重置密码页面
-            request.getRequestDispatcher("/resetPassword.jsp").forward(request, response);
-            return; // 确保在转发后停止执行此方法
+            request.setAttribute("message", "密码重置邮件已发送至您的邮箱，请注意查收。");
         } catch (Exception e) {
             e.printStackTrace();
             // 向用户显示更友好的错误信息，而不是暴露底层的异常细节

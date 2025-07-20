@@ -47,7 +47,10 @@ public class UserDao {
      * @throws SQLException
      */
     public User findUserByEmail(String email) throws SQLException {
-        String sql = "select * from users where email=?";
+        String sql = "SELECT id, username, password, gender, email, telephone, introduce, activeCode, state, role, registTime," +
+        "email_code AS emailCode, code_expire_time AS codeExpireTime " +
+//        String sql = "SELECT *" +
+                     "FROM users WHERE email=?";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         return runner.query(sql, new BeanHandler<User>(User.class), email);
     }

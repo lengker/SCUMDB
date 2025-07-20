@@ -76,6 +76,29 @@
             }).blur(function () {
                 $('.register-owl').removeClass('password');
             });
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const message = urlParams.get('message');
+            const show = urlParams.get('show');
+
+            <%
+                String sessionMessage = (String) session.getAttribute("message");
+                if (sessionMessage != null) {
+            %>
+            spop({
+                template: '<h4 class="spop-title"><%= sessionMessage %></h4>',
+                position: 'top-center',
+                style: 'success',
+                autoclose: 4000
+            });
+            <%
+                    session.removeAttribute("message");
+                }
+            %>
+
+            if (show === 'login') {
+                $("#tab-1").prop("checked", true);
+            }
         });
 
         function goto_register() {

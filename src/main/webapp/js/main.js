@@ -33,11 +33,13 @@
         return false
     });
     var b = a(".hero-area-slider");
+    var autoplayInterval;
+    var isAutoplayActive = true;
+
     b.owlCarousel({
         loop: true,
         dots: true,
-        autoplay: true, // 自动播放
-        autoplayTimeout: 2000, // 4秒切换
+        autoplay: false, // 先关闭内置自动播放，我们手动控制
         nav: false,
         items: 1,
         smartSpeed: 1200,      // 横移动画速度1.2秒
@@ -47,6 +49,35 @@
             }
         }
     });
+
+    // 启动自动播放
+    function startAutoplay() {
+        if (!isAutoplayActive) return;
+        autoplayInterval = setInterval(function() {
+            b.trigger('next.owl.carousel');
+        }, 2000);
+    }
+
+    // 停止自动播放
+    function stopAutoplay() {
+        clearInterval(autoplayInterval);
+    }
+
+    // 初始启动自动播放
+    startAutoplay();
+
+    // 鼠标悬停暂停
+    a(".hero-area").on("mouseenter", function() {
+        isAutoplayActive = false;
+        stopAutoplay();
+    });
+
+    // 鼠标离开恢复
+    a(".hero-area").on("mouseleave", function() {
+        isAutoplayActive = true;
+        startAutoplay();
+    });
+
     b.on("changed.owl.carousel", function (h) {
         var e = h.item.index;
         var g = a(h.target).find(".owl-item").eq(e).prev().find(".hero-area-slide").html();
