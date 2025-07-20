@@ -233,7 +233,7 @@
         <div class="page-title-alt-bg"></div>
         <div class="page-title-box">
             <ol class="breadcrumb float-right">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">YCU 小站</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">SCU Movie DB</a></li>
                 <li class="breadcrumb-item active">主页</li>
             </ol>
             <h4 class="page-title">主页</h4>

@@ -11,7 +11,7 @@ import utils.MailUtils;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+import java.util.Random;
 
 /**
  * @ClassName: UserService.java
@@ -69,8 +69,10 @@ public class UserService {
             throw new Exception("该邮箱未注册");
         }
 
-        // 生成验证码
-        String emailCode = UUID.randomUUID().toString().replace("-", "");
+        // 生成6位数字验证码
+        Random random = new Random();
+        int code = 100000 + random.nextInt(900000);
+        String emailCode = String.valueOf(code);
         // 设置验证码过期时间（例如10分钟）
         Date codeExpireTime = new Date(System.currentTimeMillis() + 10 * 60 * 1000);
 

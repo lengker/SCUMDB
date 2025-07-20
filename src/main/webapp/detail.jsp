@@ -6,6 +6,8 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
 %>
+<!-- 隐藏的电影名称元素，供JavaScript使用 -->
+<div id="movieName" style="display: none;">${detail.name}</div>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -386,25 +388,25 @@
             </c:if>
         -->
         <!-- 全新的评论区域 -->
-        <div class="comment-section" style="width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 20px; border-radius: 20px; margin: 20px 0; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
+        <div class="comment-section" style="width: 100%; background: linear-gradient(135deg, #b7b5ac 0%, #a3b1a8 100%); padding: 40px 20px; border-radius: 20px; margin: 20px 0; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
             <div class="comment-header" style="text-align: center; margin-bottom: 30px;">
                 <h3 style="color: white; font-weight: 700; font-size: 2.2em; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
                     <i class="fas fa-comments" style="margin-right: 10px;"></i>观众评论
                 </h3>
-                <div style="width: 80px; height: 4px; background: linear-gradient(90deg, #ff6b6b, #feca57); margin: 10px auto; border-radius: 2px;"></div>
+                <div style="width: 80px; height: 4px; background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4)); margin: 10px auto; border-radius: 2px;"></div>
             </div>
 
             <!-- 写评论组件 -->
             <%
                 if (user != null) {
             %>
-            <div class="write-comment-section" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; margin-bottom: 30px; backdrop-filter: blur(10px);">
+            <div class="write-comment-section" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 25px; margin-bottom: 30px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
                 <div class="d-flex align-items-start">
                     <div class="user-avatar" style="
                         width: 45px;
                         height: 45px;
                         border-radius: 50%;
-                        background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+                        background: linear-gradient(135deg, #b7b5ac 0%, #a3b1a8 100%);
                         display: flex;
                         align-items: center;
                         justify-content: center;
@@ -413,6 +415,8 @@
                         font-size: 1.1em;
                         margin-right: 15px;
                         flex-shrink: 0;
+                        border: 2px solid rgba(183,181,172,0.2);
+                        box-shadow: 0 4px 12px rgba(183,181,172,0.25);
                     ">
                         <%= user.getUsername().charAt(0) %>
                     </div>
@@ -424,31 +428,35 @@
                                     placeholder="写下您的观影感受..."
                                     rows="3"
                                     style="
-                                    border: 2px solid rgba(255,255,255,0.3);
+                                    border: 2px solid rgba(183,181,172,0.3);
                                     border-radius: 15px;
-                                    background: rgba(255,255,255,0.9);
+                                    background: #ffffff;
                                     padding: 15px 20px;
                                     font-size: 1em;
                                     resize: none;
                                     transition: all 0.3s ease;
-                                    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                                    box-shadow: 0 2px 10px rgba(183,181,172,0.1);
+                                    color: #2c2c2c;
                                 "
-                                    onfocus="this.style.borderColor='rgba(255,255,255,0.6)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.15)'"
-                                    onblur="this.style.borderColor='rgba(255,255,255,0.3)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)'"
+                                    onfocus="this.style.borderColor='#a3b1a8'; this.style.boxShadow='0 4px 15px rgba(163,177,168,0.2)'"
+                                    onblur="this.style.borderColor='rgba(183,181,172,0.3)'; this.style.boxShadow='0 2px 10px rgba(183,181,172,0.1)'"
                             ></textarea>
                             <div class="comment-tools" style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
                                 <div class="emoji-selector" style="flex: 1;">
                                     <span class="inline-face-icon" style="
-                                        background: rgba(255,255,255,0.2);
+                                        background: rgba(183,181,172,0.1);
                                         padding: 8px 15px;
                                         border-radius: 20px;
-                                        color: white;
+                                        color: #6c6b66;
                                         cursor: pointer;
                                         font-size: 1.1em;
                                         transition: all 0.3s ease;
+                                        border: 1px solid rgba(183,181,172,0.2);
+                                        font-weight: 500;
                                     "
-                                          onmouseover="this.style.background='rgba(255,255,255,0.3)'"
-                                          onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+                                          onmouseover="this.style.background='rgba(183,181,172,0.2)'; this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(183,181,172,0.15)'"
+                                          onmouseout="this.style.background='rgba(183,181,172,0.1)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+                                    >
                                         ☺ 表情
                                     </span>
                                 </div>
@@ -456,7 +464,7 @@
                                         onclick="addInlineComment()"
                                         class="btn"
                                         style="
-                                        background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+                                        background: linear-gradient(135deg, #b7b5ac 0%, #a3b1a8 100%);
                                         border: none;
                                         color: white;
                                         padding: 10px 25px;
@@ -464,10 +472,11 @@
                                         font-weight: 600;
                                         font-size: 1em;
                                         transition: all 0.3s ease;
-                                        box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+                                        box-shadow: 0 4px 15px rgba(183,181,172,0.3);
+                                        border: 1px solid rgba(255,255,255,0.2);
                                     "
-                                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255,107,107,0.4)'"
-                                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,107,107,0.3)'"
+                                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(183,181,172,0.4)'; this.style.background='linear-gradient(135deg, #c2c0b6 0%, #aebbb2 100%)'"
+                                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(183,181,172,0.3)'; this.style.background='linear-gradient(135deg, #b7b5ac 0%, #a3b1a8 100%)'"
                                 >
                                     <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>发表评论
                                 </button>
@@ -479,16 +488,16 @@
             <%
             } else {
             %>
-            <div class="login-prompt-section" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; margin-bottom: 30px; backdrop-filter: blur(10px); text-align: center;">
-                <div style="color: white; margin-bottom: 15px;">
-                    <i class="fas fa-user-circle" style="font-size: 2em; margin-bottom: 10px; opacity: 0.7;"></i>
-                    <p style="font-size: 1.1em; margin: 0;">登录后即可发表评论，分享您的观影感受</p>
+            <div class="login-prompt-section" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 25px; margin-bottom: 30px; backdrop-filter: blur(10px); text-align: center; border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
+                <div style="color: #5a5a5a; margin-bottom: 15px;">
+                    <i class="fas fa-user-circle" style="font-size: 2em; margin-bottom: 10px; opacity: 0.7; color: #a3b1a8;"></i>
+                    <p style="font-size: 1.1em; margin: 0; color: #5a5a5a; font-weight: 500;">登录后即可发表评论，分享您的观影感受</p>
                 </div>
                 <a href="${pageContext.request.contextPath}/loginOrRegister.do"
                    class="btn"
                    style="
-                       background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
-                       border: none;
+                       background: linear-gradient(135deg, #b7b5ac 0%, #a3b1a8 100%);
+                       border: 1px solid rgba(255,255,255,0.2);
                        color: white;
                        padding: 12px 30px;
                        border-radius: 25px;
@@ -496,11 +505,11 @@
                        font-size: 1em;
                        text-decoration: none;
                        transition: all 0.3s ease;
-                       box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+                       box-shadow: 0 4px 15px rgba(183,181,172,0.25);
                        display: inline-block;
                    "
-                   onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255,107,107,0.4)'"
-                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,107,107,0.3)'"
+                   onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(183,181,172,0.35)'; this.style.background='linear-gradient(135deg, #c2c0b6 0%, #aebbb2 100%)'"
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(183,181,172,0.25)'; this.style.background='linear-gradient(135deg, #b7b5ac 0%, #a3b1a8 100%)'"
                 >
                     <i class="fas fa-sign-in-alt" style="margin-right: 8px;"></i>立即登录
                 </a>
@@ -510,24 +519,24 @@
             %>
 
             <!-- 评论统计信息 -->
-            <div class="comment-stats" style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 15px; margin-bottom: 25px; backdrop-filter: blur(10px);">
+            <div class="comment-stats" style="background: rgba(255, 255, 255, 0.2); padding: 15px 25px; border-radius: 15px; margin-bottom: 25px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3);">
                 <div class="row text-center">
                     <div class="col-md-4">
-                        <div style="color: white;">
-                            <h4 id="totalCommentsCount" style="margin: 0; font-weight: 600;">-</h4>
-                            <small style="opacity: 0.8;">总评论数</small>
+                        <div style="color: #fff;">
+                            <h4 id="totalCommentsCount" style="margin: 0; font-weight: 600; color: #fff;">-</h4>
+                            <small style="opacity: 0.8; color: #fff;">总评论数</small>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div style="color: white;">
-                            <h4 id="currentPageInfo" style="margin: 0; font-weight: 600;">-</h4>
-                            <small style="opacity: 0.8;">当前页</small>
+                        <div style="color: #fff;">
+                            <h4 id="currentPageInfo" style="margin: 0; font-weight: 600; color: #fff;">-</h4>
+                            <small style="opacity: 0.8; color: #fff;">当前页</small>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div style="color: white;">
-                            <h4 id="totalPagesCount" style="margin: 0; font-weight: 600;">-</h4>
-                            <small style="opacity: 0.8;">总页数</small>
+                        <div style="color: #fff;">
+                            <h4 id="totalPagesCount" style="margin: 0; font-weight: 600; color: #fff;">-</h4>
+                            <small style="opacity: 0.8; color: #fff;">总页数</small>
                         </div>
                     </div>
                 </div>
@@ -828,7 +837,7 @@
                     'width: 50px;' +
                     'height: 50px;' +
                     'border-radius: 50%;' +
-                    'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);' +
+                    'background: linear-gradient(135deg, #b7b5ac 0%, #a3b1a8 100%);' +
                     'display: flex;' +
                     'align-items: center;' +
                     'justify-content: center;' +
@@ -837,6 +846,8 @@
                     'font-size: 1.2em;' +
                     'margin-right: 15px;' +
                     'flex-shrink: 0;' +
+                    'border: 2px solid rgba(183,181,172,0.2);' +
+                    'box-shadow: 0 4px 12px rgba(183,181,172,0.25);' +
                     '">' + firstLetter + '</div>' +
                     '<div class="comment-content" style="flex: 1;">' +
                     '<div class="comment-header d-flex justify-content-between align-items-center mb-2">' +

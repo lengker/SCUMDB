@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>YCU 电影管理</title>
+    <title>SCU Movie DB</title>
     <link href="management/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet"
           type="text/css"/>
     <link href="management/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet"
@@ -228,7 +228,7 @@
         <div class="page-title-alt-bg"></div>
         <div class="page-title-box">
             <ol class="breadcrumb float-right">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">YCU</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">SCU Movie DB</a></li>
                 <li class="breadcrumb-item active">电影管理</li>
             </ol>
             <h4 class="page-title">电影管理</h4>

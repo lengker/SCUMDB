@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>编辑用户 - YCU 电影管理</title>
+    <title>编辑用户 - SCU Movie DB</title>
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="management/assets/images/favicon.ico">
@@ -101,7 +101,7 @@
         <div class="page-title-alt-bg"></div>
         <div class="page-title-box">
             <ol class="breadcrumb float-right">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">YCU</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">SCU Movie DB</a></li>
                 <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/userManagement">用户管理</a></li>
                 <li class="breadcrumb-item active">编辑用户</li>
             </ol>
