@@ -23,9 +23,9 @@ public class UserHistoryServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      /*  request.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf-8");*/
+        response.setContentType("text/html;charset=utf-8");
 
         HistoryService service = new HistoryService();
         MovieService movieService = new MovieService();

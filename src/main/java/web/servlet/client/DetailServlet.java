@@ -36,8 +36,8 @@ public class DetailServlet extends HttpServlet {
      */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /*request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf-8");*/
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
 
         // 得到电影名
         String movieName = request.getParameter("movieName");

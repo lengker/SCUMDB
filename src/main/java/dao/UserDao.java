@@ -30,6 +30,29 @@ public class UserDao {
     }
 
     /**
+     * @param email
+     * @param password
+     * @return
+     * @throws SQLException
+     */
+    public User findUserByEmailAndPassword(String email, String password) throws SQLException {
+        String sql = "select * from users where email=? and password=?";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        return runner.query(sql, new BeanHandler<User>(User.class), email, password);
+    }
+
+    /**
+     * @param email
+     * @return
+     * @throws SQLException
+     */
+    public User findUserByEmail(String email) throws SQLException {
+        String sql = "select * from users where email=?";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        return runner.query(sql, new BeanHandler<User>(User.class), email);
+    }
+
+    /**
      * @param user 被添加的用户对象
      * @throws SQLException 参数
      * @Description: 添加用户
@@ -158,6 +181,30 @@ public class UserDao {
         String sql = "DELETE FROM users WHERE username = ?";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         runner.update(sql, username);
+    }
+
+    /**
+     * 更新用户的邮箱验证码和过期时间
+     *
+     * @param user 包含邮箱、验证码和过期时间的用户对象
+     * @throws SQLException
+     */
+    public void updateUserEmailCode(User user) throws SQLException {
+        String sql = "UPDATE users SET email_code=?, code_expire_time=? WHERE email=?";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        runner.update(sql, user.getEmailCode(), user.getCodeExpireTime(), user.getEmail());
+    }
+
+    /**
+     * 通过邮箱重置用户密码
+     *
+     * @param user 包含邮箱和新密码的用户对象
+     * @throws SQLException
+     */
+    public void resetPasswordByEmail(User user) throws SQLException {
+        String sql = "UPDATE users SET password=? WHERE email=?";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        runner.update(sql, user.getPassword(), user.getEmail());
     }
 
 }

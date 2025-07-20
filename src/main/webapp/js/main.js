@@ -36,10 +36,11 @@
     b.owlCarousel({
         loop: true,
         dots: true,
-        autoplay: false,
-        autoplayTimeout: 4000,
+        autoplay: true, // 自动播放
+        autoplayTimeout: 2000, // 4秒切换
         nav: false,
         items: 1,
+        smartSpeed: 1200,      // 横移动画速度1.2秒
         responsive: {
             992: {
                 dots: false,
@@ -51,8 +52,31 @@
         var g = a(h.target).find(".owl-item").eq(e).prev().find(".hero-area-slide").html();
         var f = a(h.target).find(".owl-item").eq(e).next().find(".hero-area-slide").html();
         a(".thumb-prev .hero-area-slide").html(g);
-        a(".thumb-next .hero-area-slide").html(f)
+        a(".thumb-next .hero-area-slide").html(f);
+        // 切换背景，显示图片中间部分且清晰
+        var $current = a(h.target).find(".owl-item").eq(e).find(".hero-area-slide");
+        var bg = $current.attr("data-bg");
+        if(bg){
+            a('#heroBg').css({
+                'background-image': 'url(' + bg + ')',
+                'opacity': 1,
+                'background-position': 'center center',
+                'background-size': 'cover',
+                'filter': 'none'
+            });
+        }
     });
+    // 初始化时设置第一个背景
+    var $firstBg = a('.hero-area-slider .owl-item.active .hero-area-slide').attr('data-bg');
+    if($firstBg){
+        a('#heroBg').css({
+            'background-image': 'url(' + $firstBg + ')',
+            'opacity': 1,
+            'background-position': 'center center',
+            'background-size': 'cover',
+            'filter': 'none'
+        });
+    }
     a(".thumb-next").on("click", function () {
         b.trigger("next.owl.carousel", [300]);
         return false
@@ -66,7 +90,7 @@
         loop: true,
         dots: true,
         autoplay: false,
-        autoplayTimeout: 4000,
+        autoplayTimeout: 2000,
         nav: false,
         items: 1,
         responsive: {
@@ -95,7 +119,7 @@
         loop: true,
         dots: true,
         autoplay: false,
-        autoplayTimeout: 4000,
+        autoplayTimeout: 2000,
         nav: false,
         responsive: {
             0: {
