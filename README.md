@@ -1,25 +1,80 @@
-# Java Web电影网站小项目
+# SCU Movie DB - Java Web 电影网站
 
-#### 介绍
-基于Servlet+JSP 构建的电影网站，适合初学Java Web
+这是一个基于 Java Web 技术栈（Servlet + JSP + JDBC）构建的电影信息展示网站。用户可以浏览电影、搜索电影、查看电影详情、发表评论、收藏电影以及管理个人信息。
 
-#### 软件架构
-   tomcat9 + IDEA
+## 重要说明：邮件功能配置
 
+**在使用本项目的“忘记密码”功能之前，您必须正确配置邮件服务器信息。**
 
-#### 包说明
+配置文件路径：`src/main/resources/mail.properties`
 
-1. dao 直接操作数据库
-2. domain 对应数据库表的实体类
-3. exception 自定义异常
-4. filter 过滤器包
-5. listener 监听器包
-6. service 处理各种业务逻辑的包
-7. utils 工具包
-8. web.servlet.client 客户端的Servlet包
-9. web.servlet.management 后台管理的servlet包
+请根据您自己的邮箱和 SMTP 服务商信息，修改以下配置项：
 
-#### 使用说明
-注意，项目还有些地方存在问题，且项目架构没有清理好，所以存在些用不到的东西，可以忽略。
+```properties
+# 邮件主机
+mail.host=smtp.example.com
+# 邮件传输协议
+mail.transport.protocol=smtp
+# 邮件发送人
+mail.from=your-email@example.com
+# 是否需要认证
+mail.smtp.auth=true
+# 发送人邮箱密码或授权码
+mail.password=your-email-password-or-auth-code
+```
 
-#### 参与贡献
+**如果未正确配置此文件，用户将无法收到密码重置邮件，导致“忘记密码”功能不可用。**
+
+## 技术栈
+
+-   **后端**：Java, Servlet, JSP, JDBC
+-   **数据库**：MySQL
+-   **数据库连接池**：C3P0
+-   **构建工具**：Maven
+-   **日志**：Log4j
+-   **前端**：HTML, CSS, JavaScript
+
+## 主要功能
+
+### 用户模块
+-   **注册与登录**: 提供完整的用户注册、登录和登出功能。
+-   **密码管理**: 支持“忘记密码”通过邮箱验证码重置，并能修改当前密码。
+-   **个人中心**: 用户可以查看和修改个人信息，包括上传和更换头像。
+-   **自动登录**: 提供“记住我”功能，方便用户下次访问。
+
+### 电影与互动模块
+-   **浏览与发现**:
+    -   首页多维度展示电影（如热门、最新）。
+    -   按类型（如动作、科幻）分类浏览电影。
+    -   查看电影详情，包括简介、演员、海报、评分等。
+-   **搜索功能**: 支持关键字搜索电影，并提供实时搜索建议。
+-   **用户互动**:
+    -   对电影进行评分。
+    -   发表和查看电影评论（支持分页）。
+    -   收藏喜欢的电影，并在个人中心查看收藏列表。
+    -   自动记录观影历史，并可在个人中心查看。
+
+### 后台管理模块
+-   **电影管理**: 管理员可以对电影信息进行增、删、改、查（CRUD）操作。
+-   **用户管理**: 管理员可以查看和管理所有注册用户。
+-   **AI对话分析**: 提供一个与AI进行对话的界面，可用于数据分析或智能问答。
+
+## 如何运行
+
+1.  **数据库准备**:
+    -   创建一个名为 `scumdb` (或您期望的名称) 的数据库。
+    -   将项目根目录下的 `moviesdata.sql` 文件导入到您的数据库中。
+
+2.  **配置数据库连接**:
+    -   修改 `src/main/resources/c3p0-config.xml` 文件。
+    -   将其中的 `jdbcUrl`, `user`, `password` 修改为您的本地数据库配置。
+
+3.  **配置邮件服务**:
+    -   如上文“重要说明”所述，配置 `src/main/resources/mail.properties`。
+
+4.  **构建与部署**:
+    -   使用 Maven 构建项目：`mvn clean package`。
+    -   将生成的 `target/ROOT.war` (或类似名称的 war 包) 部署到 Tomcat 或其他 Servlet 容器中。
+
+5.  **访问**:
+    -   打开浏览器，访问 `http://localhost:8080/` (端口号取决于您的 Tomcat 配置)。
