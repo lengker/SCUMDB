@@ -1675,10 +1675,10 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'admin', '123456', '男', '945716994@qq.com', '18770411594', '管理员', '1024', 1, 'admin', '2019-10-24 11:12:31', 'img/bg.png', NULL, NULL);
-INSERT INTO `users` VALUES (3, 'gg', '123', '男', '123@qq.com', NULL, 'Rush B', NULL, 1, 'commonUser', '2019-12-11 20:15:05', 'img/bg.png', NULL, NULL);
-INSERT INTO `users` VALUES (5, 'mm', '123', NULL, 'mm@123.com', NULL, '唱 跳 rap 篮球', NULL, 1, 'commonUser', '2019-12-11 20:16:32', 'img/bg.png', NULL, NULL);
-INSERT INTO `users` VALUES (8, 'ss', 'ss', 'null', NULL, 'null', '这家伙很懒，还没有添加任何描述', 'null', 1, 'commonUser', '2019-12-15 14:23:57', 'img/bg.png', NULL, NULL);
-INSERT INTO `users` VALUES (9, '123', '123', 'null', NULL, 'null', '这家伙很懒，还没有添加任何描述', 'null', 1, 'commonUser', '2019-12-15 22:56:39', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (1, 'admin', '123456', '男', '945716994@qq.com', '18770411594', '管理员', '1024', 1, 'admin', '2025-07-15 11:12:31', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (3, 'gg', '123', '男', '123@qq.com', NULL, 'Rush B', NULL, 1, 'commonUser', '2025-07-21 20:15:05', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (5, 'mm', '123', NULL, 'mm@123.com', NULL, '唱 跳 rap 篮球', NULL, 1, 'commonUser', '2025-07-21 20:16:32', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (8, 'ss', 'ss', 'null', NULL, 'null', '这家伙很懒，还没有添加任何描述', 'null', 1, 'commonUser', '2025-07-15 14:23:57', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (9, '123', '123', 'null', NULL, 'null', '这家伙很懒，还没有添加任何描述', 'null', 1, 'commonUser', '2025-07-15 22:56:39', 'img/bg.png', NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
