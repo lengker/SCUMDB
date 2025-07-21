@@ -55,78 +55,6 @@
             <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
                 <li class="dropdown notification-list">
-                    <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="false" aria-expanded="false">
-                        <i class="dripicons-bell noti-icon"></i>
-                        <span class="badge badge-danger badge-pill noti-icon-badge">4</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
-
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5 class="m-0"><span class="float-right"><a href="" class="text-dark"><small>Clear
-                                                All</small></a> </span>Notification</h5>
-                        </div>
-
-                        <div class="slimscroll noti-scroll">
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-warning"><i class="mdi mdi-comment-account-outline"></i>
-                                </div>
-                                <p class="notify-details">Caleb Flakelar commented on Admin<small
-                                        class="text-muted">1 min ago</small></p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-info"><i class="mdi mdi-account-plus"></i></div>
-                                <p class="notify-details">New user registered.<small class="text-muted">5 hours
-                                    ago</small></p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon"><img src="assets/images/users/avatar-2.jpg"
-                                                              class="img-fluid rounded-circle" alt=""/></div>
-                                <p class="notify-details">Cristina Pride</p>
-                                <p class="text-muted font-13 mb-0 user-msg">Hi, How are you? What about our next
-                                    meeting</p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-danger"><i class="mdi mdi-comment-account-outline"></i>
-                                </div>
-                                <p class="notify-details">Caleb Flakelar commented on Admin<small
-                                        class="text-muted">4 days ago</small></p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon"><img src="assets/images/users/avatar-4.jpg"
-                                                              class="img-fluid rounded-circle" alt=""/></div>
-                                <p class="notify-details">Karen Robinson</p>
-                                <p class="text-muted font-13 mb-0 user-msg">Wow that's great</p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-primary"><i class="mdi mdi-heart"></i></div>
-                                <p class="notify-details">Carlos Crouch liked <b>Admin</b><small
-                                        class="text-muted">13 days ago</small></p>
-                            </a>
-                        </div>
-
-                        <!-- All-->
-                        <a href="javascript:void(0);"
-                           class="dropdown-item text-center text-primary notify-item notify-all">
-                            View all <i class="fi-arrow-right"></i>
-                        </a>
-
-                    </div>
-                </li>
-
-                <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="false" aria-expanded="false">
                         <img src="assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle"> <span
@@ -137,38 +65,12 @@
                         <div class="dropdown-item noti-title">
                             <h6 class="text-overflow m-0">Welcome !</h6>
                         </div>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="dripicons-user"></i> <span>My Account</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="dripicons-gear"></i> <span>Settings</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="dripicons-help"></i> <span>Support</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="auth-lock-screen.html" class="dropdown-item notify-item">
-                            <i class="dripicons-lock"></i> <span>Lock Screen</span>
-                        </a>
-
-                        <!-- item-->
+                        <!-- 仅保留退出 -->
                         <a href="${pageContext.request.contextPath}/logout.do" class="dropdown-item notify-item">
                             <i class="dripicons-power"></i> <span>退出</span>
                         </a>
 
                     </div>
-                </li>
-                <li class="dropdown notification-list">
-                    <a href="javascript:void(0);" class="nav-link right-bar-toggle">
-                        <i class="dripicons-gear noti-icon"></i>
-                    </a>
                 </li>
 
             </ul>
@@ -245,218 +147,40 @@
             <h4 class="page-title">主页</h4>
         </div>
         <!-- End page title box -->
-
+        <!-- ===== Dashboard Stats & Charts ===== -->
+        <div class="row mt-3">
+            <div class="col-12 col-md-6 mb-4">
+                <div class="card-box shadow-sm text-center h-100">
+                    <h4 class="header-title">电影总数</h4>
+                    <h2 class="font-weight-light mt-3 mb-0" id="movieCount">--</h2>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+                <div class="card-box shadow-sm text-center h-100">
+                    <h4 class="header-title">用户总数</h4>
+                    <h2 class="font-weight-light mt-3 mb-0" id="userCount">--</h2>
+                </div>
+            </div>
+        </div>
         <div class="row">
-            <div class="col-xl-4">
-
-                <div class="card-box">
-                    <h4 class="header-title">销量最佳</h4>
-                    <p class="text-muted" id="time"></p>
-                    <div class="mb-3 mt-4">
-                        <h2 class="font-weight-light">40</h2>
+            <div class="col-12 col-lg-6 mb-4">
+                <div class="card-box shadow-sm h-100" style="min-height:420px;">
+                    <h4 class="header-title text-center mb-3">电影类型分布</h4>
+                    <div class="chartjs-chart">
+                        <canvas id="movieTypeDistributionChart" height="320" style="width:100%; height:320px;"></canvas>
                     </div>
-                    <div class="chartjs-chart dash-sales-chart">
-                        <canvas id="sales-chart"></canvas>
-                    </div>
-                </div><!-- end card-box-->
-
-                <div class="card-box gradient-success bx-shadow-lg">
-                    <div class="float-left">
-                        <h2 class="text-white mb-0 mt-2">在线人数</h2>
-                    </div>
-                    <div class="text-right">
-                        <h3 class="text-white" id="onlineNumber">
-                            <%=request.getServletContext().getAttribute("onlineNumber")%>
-                        </h3>
-                        <script>
-                            function updateOnlineNumber() {
-                                $.ajax({
-                                    url: "../managementAjax",
-                                    data: "choose=online",
-                                    success: function (data) {
-                                        // console.log(data);
-                                        $("#onlineNumber").text(data);
-                                    }
-                                });
-                            }
-
-                            setInterval(updateOnlineNumber, 30000);
-                        </script>
-                    </div>
-                </div> <!-- end card-box-->
-
-            </div> <!-- end col -->
-            <div class="col-xl-8">
-                <div class="card-box">
-                    <div class="dropdown float-right">
-                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
-                           aria-expanded="false">
-                            <i class="mdi mdi-dots-horizontal"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Download</a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Upload</a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                        </div>
-                    </div>
-                    <h4 class="header-title mb-3">访问者信息</h4>
-
-                    <div class="table-responsive">
-                        <table class="table table-centered table-hover mb-0" id="datatable">
-                            <thead>
-                            <tr>
-                                <th class="border-top-0">SessionId</th>
-                                <th class="border-top-0">IP地址</th>
-                                <th class="border-top-0">第一次登陆时间</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach var="visit" items="${userList}">
-                                <tr>
-                                    <td>
-                                        <img src="assets/images/users/avatar-2.jpg" alt="user-pic"
-                                             class="rounded-circle thumb-sm bx-shadow-lg"/>
-                                        <span class="ml-2">${visit.sessionId}</span>
-                                    </td>
-                                    <td>
-                                        <span class="ml-2">${visit.ip}</span>
-                                    </td>
-                                    <td>${visit.firstTime}</td>
-
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                    </div> <!-- end table-responsive -->
-
-                </div> <!-- end card-box-->
-            </div> <!-- end col-->
-
-        </div>
-        <!-- end row -->
-
-
-        <!-- Right Sidebar -->
-        <div class="right-bar">
-            <div class="rightbar-title">
-                <a href="javascript:void(0);" class="right-bar-toggle float-right">
-                    <i class="dripicons-cross noti-icon"></i>
-                </a>
-                <h5 class="m-0">Settings</h5>
+                </div>
             </div>
-            <div class="slimscroll-menu">
-                <!-- User box -->
-                <div class="user-box">
-                    <div class="user-img">
-                        <img src="assets/images/users/avatar-1.jpg" alt="user-img" title="Mat Helme"
-                             class="rounded-circle img-fluid">
-                        <a href="" class="user-edit"><i class="mdi mdi-pencil"></i></a>
-                    </div>
-
-                    <h5><a href="#">${user.username}</a></h5>
-                    <p class="text-muted mb-0"><small>${user.introduce}</small></p>
-                </div>
-
-                <!-- Settings -->
-                <hr class="mt-0"/>
-                <h5 class="pl-3">Basic Settings</h5>
-                <hr class="mb-0"/>
-
-                <div class="p-3">
-                    <div class="checkbox checkbox-primary mb-2">
-                        <input id="checkbox1" type="checkbox" checked>
-                        <label for="checkbox1">
-                            Notifications
-                        </label>
-                    </div>
-                    <div class="checkbox checkbox-primary mb-2">
-                        <input id="checkbox2" type="checkbox" checked>
-                        <label for="checkbox2">
-                            API Access
-                        </label>
-                    </div>
-                    <div class="checkbox checkbox-primary mb-2">
-                        <input id="checkbox3" type="checkbox">
-                        <label for="checkbox3">
-                            Auto Updates
-                        </label>
-                    </div>
-                    <div class="checkbox checkbox-primary mb-2">
-                        <input id="checkbox4" type="checkbox" checked>
-                        <label for="checkbox4">
-                            Online Status
-                        </label>
-                    </div>
-                    <div class="checkbox checkbox-primary mb-0">
-                        <input id="checkbox5" type="checkbox" checked>
-                        <label for="checkbox5">
-                            Auto Payout
-                        </label>
-                    </div>
-                </div>
-
-
-                <!-- Timeline -->
-                <hr class="mt-0"/>
-                <h5 class="pl-3 pr-3">Messages <span class="float-right badge badge-pill badge-danger">25</span></h5>
-                <hr class="mb-0"/>
-                <div class="p-3">
-                    <div class="inbox-widget">
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/avatar-1.jpg"
-                                                                 class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Chadengle</p>
-                                <p class="inbox-item-text">Hey! there I'm available...</p>
-                                <p class="inbox-item-date">13:40 PM</p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/avatar-2.jpg"
-                                                                 class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Tomaslau</p>
-                                <p class="inbox-item-text">I've finished it! See you so...</p>
-                                <p class="inbox-item-date">13:34 PM</p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/avatar-3.jpg"
-                                                                 class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Stillnotdavid</p>
-                                <p class="inbox-item-text">This theme is awesome!</p>
-                                <p class="inbox-item-date">13:17 PM</p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/avatar-4.jpg"
-                                                                 class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Kurafire</p>
-                                <p class="inbox-item-text">Nice to meet you</p>
-                                <p class="inbox-item-date">12:20 PM</p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/avatar-5.jpg"
-                                                                 class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Shahedk</p>
-                                <p class="inbox-item-text">Hey! there I'm available...</p>
-                                <p class="inbox-item-date">10:15 AM</p>
-                            </div>
-                        </a>
+            <div class="col-12 col-lg-6 mb-4">
+                <div class="card-box shadow-sm h-100" style="min-height:420px;">
+                    <h4 class="header-title text-center mb-3">点击量最高</h4>
+                    <div class="chartjs-chart">
+                        <canvas id="topMoviesChart" height="320" style="width:100%; height:320px;"></canvas>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /Right-bar -->
+        <!-- ===== End Dashboard Stats & Charts ===== -->
 
 
         <!-- jQuery  -->
@@ -492,6 +216,77 @@
                     "pageLength": 5,
                     "searching": false,
                     "lengthChange": false
+                });
+
+                $.ajax({
+                    url: "${pageContext.request.contextPath}/dashboardStats",
+                    method: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        // Update counts
+                        $('#movieCount').text(data.movieCount);
+                        $('#userCount').text(data.userCount);
+
+                        // Top movies bar chart
+                        var topMoviesCtx = document.getElementById('topMoviesChart').getContext('2d');
+                        new Chart(topMoviesCtx, {
+                            type: 'bar',
+                            data: {
+                                labels: data.topMovies.map(m => m.movieName),
+                                datasets: [{
+                                    label: '点击量',
+                                    data: data.topMovies.map(m => m.number),
+                                    backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                legend: { display: false },
+                                tooltips: {
+                                    callbacks: {
+                                        title: function(tooltipItems, data) {
+                                            return data.labels[tooltipItems[0].index];
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        ticks: {
+                                            autoSkip: false,
+                                            maxRotation: 45,
+                                            minRotation: 45,
+                                            callback: function(label) {
+                                                return label.length > 6 ? label.substr(0, 6) + '…' : label;
+                                            }
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        ticks: { beginAtZero: true }
+                                    }]
+                                }
+                            }
+                        });
+
+                        // Movie type distribution pie chart
+                        var movieTypeCtx = document.getElementById('movieTypeDistributionChart').getContext('2d');
+                        var baseColors = ['#ff6384','#36a2eb','#ffce56','#4bc0c0','#9966ff','#ff9f40'];
+                        var bgColors = [];
+                        for (var i = 0; i < data.movieTypeDistribution.length; i++) {
+                            bgColors.push(baseColors[i % baseColors.length]);
+                        }
+                        new Chart(movieTypeCtx, {
+                            type: 'pie',
+                            data: {
+                                labels: data.movieTypeDistribution.map(d => d.type),
+                                datasets: [{
+                                    data: data.movieTypeDistribution.map(d => d.count),
+                                    backgroundColor: bgColors
+                                }]
+                            },
+                            options: {responsive: true, maintainAspectRatio: false}
+                        });
+                    }
                 });
             });
             var date = new Date().toLocaleString();
