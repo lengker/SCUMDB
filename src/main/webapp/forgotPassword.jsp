@@ -69,6 +69,14 @@
                                 <span class="input__label-content input__label-content--hideo"></span>
                             </label>
                         </span>
+                        <span class="input input--hideo">
+                            <input class="input__field input__field--hideo" type="text" id="captcha" name="captcha" autocomplete="off" placeholder="请输入验证码" required/>
+                            <label class="input__label input__label--hideo" for="captcha">
+                                <i class="fa fa-fw fa-key icon icon--hideo"></i>
+                                <span class="input__label-content input__label-content--hideo"></span>
+                            </label>
+                        </span>
+                        <img id="captchaImage" src="${pageContext.request.contextPath}/captcha" alt="Captcha Image" onclick="refreshCaptcha()" style="cursor: pointer; margin-top: 10px;">
                     </section>
                 </div>
                 <div class="form-actions">
@@ -79,6 +87,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    function refreshCaptcha() {
+        document.getElementById('captchaImage').src = '${pageContext.request.contextPath}/captcha?' + new Date().getTime();
+    }
+</script>
 
 </body>
 </html>

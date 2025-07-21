@@ -170,7 +170,8 @@
             var username = $("#register-username").val(),
                 password = $("#register-password").val(),
                 repassword = $("#register-repassword").val(),
-                email = $("#register-code").val(), // Changed 'code' to 'email' for clarity
+                email = $("#r_email").val(),
+                captcha = $("#r_captcha").val(),
                 flag = true;
 
             //判断用户名密码是否为空
@@ -227,16 +228,16 @@
             }
 
             // 使用 fetch API 代替 $.ajax
-            fetch("register.do", {
+            fetch("${pageContext.request.contextPath}/register", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: "username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password) + "&email=" + encodeURIComponent(email)
+                body: "username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password) + "&email=" + encodeURIComponent(email) + "&captcha=" + encodeURIComponent(captcha)
             })
             .then(response => response.text())
             .then(data => {
-                if (data === "ok") {
+                if (data === "success") {
                     spop({
                         template: '<h4 class="spop-title">注册成功</h4>即将于3秒后返回登录',
                         position: 'top-center',
@@ -260,11 +261,12 @@
                 } else {
                     // 使用 spop 插件显示错误信息
                     spop({
-                        template: '<h4 class="spop-title">注册失败</h4>' + (data || '用户名已存在或邮箱格式不正确！'),
+                        template: '<h4 class="spop-title">注册失败</h4>' + data,
                         position: 'top-center',
                         style: 'error',
                         autoclose: 3000
                     });
+                    refreshRegisterCaptcha();
                 }
             })
             .catch(error => {
@@ -278,6 +280,10 @@
             });
 
             return false; // 阻止表单默认提交
+        }
+
+        function refreshRegisterCaptcha() {
+            document.getElementById('registerCaptchaImage').src = '${pageContext.request.contextPath}/captcha?' + new Date().getTime();
         }
     </script>
     <style type="text/css">
@@ -425,24 +431,36 @@
 								</label>
 							</span>
                         <span class="input input--hideo">
-								<input class="input__field input__field--hideo" type="email" id="register-code"
-                                       autocomplete="off" placeholder="请输入邮箱" name="email"/>
-								<label class="input__label input__label--hideo" for="register-code">
-									<i class="fa fa-fw fa-wifi icon icon--hideo"></i>
-									<span class="input__label-content input__label-content--hideo"></span>
-								</label>
-							</span>
+                        <input class="input__field input__field--hideo" type="email" id="r_email" name="email" autocomplete="off" placeholder="请输入邮箱" required/>
+                        <label class="input__label input__label--hideo" for="r_email">
+                            <i class="fa fa-fw fa-envelope icon icon--hideo"></i>
+                            <span class="input__label-content input__label-content--hideo">邮箱</span>
+                        </label>
+                    </span>
+                        <span class="input input--hideo">
+                        <input class="input__field input__field--hideo" type="text" id="r_captcha" name="captcha" autocomplete="off" placeholder="请输入验证码" required/>
+                        <label class="input__label input__label--hideo" for="r_captcha">
+                            <i class="fa fa-fw fa-key icon icon--hideo"></i>
+                            <span class="input__label-content input__label-content--hideo">验证码</span>
+                        </label>
+                    </span>
+                        <img id="registerCaptchaImage" src="${pageContext.request.contextPath}/captcha" alt="Captcha Image" onclick="refreshRegisterCaptcha()" style="cursor: pointer; margin-top: 0;">
                     </section>
                 </div>
                 <div class="form-actions">
-                    <a class="btn pull-left btn-link text-muted" onClick="goto_login()">返回登录</a>
+                    <a tabindex="5" class="btn pull-left btn-link text-muted" onClick="goto_login()">返回登录</a>
                     <input class="btn btn-primary" type="submit" value="注册"
                            style="color:white;"/>
                 </div>
             </form>
         </div>
     </div>
-</div>
+
+    <script type="text/javascript">
+        function refreshRegisterCaptcha() {
+            document.getElementById('registerCaptchaImage').src = '${pageContext.request.contextPath}/captcha?' + new Date().getTime();
+        }
+    </script>
 </body>
 
 </html>
