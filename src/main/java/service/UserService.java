@@ -209,4 +209,15 @@ public class UserService {
     public void deleteUserByUsername(String username) throws SQLException {
         dao.deleteUserByUsername(username);
     }
+
+    /**
+     * 更新用户头像
+     *
+     * @param userId    用户ID
+     * @param avatarUrl 头像URL
+     * @throws SQLException
+     */
+    public void updateUserAvatar(int userId, String avatarUrl) throws SQLException {
+        dao.updateUserAvatar(userId, avatarUrl);
+    }
 }

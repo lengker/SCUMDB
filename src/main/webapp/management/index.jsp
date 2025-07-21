@@ -218,6 +218,12 @@
                 用户管理
             </a>
         </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/aiAnalysis">
+                <i class="mdi mdi-robot"></i>
+                智能分析
+            </a>
+        </li>
     </ul>
 </div>
 <!-- End Left Sidebar -->
@@ -244,7 +250,7 @@
             <div class="col-xl-4">
 
                 <div class="card-box">
-                    <h4 class="header-title">总用户人数</h4>
+                    <h4 class="header-title">销量最佳</h4>
                     <p class="text-muted" id="time"></p>
                     <div class="mb-3 mt-4">
                         <h2 class="font-weight-light">40</h2>

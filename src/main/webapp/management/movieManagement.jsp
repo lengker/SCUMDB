@@ -215,6 +215,12 @@
                 用户管理
             </a>
         </li>
+        <li class="active">
+            <a href="${pageContext.request.contextPath}/aiAnalysis">
+                <i class="mdi mdi-robot"></i>
+                智能分析
+            </a>
+        </li>
     </ul>
 </div>
 <!-- End Left Sidebar -->

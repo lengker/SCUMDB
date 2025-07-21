@@ -32,7 +32,18 @@
 </div>
 <div class="row">
     <div class="col-md-12 text-center">
-        <img src="img/bg.png" alt="" class="rounded-circle "
+        <img src="<%
+            try {
+                if (user.getAvatar() != null && !user.getAvatar().trim().isEmpty()) {
+                    out.print(user.getAvatar());
+                } else {
+                    out.print("img/bg.png");
+                }
+            } catch (Exception e) {
+                out.print("img/bg.png");
+            }
+        %>"
+             alt="" class="rounded-circle "
              style="width: 150px; height: 150px; margin-top: -75px;">
         <div class="row">
             <a href="main.jsp">

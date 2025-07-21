@@ -10,7 +10,7 @@
     <title>用户管理 - SCU Movie DB</title>
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="management/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/logo.png">
 
     <!-- Icons css -->
     <link href="management/assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css"/>
@@ -151,10 +151,16 @@
                 电影管理
             </a>
         </li>
-        <li class="active">
+        <li>
             <a href="${pageContext.request.contextPath}/userManagement">
                 <i class="mdi mdi-account-multiple"></i>
                 用户管理
+            </a>
+        </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/aiAnalysis">
+                <i class="mdi mdi-robot"></i>
+                智能分析
             </a>
         </li>
     </ul>

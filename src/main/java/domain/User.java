@@ -69,6 +69,11 @@ public class User {
      */
     private Date codeExpireTime;
 
+    /**
+     * 用户头像路径
+     */
+    private String avatar;
+
     public int getId() {
         return id;
     }
@@ -179,6 +184,14 @@ public class User {
 
     public void setCodeExpireTime(Date codeExpireTime) {
         this.codeExpireTime = codeExpireTime;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     // 为了兼容性，添加phone的getter和setter方法

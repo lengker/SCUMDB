@@ -90,10 +90,6 @@
     </div>
 </div>
 
-<div class="user_pic" style="margin: 10px;">
-    <img src="">
-</div>
-
 <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -120,8 +116,6 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="avatar-preview preview-lg" id="imageHead"></div>
-                                <!--<div class="avatar-preview preview-md"></div>
-                                    <div class="avatar-preview preview-sm"></div>-->
                             </div>
                         </div>
                         <div class="row avatar-btns">
@@ -148,14 +142,12 @@
                                         data-option="0.1" title="放大图片">
                                         <span class="docs-tooltip" data-toggle="tooltip" title=""
                                               data-original-title="$().cropper(&quot;zoom&quot;, 0.1)">
-                                            <!--<span class="fa fa-search-plus"></span>-->
                                         </span>
                                 </button>
                                 <button type="button" class="btn btn-danger fa fa-search-minus" data-method="zoom"
                                         data-option="-0.1" title="缩小图片">
                                         <span class="docs-tooltip" data-toggle="tooltip" title=""
                                               data-original-title="$().cropper(&quot;zoom&quot;, -0.1)">
-                                            <!--<span class="fa fa-search-minus"></span>-->
                                         </span>
                                 </button>
                                 <button type="button" class="btn btn-danger fa fa-refresh" data-method="reset"
@@ -165,11 +157,11 @@
                                               aria-describedby="tooltip866214">
                                         </span>
                                 </button>
-                                <div class="col-md-3">
-                                    <button class="btn btn-danger btn-block avatar-save fa fa-save" type="button"
-                                            data-dismiss="modal"> 保存修改
-                                    </button>
-                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-danger btn-block avatar-save fa fa-save" type="button"
+                                        data-dismiss="modal"> 保存修改
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -183,58 +175,311 @@
 
 <script src="js/html2canvas.min.js"></script>
 <script type="text/javascript">
-    //做个下简易的验证  大小 格式
-    $('#avatarInput').on('change', function(e) {
-        var filemaxsize = 1024 * 5; //5M
-        var target = $(e.target);
-        var Size = target[0].files[0].size / 1024;
-        if (Size > filemaxsize) {
-            alert('图片过大，请重新选择!');
-            $(".avatar-wrapper").childre().remove;
-            return false;
-        }
-        if (!this.files[0].type.match(/image.*/)) {
-            alert('请选择正确的图片!')
-        } else {
-            var filename = document.querySelector("#avatar-name");
-            var texts = document.querySelector("#avatarInput").value;
-            var teststr = texts; //你这里的路径写错了
-            testend = teststr.match(/[^\\]+\.[^\(]+/i); //直接完整文件名的
-            filename.innerHTML = testend;
-        }
+    // 全局变量
+    var cropper = null;
 
-    });
+    // 页面加载完成后初始化
+    $(document).ready(function() {
+        console.log('页面加载完成');
+        console.log('jQuery版本:', $.fn.jquery);
+        console.log('$.fn.cropper:', typeof $.fn.cropper);
 
-    $(".avatar-save").on("click", function() {
-        var img_lg = document.getElementById('imageHead');
-        // 截图小的显示框内的内容
-        html2canvas(img_lg, {
-            allowTaint: true,
-            taintTest: false,
-            onrendered: function(canvas) {
-                canvas.id = "mycanvas";
-                //生成base64图片数据
-                var dataUrl = canvas.toDataURL("image/jpeg;image/jpg");
-                var newImg = document.createElement("img");
-                newImg.src = dataUrl;
-                imagesAjax(dataUrl)
-            }
+        // 绑定文件选择事件
+        $('#avatarInput').on('change', handleFileSelect);
+
+        // 绑定保存按钮事件
+        $('.avatar-save').on('click', handleSave);
+
+        // 绑定裁剪工具按钮事件
+        $('.avatar-btns button[data-method]').on('click', handleCropperAction);
+
+        // 模态框显示时重置状态
+        $('#avatar-modal').on('shown.bs.modal', function() {
+            console.log('模态框显示');
+            resetModal();
         });
     });
 
-    function imagesAjax(src) {
-        var data = {};
-        data.img = src;
-        data.jid = $('#jid').val();
+    // 处理文件选择
+    function handleFileSelect(e) {
+        console.log('文件选择事件触发');
+
+        var file = e.target.files[0];
+        if (!file) {
+            alert('请选择文件！');
+            return;
+        }
+
+        // 验证文件大小
+        var filemaxsize = 1024 * 5; // 5MB
+        var fileSize = file.size / 1024;
+        if (fileSize > filemaxsize) {
+            alert('图片过大，请重新选择!');
+            return;
+        }
+
+        // 验证文件类型
+        if (!file.type.match(/image.*/)) {
+            alert('请选择正确的图片文件!');
+            return;
+        }
+
+        // 显示文件名
+        var filename = file.name;
+        $('#avatar-name').text(filename);
+
+        // 读取并显示图片
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            console.log('图片读取完成');
+
+            // 清空预览区域
+            $('.avatar-wrapper').empty();
+            $('.avatar-preview').empty();
+
+            // 创建图片元素
+            var img = $('<img>').attr('src', e.target.result);
+
+            // 添加到预览区域
+            $('.avatar-wrapper').append(img);
+            $('.avatar-preview').append(img.clone());
+
+            // 等待图片加载完成后初始化裁剪器
+            img.on('load', function() {
+                console.log('图片加载完成，初始化裁剪器');
+                initCropper(this);
+            });
+        };
+
+        reader.onerror = function() {
+            alert('图片读取失败！');
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    // 初始化裁剪器
+    function initCropper(imgElement) {
+        console.log('初始化裁剪器');
+        console.log('$.fn.cropper:', typeof $.fn.cropper);
+
+        // 销毁之前的裁剪器
+        if (cropper) {
+            cropper.cropper('destroy');
+            cropper = null;
+        }
+
+        // 检查Cropper是否可用
+        if (typeof $.fn.cropper === 'undefined') {
+            console.error('Cropper jQuery插件未定义！');
+            alert('图片裁剪功能加载失败，请刷新页面重试！');
+            return;
+        }
+
+        try {
+            // 使用jQuery插件方式创建裁剪器
+            cropper = $(imgElement);
+            cropper.cropper({
+                aspectRatio: 1,
+                viewMode: 1,
+                dragMode: 'move',
+                autoCropArea: 1,
+                restore: false,
+                guides: true,
+                center: true,
+                highlight: false,
+                cropBoxMovable: true,
+                cropBoxResizable: true,
+                toggleDragModeOnDblclick: false,
+                preview: '.avatar-preview'
+            });
+
+            console.log('裁剪器初始化完成');
+        } catch (error) {
+            console.error('裁剪器初始化失败:', error);
+            alert('裁剪器初始化失败：' + error.message);
+        }
+    }
+
+    // 处理裁剪工具按钮点击
+    function handleCropperAction(e) {
+        e.preventDefault();
+
+        console.log('裁剪工具按钮点击');
+        console.log('当前cropper实例:', cropper);
+
+        if (!cropper) {
+            alert('请先选择图片！');
+            return;
+        }
+
+        var method = $(this).data('method');
+        var option = $(this).data('option');
+
+        console.log('执行裁剪操作:', method, option);
+
+        try {
+            cropper.cropper(method, option);
+        } catch (error) {
+            console.error('裁剪操作失败:', error);
+            alert('操作失败：' + error.message);
+        }
+    }
+
+    // 处理保存
+    function handleSave() {
+        console.log('保存按钮点击');
+        console.log('当前cropper实例:', cropper);
+
+        if (!cropper) {
+            alert('请先选择图片！');
+            return;
+        }
+
+        try {
+            // 获取裁剪后的画布
+            var canvas = cropper.cropper('getCroppedCanvas', {
+                width: 200,
+                height: 200,
+                imageSmoothingEnabled: true,
+                imageSmoothingQuality: 'high'
+            });
+
+            if (!canvas) {
+                alert('裁剪失败，请重试！');
+                return;
+            }
+
+            console.log('获取裁剪画布成功');
+
+            // 转换为blob
+            canvas.toBlob(function(blob) {
+                console.log('转换为blob成功');
+
+                // 创建FormData
+                var formData = new FormData();
+                formData.append('avatar', blob, 'avatar.jpg');
+
+                // 显示加载状态
+                $('.avatar-save').prop('disabled', true).text('上传中...');
+
+                // 发送AJAX请求
+                $.ajax({
+                    url: 'uploadAvatar.do',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        console.log('上传响应:', response);
+                        console.log('响应类型:', typeof response);
+
+                        try {
+                            // 如果响应已经是对象，直接使用
+                            var result;
+                            if (typeof response === 'object') {
+                                result = response;
+                            } else {
+                                // 如果是字符串，尝试解析JSON
+                                result = JSON.parse(response);
+                            }
+
+                            if (result.success) {
+                                alert('头像上传成功！');
+
+                                // 更新页面上的头像显示
+                                $('.rounded-circle').attr('src', result.avatarUrl);
+
+                                // 关闭模态框
+                                $('#avatar-modal').modal('hide');
+                            } else {
+                                alert('上传失败：' + result.message);
+                            }
+                        } catch (e) {
+                            console.error('解析响应失败:', e);
+                            console.error('原始响应:', response);
+                            alert('上传失败：服务器响应格式错误');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('上传失败:', error);
+                        console.error('状态:', status);
+                        console.error('响应文本:', xhr.responseText);
+                        alert('上传失败：网络错误');
+                    },
+                    complete: function() {
+                        // 恢复按钮状态
+                        $('.avatar-save').prop('disabled', false).text('保存修改');
+                    }
+                });
+            }, 'image/jpeg', 0.8);
+
+        } catch (error) {
+            console.error('保存失败:', error);
+            alert('保存失败：' + error.message);
+        }
+    }
+
+    // 重置模态框
+    function resetModal() {
+        // 清空文件输入
+        $('#avatarInput').val('');
+        $('#avatar-name').text('');
+
+        // 清空预览区域
+        $('.avatar-wrapper').empty();
+        $('.avatar-preview').empty();
+
+        // 销毁裁剪器
+        if (cropper) {
+            cropper.cropper('destroy');
+            cropper = null;
+        }
+    }
+
+    // 修改密码功能
+    function alterPassword() {
+        var newPassword = $('#new-password').val();
+        var confirmPassword = $('#confirm-password').val();
+
+        if (!newPassword || newPassword.trim() === '') {
+            alert('请输入新密码！');
+            return;
+        }
+
+        if (!confirmPassword || confirmPassword.trim() === '') {
+            alert('请确认密码！');
+            return;
+        }
+
+        if (newPassword !== confirmPassword) {
+            alert('两次输入的密码不一致！');
+            return;
+        }
+
+        if (newPassword.length < 6) {
+            alert('密码长度不能少于6位！');
+            return;
+        }
+
+        // 发送修改密码请求
         $.ajax({
-            url: "upload-logo.php",
-            data: data,
-            type: "POST",
-            dataType: 'json',
-            success: function(re) {
-                if (re.status == '1') {
-                    $('.user_pic img').attr('src', src);
+            url: 'alterUserInfo.do',
+            type: 'POST',
+            data: {
+                password: newPassword
+            },
+            success: function(response) {
+                if (response === 'ok') {
+                    alert('密码修改成功！');
+                    $('#new-password').val('');
+                    $('#confirm-password').val('');
+                } else {
+                    alert('密码修改失败！');
                 }
+            },
+            error: function() {
+                alert('网络错误，请稍后重试！');
             }
         });
     }

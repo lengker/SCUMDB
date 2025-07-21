@@ -210,4 +210,16 @@ public class UserDao {
         runner.update(sql, user.getPassword(), user.getEmail());
     }
 
+    /**
+     * 更新用户头像
+     *
+     * @param userId    用户ID
+     * @param avatarUrl 头像URL
+     * @throws SQLException
+     */
+    public void updateUserAvatar(int userId, String avatarUrl) throws SQLException {
+        String sql = "UPDATE users SET avatar = ? WHERE id = ?";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        runner.update(sql, avatarUrl, userId);
+    }
 }
