@@ -1657,6 +1657,7 @@ CREATE TABLE `users`  (
     `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名称',
     `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户密码',
     `gender` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户性别',
+    `age` INT DEFAULT 0,
     `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户邮箱',
     `telephone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户电话',
     `introduce` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '这家伙很懒，还没有添加任何描述' COMMENT '自我介绍',
@@ -1665,8 +1666,8 @@ CREATE TABLE `users`  (
     `role` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'commonUser' COMMENT '用户角色：普通用户，超级用户，VIP用户',
     `registTime` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '注册时间',
     `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'img/bg.png' COMMENT '用户头像路径',
-    `email_code` VARCHAR(255) NULL,
-    `code_expire_time` DATETIME NULL,
+    `emailCode` VARCHAR(255) NULL,
+    `codeExpireTime` DATETIME NULL,
     PRIMARY KEY (`id`) USING BTREE,
     UNIQUE INDEX `uk_username`(`username`) USING BTREE,
     UNIQUE INDEX `uk_email`(`email`) USING BTREE
@@ -1675,10 +1676,10 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'admin', '123456', '男', '945716994@qq.com', '18770411594', '管理员', '1024', 1, 'admin', '2025-07-15 11:12:31', 'img/bg.png', NULL, NULL);
-INSERT INTO `users` VALUES (3, 'gg', '123', '男', '123@qq.com', NULL, 'Rush B', NULL, 1, 'commonUser', '2025-07-21 20:15:05', 'img/bg.png', NULL, NULL);
-INSERT INTO `users` VALUES (5, 'mm', '123', NULL, 'mm@123.com', NULL, '唱 跳 rap 篮球', NULL, 1, 'commonUser', '2025-07-21 20:16:32', 'img/bg.png', NULL, NULL);
-INSERT INTO `users` VALUES (8, 'ss', 'ss', 'null', NULL, 'null', '这家伙很懒，还没有添加任何描述', 'null', 1, 'commonUser', '2025-07-15 14:23:57', 'img/bg.png', NULL, NULL);
-INSERT INTO `users` VALUES (9, '123', '123', 'null', NULL, 'null', '这家伙很懒，还没有添加任何描述', 'null', 1, 'commonUser', '2025-07-15 22:56:39', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (1, 'admin', '123456', '男', 18,  '945716994@qq.com', '18770411594', '管理员', '1024', 1, 'admin', '2025-07-15 11:12:31', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (3, 'gg', '123', '男', 19, '123@qq.com', NULL, 'Rush B', NULL, 1, 'commonUser', '2025-07-21 20:15:05', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (5, 'mm', '123', NULL, 20, 'mm@123.com', NULL, '唱 跳 rap 篮球', NULL, 1, 'commonUser', '2025-07-21 20:16:32', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (8, 'ss', 'ss', 'null', 19, NULL, 'null', '这家伙很懒，还没有添加任何描述', 'null', 1, 'commonUser', '2025-07-15 14:23:57', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (9, '123', '123', 'null', 21, NULL, 'null', '这家伙很懒，还没有添加任何描述', 'null', 1, 'commonUser', '2025-07-15 22:56:39', 'img/bg.png', NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

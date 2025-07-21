@@ -19,6 +19,17 @@ import java.util.Random;
  * @version: V1.0
  */
 public class UserService {
+    /**
+     * 更新用户性别和年龄
+     */
+    public void updateUserInfo(User user) throws UpdateUserException {
+        try {
+            dao.updateUserInfo(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new UpdateUserException("更新用户性别和年龄失败!");
+        }
+    }
 
     private UserDao dao = new UserDao();
 

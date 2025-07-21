@@ -48,9 +48,9 @@ public class UserDao {
      * @throws SQLException
      */
     public User findUserByEmail(String email) throws SQLException {
-        String sql = "SELECT id, username, password, gender, email, telephone, introduce, activeCode, state, role, registTime," +
-        "email_code AS emailCode, code_expire_time AS codeExpireTime " +
-//        String sql = "SELECT *" +
+//        String sql = "SELECT id, username, password, gender, age, email, telephone, introduce, activeCode, state, role, registTime," +
+//        "emailCode, codeExpireTime " +
+        String sql = "SELECT *" +
                      "FROM users WHERE email=?";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         return runner.query(sql, new BeanHandler<User>(User.class), email);
@@ -194,7 +194,7 @@ public class UserDao {
      * @throws SQLException
      */
     public void updateUserEmailCode(User user) throws SQLException {
-        String sql = "UPDATE users SET email_code=?, code_expire_time=? WHERE email=?";
+        String sql = "UPDATE users SET emailCode=?, codeExpireTime=? WHERE email=?";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         runner.update(sql, user.getEmailCode(), user.getCodeExpireTime(), user.getEmail());
     }
@@ -233,5 +233,17 @@ public class UserDao {
         String sql = "select count(*) from users";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         return (long) runner.query(sql, new ScalarHandler());
+    }
+
+    /**
+     * 更新用户信息
+     *
+     * @param user 更新的用户信息
+     * @throws SQLException
+     */
+    public void updateUserInfo(User user) throws SQLException {
+        String sql = "UPDATE users SET gender = ?, age = ? WHERE id = ?";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        runner.update(sql, user.getGender(), user.getAge(), user.getId());
     }
 }
