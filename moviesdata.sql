@@ -1563,9 +1563,9 @@ CREATE TABLE `collection`  (
 -- ----------------------------
 -- Records of collection
 -- ----------------------------
-INSERT INTO `collection` VALUES ('gg', '犯罪现场 犯罪現場', '2019-12-12 15:16:32');
-INSERT INTO `collection` VALUES ('gg', '疯狂动物城 Zootopia', '2019-12-12 15:16:32');
-INSERT INTO `collection` VALUES ('gg', '罗小黑战记', '2019-12-12 15:17:03');
+INSERT INTO `collection` VALUES ('gg', '犯罪现场 犯罪現場', '2025-07-12 15:16:32');
+INSERT INTO `collection` VALUES ('gg', '疯狂动物城 Zootopia', '2025-07-12 15:16:32');
+INSERT INTO `collection` VALUES ('gg', '罗小黑战记', '2025-07-12 15:17:03');
 
 -- ----------------------------
 -- Table structure for comments
@@ -1581,21 +1581,21 @@ CREATE TABLE `comments`  (
 -- ----------------------------
 -- Records of comments
 -- ----------------------------
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[嘻嘻][哆啦A梦微笑]', '2019-12-05 21:54:38');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[黑寡妇][蜘蛛侠]蜘蛛侠Spider Man', '2019-12-05 22:02:28');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '你们好2333[伤心]', '2019-12-05 22:13:05');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[吐][打脸]', '2019-12-05 22:19:44');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[猪头]', '2019-12-05 22:19:57');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[奇异博士]', '2019-12-06 13:17:53');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[泪][喵喵]', '2019-12-06 13:18:00');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[吃瓜]', '2019-12-06 13:18:04');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[哈哈]', '2019-12-06 17:49:12');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[汗]', '2019-12-07 23:55:43');
-INSERT INTO `comments` VALUES ('mm', '哪吒之魔童降世', '你好啊[黑线]', '2019-12-08 12:53:21');
-INSERT INTO `comments` VALUES ('mm', '哪吒之魔童降世', '[害羞]', '2019-12-08 17:05:46');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[鼓掌]', '2019-12-08 18:10:48');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[黑线] 2019/12/9', '2019-12-09 11:07:33');
-INSERT INTO `comments` VALUES ('123', '玩具总动员4 Toy Story 4', 'nice', '2019-12-15 22:58:41');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[嘻嘻][哆啦A梦微笑]', '2025-07-15 21:54:38');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[黑寡妇][蜘蛛侠]蜘蛛侠Spider Man', '2025-07-15 22:02:28');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '你们好2333[伤心]', '2025-07-15 22:13:05');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[吐][打脸]', '2025-07-15 22:19:44');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[猪头]', '2025-07-15 22:19:57');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[奇异博士]', '2025-07-16 13:17:53');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[泪][喵喵]', '2025-07-16 13:18:00');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[吃瓜]', '2025-07-16 13:18:04');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[哈哈]', '2025-07-16 17:49:12');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[汗]', '2025-07-17 23:55:43');
+INSERT INTO `comments` VALUES ('mm', '哪吒之魔童降世', '你好啊[黑线]', '2025-07-18 12:53:21');
+INSERT INTO `comments` VALUES ('mm', '哪吒之魔童降世', '[害羞]', '2025-07-18 17:05:46');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[鼓掌]', '2025-07-18 18:10:48');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[黑线] 2019/12/9', '2025-07-19 11:07:33');
+INSERT INTO `comments` VALUES ('123', '玩具总动员4 Toy Story 4', 'nice', '2025-07-15 22:58:41');
 
 -- ----------------------------
 -- Table structure for history
@@ -1611,31 +1611,31 @@ CREATE TABLE `history`  (
 -- ----------------------------
 -- Records of history
 -- ----------------------------
-INSERT INTO `history` VALUES ('V字仇杀队 V for Vendetta', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('X战警 X-Men', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('加勒比海盗2：聚魂棺 Pirates of the Caribbean: Dead Man\'s Chest', 1, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('名侦探柯南：绀青之拳 名探偵コナン 紺青の拳', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('哪吒之魔童降世', 0, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('哪吒之魔童降世', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('哪吒之魔童降世', 5, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('唐人街探案2', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('大侦探皮卡丘 Pokémon Detective Pikachu', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('我和我的祖国', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('摔跤吧！爸爸 Dangal', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('火星救援 The Martian', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('爱宠大机密2 The Secret Life of Pets 2', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('狮子王 The Lion King', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('玩具总动员4 Toy Story 4', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('玩具总动员4 Toy Story 4', 9, '2019-12-15 22:58:04');
-INSERT INTO `history` VALUES ('疯狂动物城 Zootopia', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('白蛇：缘起', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('精灵旅社2 Hotel Transylvania 2', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('罗小黑战记', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('罗小黑战记', 9, '2019-12-15 22:57:47');
-INSERT INTO `history` VALUES ('航海王：狂热行动 ONE PIECE STAMPEDE', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('谍影重重5 Jason Bourne', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('这个杀手不太冷 Léon', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('驯龙高手3 How To Train Your Dragon: The Hidden World', 3, '2019-12-12 15:16:11');
+INSERT INTO `history` VALUES ('V字仇杀队 V for Vendetta', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('X战警 X-Men', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('加勒比海盗2：聚魂棺 Pirates of the Caribbean: Dead Man\'s Chest', 1, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('名侦探柯南：绀青之拳 名探偵コナン 紺青の拳', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('哪吒之魔童降世', 0, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('哪吒之魔童降世', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('哪吒之魔童降世', 5, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('唐人街探案2', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('大侦探皮卡丘 Pokémon Detective Pikachu', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('我和我的祖国', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('摔跤吧！爸爸 Dangal', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('火星救援 The Martian', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('爱宠大机密2 The Secret Life of Pets 2', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('狮子王 The Lion King', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('玩具总动员4 Toy Story 4', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('玩具总动员4 Toy Story 4', 9, '2025-07-15 22:58:04');
+INSERT INTO `history` VALUES ('疯狂动物城 Zootopia', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('白蛇：缘起', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('精灵旅社2 Hotel Transylvania 2', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('罗小黑战记', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('罗小黑战记', 9, '2025-07-15 22:57:47');
+INSERT INTO `history` VALUES ('航海王：狂热行动 ONE PIECE STAMPEDE', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('谍影重重5 Jason Bourne', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('这个杀手不太冷 Léon', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('驯龙高手3 How To Train Your Dragon: The Hidden World', 3, '2025-07-12 15:16:11');
 
 -- ----------------------------
 -- Table structure for score
