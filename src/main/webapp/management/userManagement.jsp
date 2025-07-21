@@ -7,10 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>用户管理 - YCU 电影管理</title>
+    <title>用户管理 - SCU Movie DB</title>
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="management/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/logo.png">
 
     <!-- Icons css -->
     <link href="management/assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css"/>
@@ -151,10 +151,16 @@
                 电影管理
             </a>
         </li>
-        <li class="active">
+        <li>
             <a href="${pageContext.request.contextPath}/userManagement">
                 <i class="mdi mdi-account-multiple"></i>
                 用户管理
+            </a>
+        </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/aiAnalysis">
+                <i class="mdi mdi-robot"></i>
+                智能分析
             </a>
         </li>
     </ul>
@@ -170,7 +176,7 @@
         <div class="page-title-alt-bg"></div>
         <div class="page-title-box">
             <ol class="breadcrumb float-right">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">YCU</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">SCU Movie DB</a></li>
                 <li class="breadcrumb-item active">用户管理</li>
             </ol>
             <h4 class="page-title">用户管理</h4>

@@ -218,6 +218,12 @@
                 用户管理
             </a>
         </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/aiAnalysis">
+                <i class="mdi mdi-robot"></i>
+                智能分析
+            </a>
+        </li>
     </ul>
 </div>
 <!-- End Left Sidebar -->
@@ -233,7 +239,7 @@
         <div class="page-title-alt-bg"></div>
         <div class="page-title-box">
             <ol class="breadcrumb float-right">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">YCU 小站</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">SCU Movie DB</a></li>
                 <li class="breadcrumb-item active">主页</li>
             </ol>
             <h4 class="page-title">主页</h4>
@@ -244,7 +250,7 @@
             <div class="col-xl-4">
 
                 <div class="card-box">
-                    <h4 class="header-title">总用户人数</h4>
+                    <h4 class="header-title">销量最佳</h4>
                     <p class="text-muted" id="time"></p>
                     <div class="mb-3 mt-4">
                         <h2 class="font-weight-light">40</h2>

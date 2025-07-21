@@ -47,8 +47,8 @@ public class MovieDao {
      */
     public boolean updateMovie(Movie movie, String originName) throws SQLException {
         String sql = "UPDATE allmovies SET name=?, score=?, director=?, scriptwriter=?, actor=?, " +
-                    "years=?, country=?, languages=?, length=?, image=?, des=?, url=?, type=? " +
-                    "WHERE name=?";
+            "years=?, country=?, languages=?, length=?, image=?, des=?, url=?, type=? " +
+            "WHERE name=?";
 
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         int result = runner.update(sql,
@@ -102,11 +102,11 @@ public class MovieDao {
      */
     public void addMovie(Movie movie) throws SQLException {
         String sql = "insert into allmovies (id,name, score, director, scriptwriter, actor, years, country, languages," +
-                "length, image, des, url, type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            "length, image, des, url, type) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         runner.update(sql, movie.getId(), movie.getName(), movie.getScore(), movie.getDirector(), movie.getScriptwriter(),
-                movie.getActor(), movie.getYears(), movie.getCountry(), movie.getLanguages(), movie.getLength(), movie.getImage(),
-                movie.getDes(), movie.getUrl(), movie.getType());
+            movie.getActor(), movie.getYears(), movie.getCountry(), movie.getLanguages(), movie.getLength(), movie.getImage(),
+            movie.getDes(), movie.getUrl(), movie.getType());
     }
 
     /**
@@ -126,9 +126,37 @@ public class MovieDao {
      * @Description: 根据模糊电影名查找电影
      */
     public List<Movie> findMoviesByDimName(String condition) throws SQLException {
-        String sql = "SELECT * FROM allmovies WHERE `name` in (SELECT DISTINCT name  FROM `allmovies`  where name LIKE ?) GROUP BY `name`";
+        String sql = "SELECT * FROM allmovies WHERE name LIKE ? LIMIT 20";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-        return runner.query(sql, new BeanListHandler<Movie>(Movie.class), "%"+condition+"%");
+        List<Movie> allMovies = runner.query(sql, new BeanListHandler<Movie>(Movie.class), "%"+condition+"%");
+
+        // 在Java层面去重，保留评分最高的版本
+        List<Movie> uniqueMovies = new ArrayList<>();
+        for (Movie movie : allMovies) {
+            boolean exists = false;
+            for (Movie uniqueMovie : uniqueMovies) {
+                if (uniqueMovie.getName().equals(movie.getName())) {
+                    // 如果已存在同名电影，保留评分更高的
+                    if (movie.getScore() > uniqueMovie.getScore()) {
+                        uniqueMovies.remove(uniqueMovie);
+                        uniqueMovies.add(movie);
+                    }
+                    exists = true;
+                    break;
+                }
+            }
+            if (!exists) {
+                uniqueMovies.add(movie);
+            }
+        }
+
+        // 按评分排序并限制返回8个结果
+        uniqueMovies.sort((m1, m2) -> Double.compare(m2.getScore(), m1.getScore()));
+        if (uniqueMovies.size() > 8) {
+            return uniqueMovies.subList(0, 8);
+        }
+
+        return uniqueMovies;
     }
 
     /**
@@ -285,11 +313,11 @@ public class MovieDao {
      * @return java.util.List<domain.Movie>
      */
     public List<Movie> findMoviesByYearAndCountryAndScoreAndCategory(String year, String country, String score,
-                                                                     String category, int page) throws SQLException {
+        String category, int page) throws SQLException {
         String sql = "select * from allmovies where years = ? and country = ? and score > ? and type = ? limit ?, ?";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         return runner.query(sql, new BeanListHandler<Movie>(Movie.class),
-                year, country, score, category, (page - 1) * 12, (page * 12));
+            year, country, score, category, (page - 1) * 12, (page * 12));
 
     }
 
@@ -305,7 +333,7 @@ public class MovieDao {
      * @return 电影集合
      */
     public List<Movie> findMoviesWithMultipleFilters(String type, String years, String country, String minScore,
-                                                     String sortBy, String sortOrder) throws SQLException {
+        String sortBy, String sortOrder) throws SQLException {
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT * FROM allmovies WHERE id IN (SELECT MIN(id) FROM allmovies WHERE 1=1");
 
@@ -364,7 +392,7 @@ public class MovieDao {
         String sql = "select * from allmovies where score > ? and type = ? limit ?, ?";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         return runner.query(sql, new BeanListHandler<Movie>(Movie.class), score, category,
-                (page - 1) * 12, (page * 12));
+            (page - 1) * 12, (page * 12));
     }
 
     /**

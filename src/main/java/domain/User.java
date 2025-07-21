@@ -59,6 +59,21 @@ public class User {
      */
     private int age;
 
+    /**
+     * 找回密码的验证码
+     */
+    private String emailCode;
+
+    /**
+     * 验证码过期时间
+     */
+    private Date codeExpireTime;
+
+    /**
+     * 用户头像路径
+     */
+    private String avatar;
+
     public int getId() {
         return id;
     }
@@ -153,6 +168,30 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getEmailCode() {
+        return emailCode;
+    }
+
+    public void setEmailCode(String emailCode) {
+        this.emailCode = emailCode;
+    }
+
+    public Date getCodeExpireTime() {
+        return codeExpireTime;
+    }
+
+    public void setCodeExpireTime(Date codeExpireTime) {
+        this.codeExpireTime = codeExpireTime;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     // 为了兼容性，添加phone的getter和setter方法

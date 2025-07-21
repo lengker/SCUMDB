@@ -219,7 +219,7 @@ function update(json) {
             $(img).attr("src", json[index].image);
             $(movieName).text(json[index].name);
             $(year).text(json[index].years);
-            $(url).attr("href", "detail?movieName=" + json[index].name);
+            $(url).attr("href", "detail.do?movieName=" + json[index].name);
             $(score).text(json[index].score);
             $(this).removeClass("d-none")
 

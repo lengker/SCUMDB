@@ -14,7 +14,7 @@
 .clearfix:before, .clearfix:after { content: ''; display: table; }
 .clearfix:after { clear: both; }
 
- .input-container {
+.input-container {
 	margin: 0 auto;
 	text-align: center;
 	overflow: hidden;

@@ -1,0 +1,46 @@
+#login .loginform,
+#register .loginform {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+#login .loginform .form-actions,
+#register .loginform .form-actions {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: transparent;
+}
+
+a.btn-link.text-muted {
+    color: #eee;
+    transition: color 0.3s ease-in-out;
+}
+
+a.btn-link.text-muted:hover, a.btn-link.text-muted:active, a.btn-link.text-muted:focus {
+    color: #fff;
+}
+
+#login .pad.input-container,
+#register .pad.input-container,
+#forget .pad.input-container {
+    border-radius: 10px 10px 0 0;
+    overflow: hidden; /* This is important to make child elements respect the border-radius */
+}
+
+.btn.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

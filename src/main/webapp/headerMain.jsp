@@ -1,6 +1,26 @@
 <%@page import="domain.User" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<style>
+  /* 实时搜索样式 */
+  .search-result-item:hover {
+    background-color: #343a40 !important;
+  }
+
+  .search-result-item {
+    transition: background-color 0.2s ease;
+  }
+
+  #searchResults {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  #searchInput:focus {
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    border-color: #28a745;
+  }
+</style>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -47,13 +67,17 @@
                 </ul>
 
 
-                <form class="form-inline mt-2 mt-md-0 mr-3" action="${pageContext.request.contextPath}/search.do"
-                      method="get">
-                    <input class="form-control mr-sm-2" type="text" name="search" placeholder="电影名" value=""
-                           aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                        <span class="iconfont iconsousuo"></span></button>
-                </form>
+                <div class="form-inline mt-2 mt-md-0 mr-3 position-relative">
+                    <input class="form-control mr-sm-2" type="text" id="searchInput" placeholder="搜索电影..."
+                           aria-label="Search" autocomplete="off">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="performSearch()">
+                        <span class="iconfont iconsousuo"></span>
+                    </button>
+                    <!-- 实时搜索结果下拉框 -->
+                    <div id="searchResults" class="position-absolute bg-dark border border-secondary rounded"
+                         style="top: 100%; left: 0; right: 0; z-index: 1000; max-height: 400px; overflow-y: auto; display: none;">
+                    </div>
+                </div>
 
 
                 <ul class="navbar-nav mr-4">
@@ -106,3 +130,97 @@
 
     <!-- 结束 -->
 </div>
+
+<script>
+  // 确保jQuery已加载
+  if (typeof $ === 'undefined') {
+    document.write('<script src="${pageContext.request.contextPath}/js/jquery-3.4.1.min.js"><\/script>');
+  }
+
+  // 实时搜索功能
+  var searchTimeout;
+  var searchInput = document.getElementById('searchInput');
+  var searchResults = document.getElementById('searchResults');
+
+  // 监听输入事件
+  searchInput.addEventListener('input', function() {
+    clearTimeout(searchTimeout);
+    var searchTerm = this.value.trim();
+
+    if (searchTerm.length === 0) {
+      searchResults.style.display = 'none';
+      return;
+    }
+
+    // 延迟300ms执行搜索，避免频繁请求
+    searchTimeout = setTimeout(function() {
+      performRealTimeSearch(searchTerm);
+    }, 300);
+  });
+
+  // 点击其他地方隐藏搜索结果
+  document.addEventListener('click', function(e) {
+    if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+      searchResults.style.display = 'none';
+    }
+  });
+
+  // 实时搜索函数
+  function performRealTimeSearch(searchTerm) {
+    $.ajax({
+      url: '${pageContext.request.contextPath}/realtimeSearch.do',
+      type: 'POST',
+      data: {search: searchTerm},
+      dataType: 'json',
+      success: function(data) {
+        displaySearchResults(data);
+      },
+      error: function() {
+        searchResults.innerHTML = '<div class="p-3 text-light">搜索出错，请重试</div>';
+        searchResults.style.display = 'block';
+      }
+    });
+  }
+
+  // 显示搜索结果
+  function displaySearchResults(movies) {
+    if (movies.length === 0) {
+      searchResults.innerHTML = '<div class="p-3 text-light">未找到相关电影</div>';
+    } else {
+      var html = '';
+      movies.forEach(function(movie) {
+        html += '<div class="search-result-item p-2 border-bottom border-secondary" style="cursor: pointer;" onclick="goToMovie(\'' + movie.name + '\')">';
+        html += '<div class="d-flex align-items-center">';
+        html += '<img src="' + movie.image + '" alt="' + movie.name + '" style="width: 40px; height: 60px; object-fit: cover; margin-right: 10px;">';
+        html += '<div>';
+        html += '<div class="text-light font-weight-bold">' + movie.name + '</div>';
+        html += '<div class="text-muted small">' + movie.years + ' · ' + movie.score + '分</div>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+      });
+      searchResults.innerHTML = html;
+    }
+    searchResults.style.display = 'block';
+  }
+
+  // 跳转到电影详情页
+  function goToMovie(movieName) {
+    window.location.href = '${pageContext.request.contextPath}/detail.do?movieName=' + encodeURIComponent(movieName);
+  }
+
+  // 执行搜索（点击搜索按钮）
+  function performSearch() {
+    var searchTerm = searchInput.value.trim();
+    if (searchTerm) {
+      window.location.href = '${pageContext.request.contextPath}/search.do?search=' + encodeURIComponent(searchTerm);
+    }
+  }
+
+  // 回车键搜索
+  searchInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      performSearch();
+    }
+  });
+</script>
