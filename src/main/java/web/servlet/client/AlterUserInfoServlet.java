@@ -22,30 +22,50 @@ public class AlterUserInfoServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         response.setCharacterEncoding("utf-8");
 
-        // 获得要设置的新密码
         String introduce = request.getParameter("introduce");
         String password = request.getParameter("password");
+        String gender = request.getParameter("gender");
+        String ageStr = request.getParameter("age");
 
         logger.warn(introduce);
         User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
+            response.getWriter().write("false");
+            return;
+        }
         if (password != null && !"".equals(password)) {
-            // 将这个新密码存到 User对象中
             user.setPassword(password);
         }
         if (introduce != null) {
             user.setIntroduce(introduce);
         }
+        if (gender != null) {
+            user.setGender(gender);
+        }
+        if (ageStr != null) {
+            try {
+                user.setAge(Integer.parseInt(ageStr));
+            } catch (NumberFormatException e) {
+                response.getWriter().write("false");
+                return;
+            }
+        }
         UserService service = new UserService();
         PrintWriter writer = response.getWriter();
         try {
-            service.updateUser(user);
+            // 密码或介绍修改
+            if (password != null || introduce != null) {
+                service.updateUser(user);
+            }
+            // 性别或年龄修改
+            if (gender != null || ageStr != null) {
+                service.updateUserInfo(user);
+            }
             writer.write("ok");
-
         } catch (UpdateUserException e) {
             e.printStackTrace();
             writer.write("false");
         }
-
     }
 
     @Override

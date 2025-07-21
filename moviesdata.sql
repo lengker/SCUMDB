@@ -128,7 +128,7 @@ INSERT INTO `allmovies` VALUES (84, '精灵旅社 Hotel Transylvania', 8, '格�
 INSERT INTO `allmovies` VALUES (85, '航海王之黄金城 ONE PIECE FILM GOLD', 8, '宫元宏彰 ', '黑岩勉 尾田荣一郎 ', '田中真弓 中井和哉 冈村明美 山口胜平 平田广明 大谷育江 山口由里子 矢尾一树 长岛雄一 山路和弘 古谷彻 坂本千夏 渡边菜生子 立木文彦 关智一 小野坂昌也 雪野五月 樱井孝宏 高木涉 桧山修之 乃村健次 鱼建 间宫康弘 齐藤次郎 高户靖广 三浦祥朗 织田优成 福原耕平 平井启二 宫崎宽务 荒井聪太 进藤尚美 齐藤贵美子 下地紫野 大空直美 森下由树子 上田瞳 满岛光 滨田岳 菜菜绪 三宅正治 竹中直人 古田新太 成田凌 佐藤亚璃纱 三吉彩花 西野七濑 武田玲奈 三村胜和 小栗旬 小林剑道 北大路欣也 ', '2016', ' 日本', ' 日语', '119分钟', 'donghua//85.jpg', '\n                                　　路飞（田中真弓 配音）和他的草帽海贼团在新世界展开全新的冒险，这一次他们来到了世界上最大的娱乐城——古兰·泰佐罗。这里云集了世界各地的富豪 海盗 海军，同时也是政府承认的独立国家和非武装地带，是世界政府不可轻易染指的“绝对圣域”。被称作“黄金帝”的吉尔德·泰佐罗（山路和弘 配音）是绝对圣域的至高领导，据说吃过金金果实的他拥有常人难以想象的神奇能力，此时有条不紊地实施着雄霸天下的计划。另一方面，原打算狠捞一笔的路飞一伙落入了吉尔德·泰佐罗的金钱陷阱，他们进而被卷入了裹挟着奉献给天龙人的“天上金”以及对抗政府的革命军的巨大漩涡之中。新的争斗在所难免……\n                                    \n                                　　本片是经典漫画作品《海贼王》第13部剧场版动画。\n                        ', 'https://www.douban.com/link2/?url=http%3A%2F%2Fwww.iqiyi.com%2Fv_19rr9tounc.html%3Fvfm%3Dm_331_dbdy%26fv%3D4904d94982104144a1548dd9040df241&subtype=9&type=online-video', '动画');
 INSERT INTO `allmovies` VALUES (86, '愤怒的小鸟2 The Angry Birds Movie 2', 7, '图鲁普·范·奥尔曼 ', '彼得·阿克曼 ', '杰森·苏戴奇斯 比尔·哈德尔 乔什·加德 丹尼·麦克布莱德 彼特·丁拉基 妮琪·米娜 斯特林·K·布朗 莱斯莉·琼斯 奥卡菲娜 蕾切尔·布鲁姆 扎克·伍兹 欧赫尼奥·德尔维斯 里尔·莱尔·哈瓦瑞 德芙·卡梅隆 贝克·班尼特 布鲁克琳·普林斯 阿尔玛·瓦萨诺 菲丝·玛格丽特·基德曼-厄本 桑迪·萝丝·厄本 吉妮西丝·坦尼翁 ', '2019', ' 芬兰 / 美国', ' 英语', '96分钟', 'donghua//86.jpg', '\n                                　　十年“欢喜冤家”猪鸟依旧如往常一样“互相拆台”。然而，“不速之客”发射冰球袭击了小鸟岛和猪猪岛，令双方不得不放下芥蒂，小鸟岛昔日英雄胖红联合小鸟伙伴们与曾经的对手“捣蛋猪”雷纳德一行组建了临时联盟，他们将前往全新冰封岛屿上阻止神秘反派的灭世计划。\n                        ', 'https://www.douban.com/link2/?url=http%3A%2F%2Fwww.iqiyi.com%2Fv_19rqtgxrp4.html%3Fvfm%3Dm_331_dbdy%26fv%3D4904d94982104144a1548dd9040df241&subtype=9&type=online-video', '动画');
 INSERT INTO `allmovies` VALUES (87, '马达加斯加 Madagascar', 8, '埃里克·达尼尔 汤姆·麦格拉思 ', '马克·伯顿 比利·弗罗利克 埃里克·达尼尔 汤姆·麦格拉思 ', '本·斯蒂勒 克里斯·洛克 大卫·休默 贾达·萍克·史密斯 萨莎·拜伦·科恩 ', '2005', ' 美国', ' 英语 / 葡萄牙语 / 西班牙语 / 德语 / 法语', '86 分钟', 'donghua//87.jpg', '\n                                　　在纽约的中央公园里，生活着这样一群无忧无虑的好朋友：狮子亚利克斯 斑马马蒂 长颈鹿麦尔曼以及胖河马格洛丽亚。他们的性格开朗活泼，因此每天的生活都过得丰富多彩。直到有一天，一群流浪的企鹅令斑马马蒂产生了一个大胆的念头，那就是逃出动物园，探寻自己的故乡，寻找新世界。于是，没有通知其他朋友，马蒂悄悄上路了。这下可急坏了朋友们，亚历克斯和其他几个朋友也逃出了中央公园，踏上了寻找马蒂的旅途。\n                        ', 'https://www.douban.com/link2/?url=http%3A%2F%2Fwww.iqiyi.com%2Fv_19rrmyar1w.html%3Fvfm%3Dm_331_dbdy%26fv%3D4904d94982104144a1548dd9040df241&subtype=9&type=online-video', '动画');
-INSERT INTO `allmovies` VALUES (88, '罗小黑战记', 7, '卢恒宇 李姝洁 ', '卢恒宇 李姝洁 寒舞 隋佳林 高信影 赵聪 ', '山新 郝祥海 李姝洁 藤新 图特哈蒙 李佳怡 佟心竹 九孔 卢恒宇 宝木中阳 ', '2017', ' 中国大陆', ' 汉语普通话', '101分钟', 'donghua//88.jpg', '\n                                　　拥有着强大力量的创世神杖被四大神之一的埃及神拉（李璐 配音）盗走。为了令宇宙免于被毁灭的悲惨命运，希腊神宙斯（藤新 配音）派出了自己的女儿雅典娜（山新 配音）追踪神杖的下落。\n                                    \n                                　　小金刚（皇贞季 配音）是自幼生长在孤儿院里的平凡少年，常年凭借着机灵的脑瓜靠着坑蒙拐骗赚钱度日，只为了有朝一日身患重病的青梅竹马小青（C小调 配音）能够康复。一次偶然中，小金刚得到了藏有创世神杖下落的藏宝图，随后遭到了雷神托尔（李姝洁 饰）的伏击，在争抢之中，藏宝图被破坏，就这样，小金刚成为了唯一一个知道创世神杖在哪里的凡人。就这样，小金刚 雅典娜 托尔，再加上一个来自东方的脱线河神（郝祥海 饰），一行四人踏上了寻找创世神杖的旅途。\n                        ', 'https://www.douban.com/link2/?url=http%3A%2F%2Fwww.iqiyi.com%2Fv_19rr8v2it4.html%3Fvfm%3Dm_331_dbdy%26fv%3D4904d94982104144a1548dd9040df241&subtype=9&type=online-video', '动画');
+INSERT INTO `allmovies` VALUES (88, '十万个冷笑话2', 7, '卢恒宇 李姝洁 ', '卢恒宇 李姝洁 寒舞 隋佳林 高信影 赵聪 ', '山新 郝祥海 李姝洁 藤新 图特哈蒙 李佳怡 佟心竹 九孔 卢恒宇 宝木中阳 ', '2017', ' 中国大陆', ' 汉语普通话', '101分钟', 'donghua//88.jpg', '\n                                　　拥有着强大力量的创世神杖被四大神之一的埃及神拉（李璐 配音）盗走。为了令宇宙免于被毁灭的悲惨命运，希腊神宙斯（藤新 配音）派出了自己的女儿雅典娜（山新 配音）追踪神杖的下落。\n                                    \n                                　　小金刚（皇贞季 配音）是自幼生长在孤儿院里的平凡少年，常年凭借着机灵的脑瓜靠着坑蒙拐骗赚钱度日，只为了有朝一日身患重病的青梅竹马小青（C小调 配音）能够康复。一次偶然中，小金刚得到了藏有创世神杖下落的藏宝图，随后遭到了雷神托尔（李姝洁 饰）的伏击，在争抢之中，藏宝图被破坏，就这样，小金刚成为了唯一一个知道创世神杖在哪里的凡人。就这样，小金刚 雅典娜 托尔，再加上一个来自东方的脱线河神（郝祥海 饰），一行四人踏上了寻找创世神杖的旅途。\n                        ', 'https://www.douban.com/link2/?url=http%3A%2F%2Fwww.iqiyi.com%2Fv_19rr8v2it4.html%3Fvfm%3Dm_331_dbdy%26fv%3D4904d94982104144a1548dd9040df241&subtype=9&type=online-video', '动画');
 INSERT INTO `allmovies` VALUES (89, '冰川时代5：星际碰撞 Ice Age: Collision Course', 7, '麦克·特米尔 加仑·T·楚 ', '迈克尔·J·威尔森 迈克尔·伯格  尤尼·布伦纳 奥布里·所罗门 ', '西蒙·佩吉 洁茜J  杰西·泰勒·弗格森 克里斯·韦奇 詹妮弗·洛佩兹 梅丽莎·劳奇 迈克尔·斯特拉罕 雷·罗马诺 约翰·雷吉扎莫 斯蒂芬妮·比翠丝 尼克·奥弗曼 亚当·德维尼 柯柯·帕尔莫 马克思·格林菲尔德 丹尼斯·利瑞 卡洛斯·庞丝 旺达·塞克丝 尼尔·德格拉塞·泰森 ', '2016', ' 美国', ' 英语', '94分钟', 'donghua//89.jpg', '\n                                　　影片讲述松鼠奎特（克里斯·韦奇 Chris Wedge 配音）为了追松果，偶然引发了宇宙事件，改变并威胁着冰川时代的世界。为了拯救自己，话唠树懒希德（约翰·雷吉扎莫 John Leguizamo 配音） 猛犸象曼尼（雷·罗马诺 Ray Romano 配音） 剑齿虎迪亚哥（丹尼斯·利瑞 Denis Leary 配音），以及别的动物群族必须离开家园，踏上了他们充满喜剧色彩的冒险旅程，他们来到了充满异国情调的新大陆，并遇到了许多形形色色的新角色。\n                        ', 'https://www.douban.com/link2/?url=http%3A%2F%2Fwww.iqiyi.com%2Fv_19rr9a6m6w.html%3Fvfm%3Dm_331_dbdy%26fv%3D4904d94982104144a1548dd9040df241&subtype=9&type=online-video', '动画');
 INSERT INTO `allmovies` VALUES (90, '帕丁顿熊 Paddington', 8, '保罗·金 ', '保罗·金 哈密斯·麦克尔 迈克尔·邦德 ', '本·卫肖 妮可·基德曼 休·博纳维尔 莎莉·霍金斯 萨缪尔·乔斯林 马德琳·哈里斯 朱丽·沃特斯 吉姆·布劳德本特 彼得·卡帕尔迪 艾美达·斯丹顿 迈克尔·刚本 杰弗里·帕尔默 蒂姆·唐尼 迈克尔·邦德 马特·卢卡斯 裘德·怀特 西蒙·法纳比 洛蒂·斯蒂尔 特丽萨·沃森 ', '2014', ' 英国 / 法国', ' 英语', '95分钟', 'donghua//90.jpg', '\n                            \n                            \n                        \n                                　　在神秘的秘鲁，生活着一种十分稀有的果酱熊，他们拥有非常高的智商和语言能力。当年果酱熊夫妇帕斯图佐和露西曾与来自伦敦的探险家结下深厚的友谊，并且学到了压制果酱的技巧。时至今日，一场灾难摧毁了果酱熊安宁快乐的生活，露西阿姨将淘气的侄子送上开往伦敦的邮轮，嘱咐他在那个友好的国度展开新的生活。万里漂泊而来的小熊懵懵懂懂来到帕丁顿火车站，可是当代人的冷漠却让他倍感失落。幸运的是小熊遇到了布朗一家，并且得到了一个好听的名字——帕丁顿（本·卫肖 Ben Whishaw 配音）。善良的女主人玛丽（莎莉·霍金斯 Sally Hawkins 饰）殷切要帮助帕丁顿找到可以栖身的地方，而男主人亨利（休·博内威利 Hugh Bonneville 饰）则时刻想把这个突如其来的麻烦赶走。\n                                    \n                                　　在此过程中，搞怪不断的帕丁顿和布朗一家关系逐渐融洽，而自然历史博物馆的标本师米莉森特（妮可·基德曼 Nicole Kidman 饰）则怀着邪恶的目的悄然向帕丁顿接近……\n                        ', 'https://www.douban.com/link2/?url=http%3A%2F%2Fwww.iqiyi.com%2Fv_19rrnp4z3w.html%3Fvfm%3Dm_331_dbdy&subtype=9&type=online-video', '动画');
 INSERT INTO `allmovies` VALUES (91, '怪物史瑞克 Shrek', 8, '安德鲁·亚当森 维基·詹森 ', '威廉·史塔克 泰德·艾略特 特里·鲁西奥 乔·斯蒂尔曼 罗杰·S·H·舒尔曼 科迪·卡梅伦 克里斯·米勒 康拉德·弗农 ', '麦克·梅尔斯 艾迪·墨菲 卡梅隆·迪亚兹 约翰·利思戈 文森特·卡索 皮特·丹尼斯 克莱夫·皮尔斯 吉姆·库宁斯 鲍比·布洛克 克里斯·米勒 科迪·卡梅伦 凯瑟琳·弗里曼 迈克尔·葛拉索 克里斯多夫·奈茨 西蒙·J·史密斯 ', '2001', ' 美国', ' 英语', '90 分钟', 'donghua//91.jpg', '\n                                　　史莱克生活在平凡的世界中——他本身是一个其貌不扬的怪物，绿色的身体，古怪的脾气，不爱干净的懒散生活。这天他家里来了几个不速之客，他们告诉史莱克，自己来自一个残暴国王统治下的王国，现在已经无家可归了。而且，那个残暴的国王还掠夺了一个美丽非凡的公主，打算强占为妻。\n                                    \n                                　　史莱克虽说丑陋，却心内善良。在领主的威逼下，无奈下他只能前去搭救公主，同时心想一睹公主芳容。路上，他遇到了一个话痨骡子，骡子知道了史莱克的事迹，决定忠心耿耿为之效劳。\n                                    \n                                　　前路有喷火恶龙等着和他们搏斗呢，他们能不能闯过难关，上演完美的英雄救美童话？\n                        ', 'https://www.douban.com/link2/?url=http%3A%2F%2Fwww.iqiyi.com%2Fv_19rrnppb7k.html%3Fvfm%3Dm_331_dbdy%26fv%3D4904d94982104144a1548dd9040df241&subtype=9&type=online-video', '动画');
@@ -1563,9 +1563,9 @@ CREATE TABLE `collection`  (
 -- ----------------------------
 -- Records of collection
 -- ----------------------------
-INSERT INTO `collection` VALUES ('gg', '犯罪现场 犯罪現場', '2019-12-12 15:16:32');
-INSERT INTO `collection` VALUES ('gg', '疯狂动物城 Zootopia', '2019-12-12 15:16:32');
-INSERT INTO `collection` VALUES ('gg', '罗小黑战记', '2019-12-12 15:17:03');
+INSERT INTO `collection` VALUES ('gg', '犯罪现场 犯罪現場', '2025-07-12 15:16:32');
+INSERT INTO `collection` VALUES ('gg', '疯狂动物城 Zootopia', '2025-07-12 15:16:32');
+INSERT INTO `collection` VALUES ('gg', '罗小黑战记', '2025-07-12 15:17:03');
 
 -- ----------------------------
 -- Table structure for comments
@@ -1581,21 +1581,21 @@ CREATE TABLE `comments`  (
 -- ----------------------------
 -- Records of comments
 -- ----------------------------
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[嘻嘻][哆啦A梦微笑]', '2019-12-05 21:54:38');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[黑寡妇][蜘蛛侠]蜘蛛侠Spider Man', '2019-12-05 22:02:28');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '你们好2333[伤心]', '2019-12-05 22:13:05');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[吐][打脸]', '2019-12-05 22:19:44');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[猪头]', '2019-12-05 22:19:57');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[奇异博士]', '2019-12-06 13:17:53');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[泪][喵喵]', '2019-12-06 13:18:00');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[吃瓜]', '2019-12-06 13:18:04');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[哈哈]', '2019-12-06 17:49:12');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[汗]', '2019-12-07 23:55:43');
-INSERT INTO `comments` VALUES ('mm', '哪吒之魔童降世', '你好啊[黑线]', '2019-12-08 12:53:21');
-INSERT INTO `comments` VALUES ('mm', '哪吒之魔童降世', '[害羞]', '2019-12-08 17:05:46');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[鼓掌]', '2019-12-08 18:10:48');
-INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[黑线] 2019/12/9', '2019-12-09 11:07:33');
-INSERT INTO `comments` VALUES ('123', '玩具总动员4 Toy Story 4', 'nice', '2019-12-15 22:58:41');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[嘻嘻][哆啦A梦微笑]', '2025-07-15 21:54:38');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[黑寡妇][蜘蛛侠]蜘蛛侠Spider Man', '2025-07-15 22:02:28');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '你们好2333[伤心]', '2025-07-15 22:13:05');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[吐][打脸]', '2025-07-15 22:19:44');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[猪头]', '2025-07-15 22:19:57');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[奇异博士]', '2025-07-16 13:17:53');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[泪][喵喵]', '2025-07-16 13:18:00');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[吃瓜]', '2025-07-16 13:18:04');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[哈哈]', '2025-07-16 17:49:12');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[汗]', '2025-07-17 23:55:43');
+INSERT INTO `comments` VALUES ('mm', '哪吒之魔童降世', '你好啊[黑线]', '2025-07-18 12:53:21');
+INSERT INTO `comments` VALUES ('mm', '哪吒之魔童降世', '[害羞]', '2025-07-18 17:05:46');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[鼓掌]', '2025-07-18 18:10:48');
+INSERT INTO `comments` VALUES ('gg', '哪吒之魔童降世', '[黑线] 2019/12/9', '2025-07-19 11:07:33');
+INSERT INTO `comments` VALUES ('123', '玩具总动员4 Toy Story 4', 'nice', '2025-07-15 22:58:41');
 
 -- ----------------------------
 -- Table structure for history
@@ -1611,31 +1611,31 @@ CREATE TABLE `history`  (
 -- ----------------------------
 -- Records of history
 -- ----------------------------
-INSERT INTO `history` VALUES ('V字仇杀队 V for Vendetta', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('X战警 X-Men', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('加勒比海盗2：聚魂棺 Pirates of the Caribbean: Dead Man\'s Chest', 1, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('名侦探柯南：绀青之拳 名探偵コナン 紺青の拳', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('哪吒之魔童降世', 0, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('哪吒之魔童降世', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('哪吒之魔童降世', 5, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('唐人街探案2', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('大侦探皮卡丘 Pokémon Detective Pikachu', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('我和我的祖国', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('摔跤吧！爸爸 Dangal', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('火星救援 The Martian', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('爱宠大机密2 The Secret Life of Pets 2', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('狮子王 The Lion King', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('玩具总动员4 Toy Story 4', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('玩具总动员4 Toy Story 4', 9, '2019-12-15 22:58:04');
-INSERT INTO `history` VALUES ('疯狂动物城 Zootopia', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('白蛇：缘起', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('精灵旅社2 Hotel Transylvania 2', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('罗小黑战记', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('罗小黑战记', 9, '2019-12-15 22:57:47');
-INSERT INTO `history` VALUES ('航海王：狂热行动 ONE PIECE STAMPEDE', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('谍影重重5 Jason Bourne', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('这个杀手不太冷 Léon', 3, '2019-12-12 15:16:11');
-INSERT INTO `history` VALUES ('驯龙高手3 How To Train Your Dragon: The Hidden World', 3, '2019-12-12 15:16:11');
+INSERT INTO `history` VALUES ('V字仇杀队 V for Vendetta', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('X战警 X-Men', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('加勒比海盗2：聚魂棺 Pirates of the Caribbean: Dead Man\'s Chest', 1, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('名侦探柯南：绀青之拳 名探偵コナン 紺青の拳', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('哪吒之魔童降世', 0, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('哪吒之魔童降世', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('哪吒之魔童降世', 5, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('唐人街探案2', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('大侦探皮卡丘 Pokémon Detective Pikachu', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('我和我的祖国', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('摔跤吧！爸爸 Dangal', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('火星救援 The Martian', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('爱宠大机密2 The Secret Life of Pets 2', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('狮子王 The Lion King', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('玩具总动员4 Toy Story 4', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('玩具总动员4 Toy Story 4', 9, '2025-07-15 22:58:04');
+INSERT INTO `history` VALUES ('疯狂动物城 Zootopia', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('白蛇：缘起', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('精灵旅社2 Hotel Transylvania 2', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('罗小黑战记', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('罗小黑战记', 9, '2025-07-15 22:57:47');
+INSERT INTO `history` VALUES ('航海王：狂热行动 ONE PIECE STAMPEDE', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('谍影重重5 Jason Bourne', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('这个杀手不太冷 Léon', 3, '2025-07-12 15:16:11');
+INSERT INTO `history` VALUES ('驯龙高手3 How To Train Your Dragon: The Hidden World', 3, '2025-07-12 15:16:11');
 
 -- ----------------------------
 -- Table structure for score
@@ -1653,29 +1653,33 @@ CREATE TABLE `score`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
-                          `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '系统自动编号，自增',
-                          `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'null' COMMENT '用户名称',
-                          `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户密码',
-                          `gender` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户性别',
-                          `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户邮箱',
-                          `telephone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '用户电话',
-                          `introduce` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '这家伙很懒，还没有添加任何描述' COMMENT '自我介绍',
-                          `activeCode` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'null' COMMENT '注册激活码',
-                          `state` int(11) NULL DEFAULT 1 COMMENT '用户状态：1:激活 0：未激活',
-                          `role` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'commonUser' COMMENT '用户角色：普通用户，超级用户，VIP用户',
-                          `registTime` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '注册时间',
-                          `email_code` VARCHAR(255) NULL,
-                          `code_expire_time` DATETIME NULL,
-                          PRIMARY KEY (`id`, `username`) USING BTREE
+    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '系统自动编号，自增',
+    `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名称',
+    `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户密码',
+    `gender` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户性别',
+    `age` INT DEFAULT 0,
+    `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户邮箱',
+    `telephone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户电话',
+    `introduce` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '这家伙很懒，还没有添加任何描述' COMMENT '自我介绍',
+    `activeCode` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '注册激活码',
+    `state` int(11) NULL DEFAULT 1 COMMENT '用户状态：1:激活 0：未激活',
+    `role` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'commonUser' COMMENT '用户角色：普通用户，超级用户，VIP用户',
+    `registTime` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '注册时间',
+    `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'img/bg.png' COMMENT '用户头像路径',
+    `emailCode` VARCHAR(255) NULL,
+    `codeExpireTime` DATETIME NULL,
+    PRIMARY KEY (`id`) USING BTREE,
+    UNIQUE INDEX `uk_username`(`username`) USING BTREE,
+    UNIQUE INDEX `uk_email`(`email`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'admin', '123456', '男', '945716994@qq.com', '18770411594', '管理员', '1024', 1, 'admin', '2019-10-24 11:12:31', NULL, NULL);
-INSERT INTO `users` VALUES (3, 'gg', '123', '男', '123@qq.com', NULL, 'Rush B', NULL, 1, 'commonUser', '2019-12-11 20:15:05', NULL, NULL);
-INSERT INTO `users` VALUES (5, 'mm', '123', NULL, 'mm@123.com', NULL, '唱 跳 rap 篮球', NULL, 1, 'commonUser', '2019-12-11 20:16:32', NULL, NULL);
-INSERT INTO `users` VALUES (8, 'ss', 'ss', 'null', NULL, 'null', '这家伙很懒，还没有添加任何描述', 'null', 1, 'commonUser', '2019-12-15 14:23:57', NULL, NULL);
-INSERT INTO `users` VALUES (9, '123', '123', 'null', NULL, 'null', '这家伙很懒，还没有添加任何描述', 'null', 1, 'commonUser', '2019-12-15 22:56:39', NULL, NULL);
+INSERT INTO `users` VALUES (1, 'admin', '123456', '男', 18,  '945716994@qq.com', '18770411594', '管理员', '1024', 1, 'admin', '2025-07-15 11:12:31', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (3, 'gg', '123', '男', 19, '123@qq.com', NULL, 'Rush B', NULL, 1, 'commonUser', '2025-07-21 20:15:05', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (5, 'mm', '123', NULL, 20, 'mm@123.com', NULL, '唱 跳 rap 篮球', NULL, 1, 'commonUser', '2025-07-21 20:16:32', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (8, 'ss', 'ss', 'null', 19, NULL, 'null', '这家伙很懒，还没有添加任何描述', 'null', 1, 'commonUser', '2025-07-15 14:23:57', 'img/bg.png', NULL, NULL);
+INSERT INTO `users` VALUES (9, '123', '123', 'null', 21, NULL, 'null', '这家伙很懒，还没有添加任何描述', 'null', 1, 'commonUser', '2025-07-15 22:56:39', 'img/bg.png', NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

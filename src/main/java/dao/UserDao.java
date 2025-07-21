@@ -4,6 +4,7 @@ import domain.User;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 import utils.DataSourceUtils;
 
 import java.sql.SQLException;
@@ -47,7 +48,10 @@ public class UserDao {
      * @throws SQLException
      */
     public User findUserByEmail(String email) throws SQLException {
-        String sql = "select * from users where email=?";
+//        String sql = "SELECT id, username, password, gender, age, email, telephone, introduce, activeCode, state, role, registTime," +
+//        "emailCode, codeExpireTime " +
+        String sql = "SELECT *" +
+                     "FROM users WHERE email=?";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         return runner.query(sql, new BeanHandler<User>(User.class), email);
     }
@@ -190,7 +194,7 @@ public class UserDao {
      * @throws SQLException
      */
     public void updateUserEmailCode(User user) throws SQLException {
-        String sql = "UPDATE users SET email_code=?, code_expire_time=? WHERE email=?";
+        String sql = "UPDATE users SET emailCode=?, codeExpireTime=? WHERE email=?";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         runner.update(sql, user.getEmailCode(), user.getCodeExpireTime(), user.getEmail());
     }
@@ -207,4 +211,39 @@ public class UserDao {
         runner.update(sql, user.getPassword(), user.getEmail());
     }
 
+    /**
+     * 更新用户头像
+     *
+     * @param userId    用户ID
+     * @param avatarUrl 头像URL
+     * @throws SQLException
+     */
+    public void updateUserAvatar(int userId, String avatarUrl) throws SQLException {
+        String sql = "UPDATE users SET avatar = ? WHERE id = ?";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        runner.update(sql, avatarUrl, userId);
+    }
+
+    /**
+     * 获取用户总数
+     *
+     * @return long
+     */
+    public long getUsersCount() throws SQLException {
+        String sql = "select count(*) from users";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        return (long) runner.query(sql, new ScalarHandler());
+    }
+
+    /**
+     * 更新用户信息
+     *
+     * @param user 更新的用户信息
+     * @throws SQLException
+     */
+    public void updateUserInfo(User user) throws SQLException {
+        String sql = "UPDATE users SET gender = ?, age = ? WHERE id = ?";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        runner.update(sql, user.getGender(), user.getAge(), user.getId());
+    }
 }

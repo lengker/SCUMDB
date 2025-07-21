@@ -46,7 +46,7 @@ public class ClickTimeDao {
      * @Description: 查询数据库中点击次数最多的4部电影
      */
     public List<Movie> getHotMovies() throws SQLException {
-        String sql = "SELECT * FROM allmovies WHERE name in ( SELECT movieName FROM(SELECT * FROM clicknumber ORDER BY number DESC LIMIT 4) as t)";
+        String sql = "SELECT * FROM allmovies WHERE name in ( SELECT movieName FROM(SELECT * FROM clicknumber ORDER BY number DESC LIMIT 10) as t)";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         return runner.query(sql, new BeanListHandler<Movie>(Movie.class));
     }
@@ -61,4 +61,17 @@ public class ClickTimeDao {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         return runner.query(sql, new BeanListHandler<Movie>(Movie.class));
     }
+
+    /**
+     * 获取点击次数最多的10部电影的点击次数信息
+     *
+     * @return java.util.List<domain.ClickTime>
+     */
+    public List<ClickTime> getTopTenClickTimes() throws SQLException {
+        String sql = "SELECT * FROM clicknumber ORDER BY number DESC LIMIT 10";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        return runner.query(sql, new BeanListHandler<ClickTime>(ClickTime.class));
+    }
+
+
 }

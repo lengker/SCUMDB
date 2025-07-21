@@ -4,12 +4,14 @@ import domain.Movie;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 import utils.DataSourceUtils;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName: MovieDao.java
@@ -454,6 +456,28 @@ public class MovieDao {
         Long count = runner.query(sql, new ScalarHandler<Long>(), score, category);
         return Integer.parseInt(count.toString());
     }
+        /**
+         * 获取电影总数
+         *
+         * @return long
+         */
+        public long getMoviesCount() throws SQLException {
+            String sql = "select count(*) from allmovies";
+            QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+            return (long) runner.query(sql, new ScalarHandler());
+        }
+
+        /**
+         * 获取按类型划分的电影数量
+         *
+         * @return List<Map<String, Object>>
+         */
+        public List<Map<String, Object>> getMovieTypeDistribution() throws SQLException {
+            String sql = "SELECT type, COUNT(*) AS count FROM allmovies GROUP BY type";
+            QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+            return runner.query(sql, new MapListHandler());
+        }
+
 
     /**
      * 得到最大的电影 id
