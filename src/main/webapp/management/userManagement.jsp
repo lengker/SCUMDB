@@ -81,30 +81,6 @@
 
             <ul class="list-unstyled topbar-right-menu float-right mb-0">
                 <li class="dropdown notification-list">
-                    <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="false" aria-expanded="false">
-                        <i class="dripicons-bell noti-icon"></i>
-                        <span class="badge badge-danger badge-pill noti-icon-badge">4</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5 class="m-0"><span class="float-right"><a href="" class="text-dark"><small>Clear
-                                                All</small></a> </span>Notification</h5>
-                        </div>
-                        <div class="slimscroll noti-scroll">
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-warning"><i class="mdi mdi-comment-account-outline"></i>
-                                </div>
-                                <p class="notify-details">Caleb Flakelar commented on Admin<small
-                                        class="text-muted">1 min ago</small></p>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="false" aria-expanded="false">
                         <img src="management/assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle"> <span
@@ -151,7 +127,7 @@
                 电影管理
             </a>
         </li>
-        <li>
+        <li class="active">
             <a href="${pageContext.request.contextPath}/userManagement">
                 <i class="mdi mdi-account-multiple"></i>
                 用户管理

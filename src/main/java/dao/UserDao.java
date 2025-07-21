@@ -4,6 +4,7 @@ import domain.User;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 import utils.DataSourceUtils;
 
 import java.sql.SQLException;
@@ -221,5 +222,16 @@ public class UserDao {
         String sql = "UPDATE users SET avatar = ? WHERE id = ?";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         runner.update(sql, avatarUrl, userId);
+    }
+
+    /**
+     * 获取用户总数
+     *
+     * @return long
+     */
+    public long getUsersCount() throws SQLException {
+        String sql = "select count(*) from users";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        return (long) runner.query(sql, new ScalarHandler());
     }
 }
