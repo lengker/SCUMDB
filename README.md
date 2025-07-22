@@ -29,7 +29,7 @@ mail.password=your-email-password-or-auth-code
 
 -   **后端**：Java, Servlet, JSP, JDBC
 -   **数据库**：MySQL
--   **数据库连接池**：C3P0
+-   **数据库连接池**：HikariCP
 -   **构建工具**：Maven
 -   **日志**：Log4j
 -   **前端**：HTML, CSS, JavaScript
@@ -71,8 +71,8 @@ mail.password=your-email-password-or-auth-code
     -   将项目根目录下的 `moviesdata.sql` 文件导入到您的数据库中。
 
 2.  **配置数据库连接**:
-    -   修改 `src/main/resources/c3p0-config.xml` 文件。
-    -   将其中的 `jdbcUrl`, `user`, `password` 修改为您的本地数据库配置。
+    -   修改 `src/main/resources/db.properties` 文件。
+    -   将其中的 `jdbc.url`, `jdbc.username`, `jdbc.password` 修改为您的本地数据库配置。
 
 3.  **配置邮件服务**:
     -   如上文“重要说明”所述，配置 `src/main/resources/mail.properties`。

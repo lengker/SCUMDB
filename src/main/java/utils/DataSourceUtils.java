@@ -4,8 +4,11 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 import javax.sql.DataSource;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class DataSourceUtils {
     private static HikariDataSource datasource;
@@ -14,25 +17,32 @@ public class DataSourceUtils {
     private static ThreadLocal<Connection> tl = new ThreadLocal<Connection>();
 
     static {
-        HikariConfig config = new HikariConfig();
+        try {
+            Properties props = new Properties();
+            InputStream inputStream = DataSourceUtils.class.getClassLoader().getResourceAsStream("db.properties");
+            if (inputStream == null) {
+                throw new IllegalStateException("在类路径中找不到 db.properties");
+            }
+            props.load(inputStream);
 
-        config.setJdbcUrl("jdbc:mysql://localhost:3306/moviesdata?serverTimezone=Asia/Shanghai");
-        config.setUsername("root");
-        config.setPassword("123456");
-        config.setDriverClassName("com.mysql.jdbc.Driver");
+            HikariConfig config = new HikariConfig();
+            config.setJdbcUrl(props.getProperty("jdbc.url"));
+            config.setUsername(props.getProperty("jdbc.username"));
+            config.setPassword(props.getProperty("jdbc.password"));
+            config.setDriverClassName(props.getProperty("jdbc.driverClassName"));
+            config.setMaximumPoolSize(Integer.parseInt(props.getProperty("hikari.maximumPoolSize")));
+            config.setMinimumIdle(Integer.parseInt(props.getProperty("hikari.minimumIdle")));
+            config.setConnectionTimeout(Long.parseLong(props.getProperty("hikari.connectionTimeout")));
+            config.setIdleTimeout(Long.parseLong(props.getProperty("hikari.idleTimeout")));
+            config.setMaxLifetime(Long.parseLong(props.getProperty("hikari.maxLifetime")));
+            config.setLeakDetectionThreshold(Long.parseLong(props.getProperty("hikari.leakDetectionThreshold")));
+            config.setPoolName(props.getProperty("hikari.poolName"));
+            config.setAutoCommit(Boolean.parseBoolean(props.getProperty("hikari.autoCommit")));
 
-        config.setMaximumPoolSize(20);
-        config.setMinimumIdle(5);
-        config.setConnectionTimeout(30000);
-        config.setIdleTimeout(600000);
-        config.setMaxLifetime(1800000);
-        config.setLeakDetectionThreshold(60000);
-
-        config.setPoolName("HikariCP");
-
-        config.setAutoCommit(true);
-
-        datasource = new HikariDataSource(config);
+            datasource = new HikariDataSource(config);
+        } catch (IOException e) {
+            throw new RuntimeException("无法加载 db.properties", e);
+        }
     }
 
     public static DataSource getDataSource() {

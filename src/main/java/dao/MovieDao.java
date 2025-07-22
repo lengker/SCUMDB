@@ -462,7 +462,7 @@ public class MovieDao {
          * @return long
          */
         public long getMoviesCount() throws SQLException {
-            String sql = "select count(*) from allmovies";
+            String sql = "select count(distinct name) from allmovies";
             QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
             return (long) runner.query(sql, new ScalarHandler());
         }

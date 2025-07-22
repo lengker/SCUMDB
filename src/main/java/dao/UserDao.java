@@ -164,7 +164,7 @@ public class UserDao {
      * @param originalUsername 原始用户名
      */
     public void updateUser(User user, String originalUsername) throws SQLException {
-        String sql = "UPDATE users SET username=?, password=?, email=?, telephone=?, gender=? WHERE username=?";
+        String sql = "UPDATE users SET username=?, password=?, email=?, telephone=?, gender=?, age=? WHERE username=?";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         runner.update(sql,
                 user.getUsername(),
@@ -172,6 +172,7 @@ public class UserDao {
                 user.getEmail(),
                 user.getTelephone(),
                 user.getGender(),
+                user.getAge(),
                 originalUsername
         );
     }

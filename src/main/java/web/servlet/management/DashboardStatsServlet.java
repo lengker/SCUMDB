@@ -28,8 +28,8 @@ public class DashboardStatsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, Object> stats = new HashMap<>();
         try {
-//            stats.put("movieCount", movieDao.getMoviesCount());
-            stats.put("movieCount", 554);
+            stats.put("movieCount", movieDao.getMoviesCount());
+//            stats.put("movieCount", 554);
             stats.put("userCount", userDao.getUsersCount());
             stats.put("topMovies", clickTimeDao.getTopTenClickTimes());
             stats.put("movieTypeDistribution", movieDao.getMovieTypeDistribution());
