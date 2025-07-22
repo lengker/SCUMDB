@@ -110,6 +110,20 @@
                 电影管理
             </a>
         </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/userManagement">
+                <i class="mdi mdi-account-multiple"></i>
+                用户管理
+            </a>
+        </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/aiAnalysis">
+                <i class="mdi mdi-robot"></i>
+                智能分析
+            </a>
+        </li>
+    </ul>
+</div>
     </ul>
 </div>
 

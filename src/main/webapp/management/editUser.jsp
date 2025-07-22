@@ -89,6 +89,13 @@
                 用户管理
             </a>
         </li>
+
+        <li>
+            <a href="${pageContext.request.contextPath}/aiAnalysis">
+                <i class="mdi mdi-robot"></i>
+                智能分析
+            </a>
+        </li>
     </ul>
 </div>
 
@@ -130,15 +137,19 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="username">用户名 <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="username" name="username" 
+                                    <label for="username">
+                                        <i class="mdi mdi-account text-muted mr-1"></i>用户名 <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="username" name="username"
                                            value="${user.username}" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="password">密码 <span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" id="password" name="password" 
+                                    <label for="password">
+                                        <i class="mdi mdi-lock text-muted mr-1"></i>密码 <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="password" class="form-control" id="password" name="password"
                                            value="${user.password}" required>
                                 </div>
                             </div>
@@ -147,16 +158,20 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="email">邮箱</label>
-                                    <input type="email" class="form-control" id="email" name="email" 
-                                           value="${user.email}">
+                                    <label for="email">
+                                        <i class="mdi mdi-email text-muted mr-1"></i>邮箱
+                                    </label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                           value="${user.email}" placeholder="请输入邮箱地址">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="phone">电话</label>
+                                    <label for="phone">
+                                        <i class="mdi mdi-phone text-muted mr-1"></i>电话
+                                    </label>
                                     <input type="text" class="form-control" id="phone" name="phone"
-                                           value="${user.telephone}">
+                                           value="${user.telephone}" placeholder="请输入电话号码">
                                 </div>
                             </div>
                         </div>
@@ -164,9 +179,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="gender">性别</label>
+                                    <label for="gender">
+                                        <i class="mdi mdi-gender-male-female text-muted mr-1"></i>性别
+                                    </label>
                                     <select class="form-control" id="gender" name="gender">
-                                        <option value="">请选择</option>
+                                        <option value="">请选择性别</option>
                                         <option value="男" ${user.gender == '男' ? 'selected' : ''}>男</option>
                                         <option value="女" ${user.gender == '女' ? 'selected' : ''}>女</option>
                                     </select>
@@ -174,9 +191,11 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="age">年龄</label>
-                                    <input type="number" class="form-control" id="age" name="age" 
-                                           value="${user.age}" min="0" max="150">
+                                    <label for="age">
+                                        <i class="mdi mdi-calendar text-muted mr-1"></i>年龄
+                                    </label>
+                                    <input type="number" class="form-control" id="age" name="age"
+                                           value="${user.age > 0 ? user.age : ''}" min="0" max="150" placeholder="请输入年龄">
                                 </div>
                             </div>
                         </div>
@@ -224,32 +243,32 @@
             var password = $('#password').val().trim();
             var email = $('#email').val().trim();
             var age = $('#age').val().trim();
-            
+
             if (!username) {
                 alert('用户名不能为空');
                 e.preventDefault();
                 return false;
             }
-            
+
             if (!password) {
                 alert('密码不能为空');
                 e.preventDefault();
                 return false;
             }
-            
+
             if (email && !isValidEmail(email)) {
                 alert('请输入有效的邮箱地址');
                 e.preventDefault();
                 return false;
             }
-            
+
             if (age && (isNaN(age) || age < 0 || age > 150)) {
                 alert('请输入有效的年龄（0-150）');
                 e.preventDefault();
                 return false;
             }
         });
-        
+
         function isValidEmail(email) {
             var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
