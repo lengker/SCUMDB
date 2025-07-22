@@ -21,10 +21,6 @@ public class AddUserServlet extends HttpServlet {
         
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String gender = request.getParameter("gender");
-        String ageStr = request.getParameter("age");
         
         // 验证必填字段
         if (username == null || username.trim().isEmpty() ||
@@ -45,20 +41,11 @@ public class AddUserServlet extends HttpServlet {
             User user = new User();
             user.setUsername(username.trim());
             user.setPassword(password.trim());
-            user.setEmail(email != null ? email.trim() : "");
-            user.setPhone(phone != null ? phone.trim() : "");
-            user.setGender(gender != null ? gender.trim() : "");
-            
-            // 处理年龄
-            if (ageStr != null && !ageStr.trim().isEmpty()) {
-                try {
-                    user.setAge(Integer.parseInt(ageStr.trim()));
-                } catch (NumberFormatException e) {
-                    user.setAge(0);
-                }
-            } else {
-                user.setAge(0);
-            }
+            // 设置其他字段为默认值
+            user.setEmail("");
+            user.setPhone("");
+            user.setGender("");
+            user.setAge(0);
             
             service.addUser(user);
             

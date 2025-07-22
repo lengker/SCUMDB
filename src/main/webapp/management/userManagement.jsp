@@ -444,8 +444,8 @@
             </div>
             <form method="post" action="${pageContext.request.contextPath}/addUser">
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
                             <div class="form-group">
                                 <label for="username" class="form-label">
                                     <i class="mdi mdi-account text-muted mr-1"></i>用户名 <span class="text-danger">*</span>
@@ -454,56 +454,15 @@
                                        placeholder="请输入用户名" required>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
                             <div class="form-group">
                                 <label for="password" class="form-label">
                                     <i class="mdi mdi-lock text-muted mr-1"></i>密码 <span class="text-danger">*</span>
                                 </label>
                                 <input type="password" class="form-control" id="password" name="password"
                                        placeholder="请输入密码" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="email" class="form-label">
-                                    <i class="mdi mdi-email text-muted mr-1"></i>邮箱
-                                </label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                       placeholder="请输入邮箱地址">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="phone" class="form-label">
-                                    <i class="mdi mdi-phone text-muted mr-1"></i>电话
-                                </label>
-                                <input type="text" class="form-control" id="phone" name="phone"
-                                       placeholder="请输入电话号码">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="gender" class="form-label">
-                                    <i class="mdi mdi-gender-male-female text-muted mr-1"></i>性别
-                                </label>
-                                <select class="form-control" id="gender" name="gender">
-                                    <option value="">请选择性别</option>
-                                    <option value="男">男</option>
-                                    <option value="女">女</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="age" class="form-label">
-                                    <i class="mdi mdi-calendar text-muted mr-1"></i>年龄
-                                </label>
-                                <input type="number" class="form-control" id="age" name="age"
-                                       min="0" max="150" placeholder="请输入年龄">
                             </div>
                         </div>
                     </div>

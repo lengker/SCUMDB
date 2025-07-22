@@ -72,7 +72,7 @@ public class EditUserServlet extends HttpServlet {
             user.setEmail(email != null ? email.trim() : "");
             user.setPhone(phone != null ? phone.trim() : "");
             user.setGender(gender != null ? gender.trim() : "");
-            
+
             // 处理年龄
             if (ageStr != null && !ageStr.trim().isEmpty()) {
                 try {
