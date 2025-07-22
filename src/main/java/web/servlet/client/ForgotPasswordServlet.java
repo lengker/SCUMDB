@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/forgotPassword")
@@ -18,6 +19,15 @@ public class ForgotPasswordServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
 
         String email = request.getParameter("email");
+        String captcha = request.getParameter("captcha");
+        HttpSession session = request.getSession();
+        String sessionCaptcha = (String) session.getAttribute("captchaCode");
+
+        if (sessionCaptcha == null || !sessionCaptcha.equalsIgnoreCase(captcha)) {
+            request.setAttribute("error", "验证码不正确！");
+            request.getRequestDispatcher("/forgotPassword.jsp").forward(request, response);
+            return;
+        }
 
         try {
             userService.sendResetPasswordEmail(email);

@@ -87,6 +87,36 @@
                 </div>
             </div>
         </div>
+
+        <!-- 修改个人信息 -->
+        <div class="row mt-4">
+    <h5 class="text-secondary">修改个人信息</h5>
+    </br>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col">
+                <label for="user-gender">性别</label>
+                <select id="user-gender" class="form-control">
+                    <option value="">请选择</option>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="user-age">年龄</label>
+                <input type="number" id="user-age" class="form-control" min="1" max="120" placeholder="请输入年龄">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12 text-center">
+                <input type="submit" class="btn btn-info" value="保存修改" style="width: 200px;"
+                       onclick="alterUserInfo()">
+            </div>
+        </div>
+        <!-- 这里添加空白行 -->
+        <br><br><br>
+    </div>
+</div>
     </div>
 </div>
 
@@ -476,6 +506,40 @@
                     $('#confirm-password').val('');
                 } else {
                     alert('密码修改失败！');
+                }
+            },
+            error: function() {
+                alert('网络错误，请稍后重试！');
+            }
+        });
+    }
+
+    // 新增：修改性别和年龄功能
+    function alterUserInfo() {
+        var gender = $('#user-gender').val();
+        var age = $('#user-age').val();
+
+        if (!gender) {
+            alert('请选择性别！');
+            return;
+        }
+        if (!age || isNaN(age) || age < 1 || age > 120) {
+            alert('请输入有效的年龄（1-120）！');
+            return;
+        }
+
+        $.ajax({
+            url: 'alterUserInfo.do',
+            type: 'POST',
+            data: {
+                gender: gender,
+                age: age
+            },
+            success: function(response) {
+                if (response === 'ok') {
+                    alert('个人信息修改成功！');
+                } else {
+                    alert('个人信息修改失败！');
                 }
             },
             error: function() {
